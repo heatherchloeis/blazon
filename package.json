@@ -1,0 +1,5 @@
+{
+  "name": "canary_app",
+  "private": true,
+  "dependencies": {}
+}
