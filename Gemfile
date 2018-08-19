@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mini_magick', '~> 4.8'
 gem 'will_paginate', '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails', '4.3.1'
 gem 'faker', '1.7.3'
 gem 'carrierwave', '1.2.2'
@@ -55,16 +55,15 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  # gem 'capybara', '>= 2.15', '< 4.0'
-  # gem 'selenium-webdriver'
-  # # Easy installation and use of chromedriver to run system tests with Chrome
-  # gem 'chromedriver-helper'
-
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
   gem 'rails-controller-testing', '1.0.2'
-  gem 'minitest', '5.10.3'
-  gem 'minitest-reporters', '1.1.14'
-  gem 'guard', '2.14.1'
-  gem 'guard-minitest', '2.4.6'
+  # gem 'minitest', '5.10.3'
+  # gem 'minitest-reporters', '1.1.14'
+  # gem 'guard', '2.14.1'
+  # gem 'guard-minitest', '2.4.6'
 end
 
 group :production do
