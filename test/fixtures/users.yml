@@ -1,1 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cirilla:
+  name: Cirilla of Cintra
+  email: ciri@cintra.com
+  password_digest: <%= User.digest('password') %>
