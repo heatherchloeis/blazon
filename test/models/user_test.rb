@@ -65,7 +65,7 @@ class UserTest < ActiveSupport::TestCase
 		assert_equal mixed_case_email.downcase, @user.reload.email
 	end
 
-	#User password testing suite
+	# User password testing suite
 
 	test "password should be present" do
 		@user.password = @user.password_confirmation = "     "
@@ -75,5 +75,11 @@ class UserTest < ActiveSupport::TestCase
 	test "password should meet 8 char minimum length" do
 		@user.password = @user.password_confirmation = "a" * 6
 		assert_not @user.valid?
+	end
+
+	# User login/logout testing suite
+
+	test "authenticated? should return false for a user with nil digest" do
+		assert_not @user.authenticated?('')
 	end
 end
