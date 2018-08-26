@@ -4,3 +4,10 @@ cirilla:
   name: Cirilla of Cintra
   email: ciri@cintra.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+
+triss:
+  name: Triss Merigold
+  email: triss_merigold@maribor.com
+  password_digest: <%= User.digest('password') %> 
+  admin: false

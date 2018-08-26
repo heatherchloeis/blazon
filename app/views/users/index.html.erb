@@ -1,0 +1,16 @@
+<% provide(:title, "User Index") %>
+
+<div class="pagination">
+	<%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+
+<h1>User Index</h1>
+<div>
+	<% @users.each do |user| %>
+		<%= render user %>
+	<% end %>
+</div>
+
+<ul class="pagination">
+	<%= will_paginate %>
+</ul>
