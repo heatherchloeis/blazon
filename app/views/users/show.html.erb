@@ -9,4 +9,15 @@
 			</h1>
 		</section>
 	</aside>
+	<div class="col-md-8">
+		<% if @user.chirps.any? %>
+			<h3>Chirps (<%= @user.chirps.count %>)</h3>
+			<div class="chirps">
+				<%= render @chirps %>
+			</div>
+			<div class="pagination">
+				<%= will_paginate @chirps, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+			</div>
+		<% end %>
+	</div>
 </div>

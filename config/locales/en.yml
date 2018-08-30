@@ -31,3 +31,26 @@
 
 en:
   hello: "Hello world"
+  datetime:
+    distance_in_words:
+      x_seconds:
+        one: "1s"
+        other: "%{count}s"
+      x_minutes:
+        one: "1m"
+        other: "%{count}m"
+      x_hours:
+        one: "1h"
+        other: "%{count}h"
+      x_days:
+        one: "1d"
+        other: "%{count}d"
+      x_weeks:
+        one: "1w"
+        other: "%{count}w"
+      x_months:
+        one: "1mo"
+        other: "%{count}mo"
+      x_years:
+        one: "1y"
+        other: "%{count}y"

@@ -11,6 +11,8 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
+	has_many :chirps, dependent: :destroy
+
 	# Returns the hash digest of the given string
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -61,8 +63,14 @@ class User < ApplicationRecord
 		UserMailer.password_reset(self).deliver_now
 	end
 
+	# Checks if password request is expired
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago
+	end
+
+	# Defines chirp feed
+	def feed
+		Chirp.where("user_id = ?", id)
 	end
 
 	private
