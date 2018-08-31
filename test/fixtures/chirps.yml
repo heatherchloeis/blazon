@@ -11,7 +11,7 @@ two:
 three:
   content: "Lorem ipsum three"
   created_at: <%= 10.minutes.ago %>
-  user: cirilla
+  user: roach
 
 four:
   content: "Lorem ipsum four"
@@ -26,7 +26,7 @@ five:
 six:
   content: "Lorem ipsum six"
   created_at: <%= 1.day.ago %>
-  user: triss
+  user: yen
 
 seven:
   content: "Lorem ipsum seven"
@@ -41,16 +41,30 @@ eight:
 nine:
   content: "Lorem ipsum nine"
   created_at: <%= 1.month.ago %>
-  user: cirilla
+  user: roach
 
 ten:
   content: "Lorem ipsum ten"
   created_at: <%= 10.weeks.ago %>
-  user: triss
+  user: yen
 
 <% 30.times do |n| %>
 chirp_<%= n %>:
   content: <%= Faker::Lorem.sentence(5) %>
   created_at: <%= 42.days.ago %> 
   user: cirilla
+<% end %>
+
+<% 10.times do |n| %>
+chirp_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %> 
+  user: roach
+<% end %>
+
+<% 30.times do |n| %>
+chirp_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %> 
+  user: yen
 <% end %>

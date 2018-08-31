@@ -92,4 +92,35 @@ class UserTest < ActiveSupport::TestCase
 			@user.destroy
 		end
 	end
+
+	# Follow and Unfollow
+
+	test "user should follow and unfollow another user" do
+		yen = users(:yen)
+		triss = users(:triss)
+		assert_not yen.following?(triss)
+		yen.follow(triss)
+		assert yen.following?(triss)
+		assert triss.followers.include?(yen)
+		yen.unfollow(triss)
+		assert_not yen.following?(triss)
+	end
+
+	test "feed should have the right posts" do 
+		ciri = users(:cirilla)
+		roach = users(:roach)
+		yen = users(:yen)
+		# Posts from followed user
+		yen.chirps.each do |chirp_following|
+			assert ciri.feed.include?(chirp_following)
+		end
+		# Posts from self
+		ciri.chirps.each do |post_self|
+			assert ciri.feed.include?(post_self)
+		end
+		# Post from unfollowed user
+		roach.chirps.each do |post_unfollowed|
+			assert_not yen.feed.include?(post_unfollowed)
+		end
+	end
 end

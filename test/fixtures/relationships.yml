@@ -1,0 +1,52 @@
+one:
+  follower: geralt
+  followed: cirilla
+
+two:
+  follower: geralt
+  followed: roach
+
+three:
+  follower: geralt
+  followed: yen
+
+four:
+  follower: geralt
+  followed: triss
+
+five:
+  follower: cirilla
+  followed: geralt
+
+six:
+  follower: cirilla
+  followed: triss
+
+seven:
+  follower: cirilla
+  followed: yen
+
+eight:
+  follower: roach
+  followed: geralt
+
+nine: 
+  follower: triss
+  followed: cirilla
+
+ten:
+  follower: triss
+  followed: geralt
+
+eleven:
+  follower: triss
+  followed: yen
+
+twelve:
+  follower: yen
+  followed: cirilla
+
+thirteen:
+  follower: yen
+  followed: geralt
+

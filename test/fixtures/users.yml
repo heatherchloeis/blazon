@@ -6,9 +6,30 @@ cirilla:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+geralt:
+  name: Geralt of Rivia
+  email: daddygeralt@rivia.com
+  password_digest: <%= User.digest('password') %> 
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+roach:
+  name: Roach
+  email: roach_the_horse@rivia.com
+  password_digest: <%= User.digest('password') %> 
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
 triss:
   name: Triss Merigold
   email: triss_merigold@maribor.com
+  password_digest: <%= User.digest('password') %> 
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+yen:
+  name: Yennifer of Vengerberg
+  email: yennifer@vengerberg.com
   password_digest: <%= User.digest('password') %> 
   activated: true
   activated_at: <%= Time.zone.now %>

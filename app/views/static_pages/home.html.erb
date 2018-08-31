@@ -1,9 +1,12 @@
 <% if logged_in? %>
 	<div class="row">
 		<aside class="col-md-4">
-			<section class="user-info">
+			<div class="user_info">
 				<%= render 'shared/user_info' %>
-			</section>
+			</div>
+			<div class="stats">
+				<%= render 'shared/stats' %>
+			</div>
 		</aside>
 		<div class="col-md-8">
 			<%= render 'shared/chirp_form' %>
