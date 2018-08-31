@@ -52,5 +52,5 @@ class FollowingTest < ActionDispatch::IntegrationTest
 		assert_difference '@user.following.count', -1 do
 			delete relationship_path(relationship), xhr: true
 		end
-	end		
+	end
 end
