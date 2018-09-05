@@ -29,7 +29,7 @@ gem 'will_paginate', '3.1.6'
 gem 'will_paginate-bootstrap4'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails', '4.3.1'
-gem 'faker', '1.7.3'
+gem 'faker', '1.9.1'
 gem 'carrierwave', '1.2.2'
 
 # Use Capistrano for deployment

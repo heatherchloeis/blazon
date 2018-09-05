@@ -1,5 +1,5 @@
 <div id="chirp-<%= chirp.id %>">
-	<div class="user"><%= link_to gravatar_for(chirp.user, size: 50), chirp.user %><%= link_to chirp.user.name, chirp.user %></div>
+	<div class="user"><%= link_to gravatar_for(chirp.user, size: 50), chirp.user %><%= link_to chirp.user.username, chirp.user %></div>
 	<p class="content"><%= chirp.content %></p>
 	<div>
 		<%= image_tag chirp.picture.url if chirp.picture? %>

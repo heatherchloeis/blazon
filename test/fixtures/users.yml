@@ -1,5 +1,6 @@
 cirilla:
   name: Cirilla of Cintra
+  username: cirilla
   email: ciri@cintra.com
   password_digest: <%= User.digest('password') %>
   admin: true
@@ -8,6 +9,7 @@ cirilla:
 
 geralt:
   name: Geralt of Rivia
+  username: geralt
   email: daddygeralt@rivia.com
   password_digest: <%= User.digest('password') %> 
   activated: true
@@ -15,6 +17,7 @@ geralt:
 
 roach:
   name: Roach
+  username: roach
   email: roach_the_horse@rivia.com
   password_digest: <%= User.digest('password') %> 
   activated: true
@@ -22,6 +25,7 @@ roach:
 
 triss:
   name: Triss Merigold
+  username: triss
   email: triss_merigold@maribor.com
   password_digest: <%= User.digest('password') %> 
   activated: true
@@ -29,6 +33,7 @@ triss:
 
 yen:
   name: Yennifer of Vengerberg
+  username: yen
   email: yennifer@vengerberg.com
   password_digest: <%= User.digest('password') %> 
   activated: true

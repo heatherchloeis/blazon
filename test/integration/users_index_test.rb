@@ -7,10 +7,12 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 
 		30.times do |n|
 			name = Faker::Name.name
+			username = Faker::Internet.username
 			email = Faker::Internet.email
 			password = "password"
 			User.create!(name: name,
 									 email: email,
+									 username: username,
 									 password: password,
 									 password_confirmation: password,
 									 activated: true,
@@ -25,7 +27,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 		assert_select 'div.pagination'
 		first_page_of_users = User.paginate(page: 1)
 		first_page_of_users.each do |user|
-			assert_select 'a[href=?]', user_path(user), text: user.name 
+			assert_select 'a[href=?]', user_path(user), text: user.username
 			unless user == @admin
 				assert_select 'a[href=?]', user_path(user), text: 'delete'
 			end

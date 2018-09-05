@@ -5,6 +5,7 @@ class UserTest < ActiveSupport::TestCase
 	def setup
 		@user = User.new(name: "Jane Doe", 
 										 email: "janedoe@geemail.com",
+										 username: "jane_doe",
 										 password: "canarycanary",
 										 password_confirmation: "canarycanary")
 	end
@@ -63,6 +64,56 @@ class UserTest < ActiveSupport::TestCase
 		@user.email = mixed_case_email
 		@user.save
 		assert_equal mixed_case_email.downcase, @user.reload.email
+	end
+
+	# User username testing suite
+
+	test "user username should be present" do
+		@user.username = "     "
+		assert_not @user.valid?		
+	end
+
+	test "user username should not exceed 25 char" do
+		@user.username = "a" * 26
+		assert_not @user.valid?
+	end
+
+	test "username should accept valid usernames" do
+		valid_usernames = %w[janedoe JOHNdoe jane_doe john.doe JOHN.JANE_DOE123]
+		valid_usernames.each do |valid_username|
+			@user.username = valid_username
+			assert @user.valid?, "#{valid_username.inspect} should be valid"
+		end
+	end
+
+	test "username should reject invalid usernames" do
+		invalid_usernames = %w[janedoe@ JOHNdoe$ jane_doe@gee.mail! JOHN+JANE_DOE@gee_mail.co @#$%^&*()]
+		invalid_usernames.each do |invalid_username|
+			@user.username = invalid_username
+			assert_not @user.valid?, "#{invalid_username.inspect} should NOT be valid"
+		end
+	end
+
+	test "username validation should reject duplicate usernames" do
+		duplicate_user = @user.dup
+		duplicate_user.username = @user.username.upcase
+		@user.save
+		assert_not duplicate_user.valid?
+	end
+
+	test "username validation should reject email addresses as username" do
+		other_user = @user.dup
+		other_user.email = "john_doe@gmail.com"
+		other_user.username = @user.email.downcase
+		@user.save
+		assert_not other_user.valid?
+	end
+
+	test "usernames should be saved as lowercase" do
+		mixed_case_username = "JaNe_DoE"
+		@user.username = mixed_case_username
+		@user.save
+		assert_equal mixed_case_username.downcase, @user.reload.username
 	end
 
 	# User password testing suite

@@ -1,15 +1,21 @@
 class User < ApplicationRecord
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_save :downcase_email
+	before_save :downcase_username
 	before_create :create_activation_digest
 
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :email, presence: true, length: { maximum: 50 }, 
 						format: { with: URI::MailTo::EMAIL_REGEXP }, 
 						uniqueness: { case_sensitive: false }
+	validates :username, presence: true, length: { maximum: 25 }, 
+						format: { with: /^[a-zA-Z0-9_\.]*$/, :multiline => true },
+						uniqueness: { case_sensitive: false }
 
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+
+	validate :validate_username
 
 	has_many :chirps, dependent: :destroy
 	has_many :active_relationships,  class_name: "Relationship", 
@@ -103,8 +109,18 @@ class User < ApplicationRecord
 			self.email = email.downcase 
 		end
 
+		def downcase_username
+			self.username = username.downcase
+		end
+
 		def create_activation_digest
 			self.activation_token = User.new_token
 			self.activation_digest = User.digest(activation_token)
+		end
+
+		def validate_username
+			if User.where(email: username).exists?
+				errors.add(:username, :invalid)
+			end
 		end
 end
