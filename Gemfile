@@ -31,6 +31,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails', '4.3.1'
 gem 'faker', '1.9.1'
 gem 'carrierwave', '1.2.2'
+gem 'acts_as_votable', '~> 0.11.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
