@@ -8,6 +8,8 @@ class Chirp < ApplicationRecord
   validates :content, presence: true, length: { maximum: 250 }
   validate 	:picture_size
 
+  acts_as_votable
+
   private
 
   	# Validates the size of an uploaded picture

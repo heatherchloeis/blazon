@@ -36,7 +36,7 @@
 				<!--Likes Count-->
 				<li class="nav-item">
 					<a href="" class="nav-link">
-						<small><b>Likes</b><br></small>
+						<small id="likes" class="stat"><b>Likes</b><br><%= @user.find_liked_items.count %></small>
 					</a>
 				</li>
 			</ul>
