@@ -1,4 +1,11 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.username %> | <%= current_user.name %></h1>
-<%= link_to "view profile", current_user %>
-<p><%= pluralize(current_user.chirps.count, "chirps") %></p>
+<div class="row">
+	<div class="col-2">
+		<%= link_to gravatar_for(current_user, size: 50), current_user %>
+	</div>
+	<div class="col-10">
+		<%= link_to current_user.name, current_user %><br>
+			<%= link_to current_user do %>
+				@<%= current_user.username %>
+			<% end %>
+	</div>
+</div>
