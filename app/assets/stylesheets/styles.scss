@@ -1,9 +1,11 @@
 @import "bootstrap";
+@import "font-awesome";
 
 /* universal */
 
-body {
-	padding-top: 60px;
+body, .container, .container-fluid, .row {
+	padding: 0 !important;
+	margin: 0 !important;
 }
 
 section {
@@ -40,3 +42,5 @@ textarea {
 		text-decoration: none;
 	}
 }
+
+/* nav */

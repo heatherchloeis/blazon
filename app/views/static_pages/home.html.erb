@@ -1,18 +1,21 @@
 <% if logged_in? %>
 	<div class="row">
-		<aside class="col-md-4">
-			<div class="user_info">
+		<aside class="col-md-3">
+			<div class="user-excerpt">
 				<%= render 'shared/user_info' %>
-			</div>
-			<div class="stats">
 				<%= render 'shared/stats' %>
 			</div>
+			<div class="trending">
+				<h3>Trends for you</h3>
+				<p>trending trending trending</p>
+			</div>
 		</aside>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<%= render 'shared/chirp_form' %>
-		</div>
-		<div class="col-md-8 offset-md-4">
 			<%= render 'shared/feed' %>
+		</div>
+		<div class="col-md-3">
+			<h3>Who to follow</h3>
 		</div>
 	</div>
 <% else %>

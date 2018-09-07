@@ -1,11 +1,22 @@
-<div id="chirp-<%= chirp.id %>">
-	<div class="user"><%= link_to gravatar_for(chirp.user, size: 50), chirp.user %><%= link_to chirp.user.username, chirp.user %></div>
-	<p class="content"><%= chirp.content %></p>
-	<div>
+<div id="chirp-<%= chirp.id %>" class="row">
+	<div class="col-2">
+		<%= link_to gravatar_for(chirp.user, size: 50), chirp.user %>
+	</div>
+	<div class="chirp-content col-10">
+		<%= link_to chirp.user.name, chirp.user %> @<%= link_to chirp.user.username, chirp.user%> · <%= time_ago_in_words(chirp.created_at) %>
+		<% if current_user?(chirp.user) %>
+			<a class="float-right" data-toggle="dropdown" id="chirpMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<!-- 				<i class="fas fa-ellipsis-v mr-sm-1"></i> -->
+				<%= fa_icon "ellipsis-v" %>
+			</a>
+			<div class="dropdown-menu" aria-labelledby="chirpMenuButton">
+				<a href="" class="dropdown-item">edit</a>
+				<%= link_to "delete", chirp, class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
+			</div>
+		<% end %>
+		<p>
+			<%= chirp.content %>
+		</p>
 		<%= image_tag chirp.picture.url if chirp.picture? %>
 	</div>
-	<p class="timestamp">Posted <%= time_ago_in_words(chirp.created_at) %> ago</p>
-	<% if current_user?(chirp.user) %>
-		<%= link_to "delete", chirp, method: :delete, data: { confirm: "Are you sure?" } %>
-	<% end %>
 </div>
