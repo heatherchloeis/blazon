@@ -67,6 +67,13 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def liked_chirps
+    @title = "Liked chirps"
+    @user = User.find(params[:id])
+    @chirps = @user.find_liked_items
+    render 'show_likes'
+  end
+
   private
 
   	def user_params

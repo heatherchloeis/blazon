@@ -1,6 +1,44 @@
 <% provide(:title, "#{@user.name} (@#{@user.username})") %>
 
 <div class="row">
+	<!-- Stats Bar -->
+	<nav class="navbar navbar-expand-xs navbar-light bg-light col-9 offset-3">
+		<ul class="navbar-nav flex-row">
+			<!--Chirp Count-->
+			<li class="nav-item">
+				<%= link_to current_user, class: "nav-link" do %>
+					<small id="following" class="stat"><b>Chirps</b><br><%= @user.chirps.count %></small>
+				<% end %>
+			</li>
+			<!--Following Count-->
+			<li class="nav-item">
+				<a href="<%= following_user_path(@user) %>" class="nav-link">
+					<small id="following" class="stat"><b>Following</b><br><%= @user.following.count %></small>
+				</a>
+			</li>
+			<!-- Followers Count -->
+			<li class="nav-item">
+				<a href="<%= followers_user_path(@user) %>" class="nav-link">
+					<small id="followers" class="stat"><b>Followers</b><br><%= @user.followers.count %></small>
+				</a>
+			</li>
+			<!--Likes Count-->
+			<li class="nav-item">
+				<a href="<%= liked_chirps_user_path(@user) %>" class="nav-link">
+					<small id="likes" class="stat"><b>Likes</b><br><%= @user.find_liked_items.count %></small>
+				</a>
+			</li>
+		</ul>
+		<!--Follow/Unfollow || Edit Profile-->				
+		<% if (current_user == @user) %>
+			<%= button_to "Edit profile", edit_user_path(current_user), method: :get, class: "btn btn-primary mr-sm-2" %>
+		<% elsif logged_in? %>
+			<%= render 'follow_form' %>
+		<% end %>
+	</nav>	
+</div>
+<div class="row">
+	<!-- User profile -->
 	<aside class="col-md-3">
 		<div class="user-profile">
 			<%= gravatar_for @user, class: "" %>
@@ -11,42 +49,15 @@
 				<% end %>
 			</div>
 		</div>
+		<div>
+				<% @user.chirps.each do |chirp| %>
+					<% image_tag chirp.picture.url if chirp.picture? %>
+				<% end %>
+		</div>
 	</aside>
+	<!-- Chirps -->
 	<div class="col-md-6">
-		<nav class="navbar navbar-expand-xs navbar-light bg-light">
-			<ul class="navbar-nav flex-row">
-				<!--Chirp Count-->
-				<li class="nav-item">
-					<%= link_to current_user, class: "nav-link" do %>
-						<small id="following" class="stat"><b>Chirps</b><br><%= @user.chirps.count %></small>
-					<% end %>
-				</li>
-				<!--Following Count-->
-				<li class="nav-item">
-					<a href="<%= following_user_path(@user) %>" class="nav-link">
-						<small id="following" class="stat"><b>Following</b><br><%= @user.following.count %></small>
-					</a>
-				</li>
-				<!-- Followers Count -->
-				<li class="nav-item">
-					<a href="<%= followers_user_path(@user) %>" class="nav-link">
-						<small id="followers" class="stat"><b>Followers</b><br><%= @user.followers.count %></small>
-					</a>
-				</li>
-				<!--Likes Count-->
-				<li class="nav-item">
-					<a href="" class="nav-link">
-						<small id="likes" class="stat"><b>Likes</b><br><%= @user.find_liked_items.count %></small>
-					</a>
-				</li>
-			</ul>
-			<!--Follow/Unfollow || Edit Profile-->				
-			<% if (current_user == @user) %>
-				<%= button_to "Edit profile", edit_user_path(current_user), class: "btn btn-primary mr-sm-2" %>
-			<% elsif logged_in? %>
-				<%= render 'follow_form' %>
-			<% end %>
-		</nav>
+		<!-- Chirps if any -->
 		<% if @user.chirps.any? %>
 			<div class="chirps">
 				<%= render @chirps %>
@@ -56,6 +67,7 @@
 			</div>
 		<% end %>
 	</div>
+	<!-- Who to follow??? -->
 	<div class="col-md-3">
 		<h3>Who to follow</h3>
 	</div>

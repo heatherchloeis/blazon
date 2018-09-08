@@ -1,0 +1,8 @@
+<% if @likedfeed_items.any? %>
+	<div class="chirps">
+		<%= render @likedfeed_items %>
+	</div>
+	<div class="pagination">
+		<%= will_paginate @likedfeed_items, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+	</div>
+<% end %>

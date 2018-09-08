@@ -1,7 +1,12 @@
 class ChirpsController < ApplicationController
 	before_action :set_chirp, 			only: [:like, :unlike]
-	before_action :logged_in_user,	only: [:create, :destroy, :like, :unlike]
-	before_action :correct_user,		only: [:destroy]
+	before_action :logged_in_user,	only: [:create, 
+																				 :edit, 
+																				 :update, 
+																				 :destroy, 
+																				 :like, 
+																				 :unlike]
+	before_action :correct_user,		only: [:edit, :update, :destroy]
 
 	def create
 		@chirp = current_user.chirps.build(chirp_params)
@@ -11,6 +16,19 @@ class ChirpsController < ApplicationController
 		else
 			@feed_items = []
 			render 'static_pages/home'
+		end
+	end
+
+	def edit
+		@chirp = Chirp.find(params[:id])
+	end
+
+	def update
+		if @chirp.update_attributes(chirp_params)
+			flash[:success] = "Chirp updated"
+			redirect_to @user
+		else
+			render 'edit'
 		end
 	end
 
