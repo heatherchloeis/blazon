@@ -10,7 +10,7 @@
 					<%= icon('fas', 'ellipsis-v') %>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="chirpMenuButton">
-					<a href="" class="dropdown-item">edit</a>
+					<%= link_to "edit", edit_chirp_path(chirp), class: "dropdown-item", method: :get %>
 					<%= link_to "delete", chirp, class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
 				</div>
 			<% end %>
@@ -26,12 +26,12 @@
 				<%= icon('far', 'comment') %>
 		</div>
 		<!-- like btn and like count -->
-		<div class="col-2">
+		<div class="col-10">
 			<% if current_user.liked? chirp %>
 				<%= link_to unlike_chirp_path(chirp), method: :put do %>
 					<%= icon('fas', 'heart') %>
 					<% if chirp.get_likes.size > 0 %>
-						<%= chirp.get_likes.size %>
+						<%= render "chirps/likes", chirp: chirp %>
 					<% end %>
 				<% end %>
 			<% else %>
