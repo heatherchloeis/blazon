@@ -9,7 +9,12 @@ class ChirpsController < ApplicationController
 	before_action :correct_user,		only: [:edit, :update, :destroy]
 
 	def create
-		@chirp = current_user.chirps.build(chirp_params)
+		if [:chirp][:parent_id].present?
+			@parent = Chirp.find(params[:parent_id])
+			@parent.children.build(chirp_params)
+		else
+			@chirp = current_user.chirps.build(chirp_params)
+		end
 		if @chirp.save
 			flash[:success] = "Chirp successfully sent"
 			redirect_to root_url
@@ -52,6 +57,9 @@ class ChirpsController < ApplicationController
 			format.html { redirect_back fallback_location: root_path }
 			format.js { render layout: false }
 		end
+	end
+
+	def new
 	end
 
 	private

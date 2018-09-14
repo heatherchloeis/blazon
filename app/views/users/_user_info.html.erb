@@ -1,8 +1,8 @@
 <div class="row">
-	<div class="col-2">
+	<div class="col-auto">
 		<%= link_to gravatar_for(current_user, size: 50), current_user %>
 	</div>
-	<div class="col-10">
+	<div class="col">
 		<%= link_to current_user.name, current_user %><br>
 			<%= link_to current_user do %>
 				@<%= current_user.username %>

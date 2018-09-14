@@ -2,8 +2,8 @@
 	<div class="row">
 		<aside class="col-md-3">
 			<div class="user-excerpt">
-				<%= render 'shared/user_info' %>
-				<%= render 'shared/stats' %>
+				<%= render 'users/user_info' %>
+				<%= render 'users/stats' %>
 			</div>
 			<div class="trending">
 				<h3>Trends for you</h3>
@@ -11,8 +11,8 @@
 			</div>
 		</aside>
 		<div class="col-md-6">
-			<%= render 'shared/chirp_form' %>
-			<%= render 'shared/feed' %>
+			<%= render 'chirps/inline_form' %>
+			<%= render 'users/feed' %>
 		</div>
 		<div class="col-md-3">
 			<h3>Who to follow</h3>

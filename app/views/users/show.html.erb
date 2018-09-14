@@ -58,9 +58,9 @@
 	<!-- Chirps -->
 	<div class="col-md-6">
 		<!-- Chirps if any -->
-		<% if @user.chirps.any? %>
+		<% @user.chirps.each do |chirp| %>
 			<div class="chirps">
-				<%= render @chirps %>
+				<%= render 'chirps/inline_chirp', chirp: chirp %>
 			</div>
 			<div class="pagination">
 				<%= will_paginate @chirps, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

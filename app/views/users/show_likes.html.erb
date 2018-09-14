@@ -57,10 +57,9 @@
 	</aside>
 	<!-- Chirps -->
 	<div class="col-md-6">
-		<h3><%= @title %></h3>
-		<% if @chirps.any? %>
+		<% @chirps.each do |chirp| %>
 			<div class="users liked-chirps">
-				<%= render partial: 'chirps/chirp', collection: @chirps %>
+				<%= render 'chirps/inline_chirp', chirp: chirp %>
 			</div>
 		<% end %>
 	</div>

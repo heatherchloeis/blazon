@@ -4,9 +4,10 @@
 
 /* universal */
 
-body, .container, .container-fluid, .row {
+body, .container, .container-fluid {
 	padding: 0 !important;
 	margin: 0 !important;
+	// background-color: #fffde7;
 }
 
 section {
@@ -14,17 +15,13 @@ section {
 }
 
 textarea {
-	resize: vertical;
+	resize: none;
 }
 
-.center {
-	text-align: center;
-	h1, h2 {
-		margin-bottom: 10px;
-	}
-	h1 {
-		text-transform: uppercase;
-	}
+button {
+	border-radius: 25px;
+	border: none;
+	padding: 5px 15px;
 }
 
 /* header */
@@ -45,3 +42,16 @@ textarea {
 }
 
 /* nav */
+
+/* chirps */
+
+.inline-chirp {
+	border-bottom: 1px solid #eaeaea;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #fff;
+}
+
+.inline-chirp-avatar {
+	border-radius: 25px;
+}

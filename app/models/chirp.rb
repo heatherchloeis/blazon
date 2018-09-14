@@ -10,6 +10,8 @@ class Chirp < ApplicationRecord
 
   acts_as_votable
 
+  has_ancestry
+
   private
 
   	# Validates the size of an uploaded picture

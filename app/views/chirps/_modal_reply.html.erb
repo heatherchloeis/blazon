@@ -1,0 +1,15 @@
+<div class="modal" tabindex="-1" role="dialog" id="modalReply">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="text-center">Reply to <%= chirp.user.name %></h5>
+				<%= icon('fas', 'times') %>
+				<i class="fas fa-times close" data-dimiss="modal" aria-label="Close">
+			</div>
+			<div class="modal-body">
+				<%= render 'chirps/inline_chirp', chirp: chirp %>
+				<%= render 'chirps/full_form', parent_id: chirp %>
+			</div>
+		</div>
+	</div>
+</div>
