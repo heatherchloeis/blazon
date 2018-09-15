@@ -1,12 +1,20 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <%= link_to "canary", root_path, id: "logo", class: "navbar-brand col-auto offset-2" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-main">
+    <%= link_to root_path, class: "nav-link offset-2" do %>
+      <%= icon('fas', 'home') %> Home
+    <% end %>
+    <%= link_to "canary", root_path, id: "logo", class: "navbar-brand center-horizontal" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarTwo">
       <ul class="navbar-nav ml-auto">
         <% if logged_in? %>
+          <li>
+            <form class="form-inline my-2">
+              <input type="search" class="form-control form-control-sm search" placeholder="Search Canary" aria-label="Search">
+            </form>
+          </li>
           <li class="nav-item dropdown">
             <a href="#"  id="navbarDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= gravatar_for(current_user, size: 30) %><b class="carat"></b></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -22,7 +30,7 @@
             </div>
           </li>
           <li class="nav-item align-self-center">
-            <button class="btn-primary" data-toggle="modal" data-target="#modalForm">Chirp</button>
+            <button class="btn-primary btn-round btn-no-border" data-toggle="modal" data-target="#modalForm">Chirp</button>
           </li>
         <% else %>
           <li class="nav-item"><%= link_to "Log in", login_path, class: "nav-link" %></li>

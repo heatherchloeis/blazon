@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do
       put 'like',   to: "chirps#like"
       put 'unlike', to: "chirps#unlike"
+      post 'reply', to: "chirps#reply"
     end
   end
   resources :account_activations, only: [:edit]

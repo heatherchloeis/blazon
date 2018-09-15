@@ -4,13 +4,16 @@ class Chirp < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
 
-  validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 250 }
+  validates :user_id,   presence: true
+  validates :content,   presence: true, length: { maximum: 250 }
   validate 	:picture_size
 
   acts_as_votable
 
   has_ancestry
+
+  belongs_to :parent,   class_name: 'Chirp', optional: true
+  has_many   :children, class_name: 'Chirp'
 
   private
 

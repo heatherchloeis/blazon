@@ -9,18 +9,16 @@ class ChirpsController < ApplicationController
 	before_action :correct_user,		only: [:edit, :update, :destroy]
 
 	def create
-		if [:chirp][:parent_id].present?
-			@parent = Chirp.find(params[:parent_id])
-			@parent.children.build(chirp_params)
-		else
-			@chirp = current_user.chirps.build(chirp_params)
-		end
+		@chirp = current_user.chirps.build(chirp_params)
+		@chirp.children = []
 		if @chirp.save
 			flash[:success] = "Chirp successfully sent"
 			redirect_to root_url
 		else
 			@feed_items = []
-			render 'static_pages/home'
+			flash[:danger] = "There was an error processing your chirp"
+			redirect_to root_url
+			# render 'static_pages/home'
 		end
 	end
 
@@ -59,13 +57,27 @@ class ChirpsController < ApplicationController
 		end
 	end
 
-	def new
+	def reply
+		if !params[:parent_id].nil?
+			@chirp = current_user.chirps.build(chirp_params)
+			@parent = Chirp.find_by(id: params[:parent_id])
+			@parent.children << @chirp
+			if @chirp.save && @chirp.child_of?(@parent)
+			flash[:success] = "Chirp successfully sent"
+			redirect_to root_url
+			else
+				@feed_items = []
+				render 'static_pages/home'
+			end				
+		else
+			redirect_back fallback_location: root_path
+		end
 	end
 
 	private
 
 		def chirp_params
-			params.require(:chirp).permit(:content, :picture)
+			params.require(:chirp).permit(:content, :picture, :parent_id)
 		end
 
 		def correct_user

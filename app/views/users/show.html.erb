@@ -1,8 +1,8 @@
 <% provide(:title, "#{@user.name} (@#{@user.username})") %>
 
-<div class="row">
+<div class="navbar-light bg-light row profile-nav">
 	<!-- Stats Bar -->
-	<nav class="navbar navbar-expand-xs navbar-light bg-light col-9 offset-3">
+	<nav class="navbar navbar-expand-xs col-6 offset-4">
 		<ul class="navbar-nav flex-row">
 			<!--Chirp Count-->
 			<li class="nav-item">
@@ -31,7 +31,7 @@
 		</ul>
 		<!--Follow/Unfollow || Edit Profile-->				
 		<% if (current_user == @user) %>
-			<%= button_to "Edit profile", edit_user_path(current_user), method: :get, class: "btn btn-primary mr-sm-2" %>
+			<%= button_to "Edit profile", edit_user_path(current_user), method: :get, class: "btn-round btn-outline-dark" %>
 		<% elsif logged_in? %>
 			<%= render 'follow_form' %>
 		<% end %>
@@ -40,8 +40,8 @@
 <div class="row">
 	<!-- User profile -->
 	<aside class="col-md-3">
-		<div class="user-profile">
-			<%= gravatar_for @user, class: "" %>
+		<div class="profile-info-lrg">
+			<%= gravatar_for(@user, size: 150) %>
 			<div>
 				<%= link_to @user.name, @user %><br>
 				<%= link_to @user do %>
