@@ -30,7 +30,8 @@
             </div>
           </li>
           <li class="nav-item align-self-center">
-            <button class="btn-primary btn-round btn-no-border" data-toggle="modal" data-target="#modalForm">Chirp</button>
+            <%= button_to "Chirp", new_chirp_path, class: "btn-primary btn-round btn-no-border", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
+            <!-- <button class="btn-primary btn-round btn-no-border" data-toggle="modal" data-target="#modalForm">Chirp</button> -->
           </li>
         <% else %>
           <li class="nav-item"><%= link_to "Log in", login_path, class: "nav-link" %></li>

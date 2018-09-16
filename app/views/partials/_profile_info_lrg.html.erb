@@ -1,0 +1,7 @@
+<div class="profile-info-lrg">
+	<%= gravatar_for(@user, size: 150) %>
+	<div class="">
+		<b><%= link_to @user.name, @user %></b><br>
+		<%= link_to "@#{@user.username}", @user %>
+	</div>
+</div>

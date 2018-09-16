@@ -10,7 +10,9 @@
 					<%= icon('fas', 'angle-down') %>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="chirpMenuButton">
-					<%= link_to "Edit chirp", edit_chirp_path(chirp), class: "dropdown-item", method: :get %>
+					<!-- Edit modal path -->
+					<%= link_to "Edit chirp", edit_chirp_path(chirp), class: "dropdown-item", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
+					<!-- Edit modal path -->
 					<%= link_to "Delete chirp", chirp, class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
 				</div>
 			<% end %>
@@ -53,3 +55,5 @@
 		</div>
 	</div>
 </div>
+
+<%= render 'chirps/modal_chirp', chirp: chirp %>

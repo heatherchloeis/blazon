@@ -7,6 +7,7 @@ class ChirpsController < ApplicationController
 																				 :like, 
 																				 :unlike]
 	before_action :correct_user,		only: [:edit, :update, :destroy]
+	after_action  :new,							only: :create
 
 	def create
 		@chirp = current_user.chirps.build(chirp_params)
@@ -24,14 +25,20 @@ class ChirpsController < ApplicationController
 
 	def edit
 		@chirp = Chirp.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def update
 		if @chirp.update_attributes(chirp_params)
-			flash[:success] = "Chirp updated"
-			redirect_to @user
+			flash[:success] = "Chirp successfully updated"
+			redirect_to root_url
 		else
-			render 'edit'
+			# render 'edit'
+			flash[:danger] = "There was an error processing your chirp"
+			redirect_to root_url
 		end
 	end
 
@@ -61,8 +68,8 @@ class ChirpsController < ApplicationController
 		if !params[:parent_id].nil?
 			@chirp = current_user.chirps.build(chirp_params)
 			@parent = Chirp.find_by(id: params[:parent_id])
-			@parent.children << @chirp
-			if @chirp.save && @chirp.child_of?(@parent)
+			@parent.children.new(@chirp)
+			if @parent.save && @chirp.child_of?(@parent)
 			flash[:success] = "Chirp successfully sent"
 			redirect_to root_url
 			else
@@ -71,6 +78,22 @@ class ChirpsController < ApplicationController
 			end				
 		else
 			redirect_back fallback_location: root_path
+		end
+	end
+
+	def new
+		@chirp = current_user.chirps.new
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
+	def show
+		@chirp = Chirp.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.js
 		end
 	end
 

@@ -1,14 +1,23 @@
 <% provide(:title, "User Index") %>
 
-<div class="pagination">
-	<%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>
-
-<h1>User Index</h1>
-<div>
-	<% @users.each do |user| %>
-		<%= render user %>
-	<% end %>
+<h1 class="text-center">User Index</h1>
+<div class="row">
+			<% @users.each do |user| %>
+				<div class="row no-gutters profile-info-sm">
+					<div class="col-auto">
+						<%= link_to gravatar_for(user, size: 75), user %>
+					</div>
+					<div class="col align-self-end profile-links">
+						<%= link_to user.name, user %><br>
+						<%= link_to "@#{user.username}", @user %>
+					</div>
+				<div class="col-auto align-self-end">
+					<% if current_user.admin? && !current_user?(user) %>
+						<%= button_to "delete", user, class: "btn-danger btn-round btn-no-border", method: :delete, data: { confirm: "Are you sure?" } %>
+					<% end %>
+				</div>
+				</div>
+			<% end %>
 </div>
 
 <ul class="pagination">

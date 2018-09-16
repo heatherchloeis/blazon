@@ -1,0 +1,5 @@
+<div>
+	<% @user.chirps.each do |chirp| %>
+		<% image_tag chirp.picture.url if chirp.picture? %>
+	<% end %>
+</div>

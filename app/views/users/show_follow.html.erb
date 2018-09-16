@@ -1,72 +1,27 @@
 <% provide(:title, @title) %>
 
-<div class="row">
-	<!-- Stats Bar -->
-	<nav class="navbar navbar-expand-xs navbar-light bg-light col-9 offset-3">
-		<ul class="navbar-nav flex-row">
-			<!--Chirp Count-->
-			<li class="nav-item">
-				<%= link_to current_user, class: "nav-link" do %>
-					<small id="following" class="stat"><b>Chirps</b><br><%= @user.chirps.count %></small>
-				<% end %>
-			</li>
-			<!--Following Count-->
-			<li class="nav-item">
-				<a href="<%= following_user_path(@user) %>" class="nav-link">
-					<small id="following" class="stat"><b>Following</b><br><%= @user.following.count %></small>
-				</a>
-			</li>
-			<!-- Followers Count -->
-			<li class="nav-item">
-				<a href="<%= followers_user_path(@user) %>" class="nav-link">
-					<small id="followers" class="stat"><b>Followers</b><br><%= @user.followers.count %></small>
-				</a>
-			</li>
-			<!--Likes Count-->
-			<li class="nav-item">
-				<a href="<%= liked_chirps_user_path(@user) %>" class="nav-link">
-					<small id="likes" class="stat"><b>Likes</b><br><%= @user.find_liked_items.count %></small>
-				</a>
-			</li>
-		</ul>
-		<!--Follow/Unfollow || Edit Profile-->				
-		<% if (current_user == @user) %>
-			<%= button_to "Edit profile", edit_user_path(current_user), method: :get, class: "btn btn-primary mr-sm-2" %>
-		<% elsif logged_in? %>
-			<%= render 'follow_form' %>
-		<% end %>
-	</nav>	
-</div>
+<%= render 'layouts/profile_nav' %>
 <div class="row">
 	<!-- User profile -->
-	<aside class="col-md-3">
-		<div class="user-profile">
-			<%= gravatar_for @user, class: "" %>
-			<div>
-				<%= link_to @user.name, @user %><br>
-				<%= link_to @user do %>
-					@<%= @user.username %>
-				<% end %>
-			</div>
-		</div>
-		<div>
-				<% @user.chirps.each do |chirp| %>
-					<% image_tag chirp.picture.url if chirp.picture? %>
-				<% end %>
-		</div>
-	</aside>
-	<!-- Chirps -->
-	<!-- Followers/Following -->
-	<div class="col-md-6">
-		<h3><%= @title %></h3>
-		<% if @users.any? %>
-			<div class="users follow">
-				<%= render @users %>
-			</div>
-		<% end %>
-	</div>
-	<!-- Who to follow??? -->
 	<div class="col-md-3">
-		<h3>Who to follow</h3>
+		<%= render "partials/profile_info_lrg" %>
+		<%= render "partials/profile_album" %>
+	</div>
+	<!-- Followers/Following -->
+	<div class="col-9">
+		<h3><%= @title %></h3>
+		<div class="row">
+			<% @users.each do |user| %>
+				<div class="row no-gutters profile-info-sm">
+					<div class="col-auto">
+						<%= link_to gravatar_for(user, size: 75), user %>
+					</div>
+					<div class="col align-self-end profile-links">
+						<%= link_to user.name, user %><br>
+						<%= link_to "@#{user.username}", user %>
+					</div>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>

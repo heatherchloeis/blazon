@@ -1,27 +1,27 @@
 <% if logged_in? %>
 	<div class="row">
-		<aside class="col-md-3">
+		<aside class="col-3">
 			<div class="user-excerpt">
-				<%= render 'users/user_info' %>
-				<%= render 'users/stats' %>
+				<%= render 'partials/profile_info_sm', @user => current_user %>
+				<%= render 'partials/profile_stats' %>
 			</div>
 			<div class="trending">
 				<h3>Trends for you</h3>
 				<p>trending trending trending</p>
 			</div>
 		</aside>
-		<div class="col-md-6">
+		<div class="col-6">
 			<%= render 'chirps/full_form' %>
 			<%= render 'users/feed' %>
 		</div>
-		<div class="col-md-3">
+		<div class="col-3">
 			<h3>Who to follow</h3>
 		</div>
 	</div>
 <% else %>
 	<div class="center jumbotron">
-		<h1>Canary</h1>
-		<h2>Welcome!</h2>
-		<%= link_to "Sign up now!", signup_path, class: "btn btn-lrg btn-primary" %>
+		<h1 class="text-center">Canary</h1>
+		<h2 class="text-center">Welcome!</h2>
+		<%= link_to "Sign up now!", signup_path, class: "btn-lrg btn-primary btn-round btn-no-border text-center" %>
 	</div>
 <% end %>
