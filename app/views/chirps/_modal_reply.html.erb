@@ -1,15 +1,22 @@
-<div class="modal" tabindex="-1" role="dialog" id="modalReply">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="text-center">Reply to <%= chirp.user.name %></h5>
-				<%= icon('fas', 'times') %>
-				<i class="fas fa-times close" data-dimiss="modal" aria-label="Close">
-			</div>
-			<div class="modal-body">
-				<%= render 'chirps/inline_chirp', chirp: chirp %>
-				<%= render 'chirps/full_form', parent_id: chirp %>
-			</div>
+<div class="modal-header">
+	<h5 class="text-center">Reply to <%= @parent.user.name %></h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <i class="fas fa-times"></i>
+	</button>
+</div>
+<div class="modal-body">
+		<div class="row no-gutters">
+		<div class="col-auto">
+			<%= link_to gravatar_for(@parent.user, size: 50), @parent.user, class: 'inline-chirp-avatar' %>
+		</div>
+		<div class="chirp-content col">
+			<%= link_to @parent.user.name, @parent.user %> <%= link_to "@#{@parent.user.username}", @parent.user%> · <%= time_ago_in_words(@parent.created_at) %>
+			<p>
+				<%= @parent.content %>
+			</p>
+			<%= image_tag @parent.picture.url if @parent.picture? %>
 		</div>
 	</div>
+	<p>Replying to <%= link_to "@#{@parent.user.username}", @parent.user %></p>
+	<%= render 'chirps/full_form' %>
 </div>

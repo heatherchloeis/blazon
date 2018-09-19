@@ -9,6 +9,7 @@ body, .container, .container-fluid {
 	margin: 0 !important;
 	color: #1d292f;
 	overflow-x: hidden;
+	// background-color: #c0deed;
 }
 
 p {
@@ -79,6 +80,7 @@ header {
 
 main {
 	margin-top: 10px;
+	margin-bottom: 100px;
 }
 
 .profile-nav {
@@ -99,21 +101,43 @@ main {
 	margin-top: -60px;
 }
 
-.profile-links {
+.profile-links, .chirp-content {
 	margin-left: 5px;
 }
 
 /* chirps */
 
-.inline-chirp {
+.profile-pic-xs {
+	margin-left: 25px;
+}
+
+button.chirp {
+	margin: 0 !important;
+}
+
+.chirp {
+	width: 100%;
+	border: none;
 	border-bottom: 1px solid #eaeaea;
 	border-radius: 5px;
 	padding: 10px;
 	background-color: #fff;
 }
 
-.inline-chirp-avatar {
+// .chirp:last-of-type {
+// 	width: 100%;
+// 	border: none;
+// 	border-radius: 5px;
+// 	padding: 10px;
+// 	background-color: #fff;
+// }
+
+.chirp-avatar {
 	border-radius: 25px;
+}
+
+.chirp-content {
+	text-align: left;
 }
 
 /* alerts */

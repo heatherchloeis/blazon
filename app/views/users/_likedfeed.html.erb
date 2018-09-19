@@ -1,7 +1,7 @@
 <% if @likedfeed_items.any? %>
 	<div class="chirps">
 		<% @likedfeed_items.each do |item| %>
-			<%= render 'chirps/inline_chirp', chirp: item %>
+			<%= render 'chirps/chirp', chirp: item %>
 		<% end %>
 	</div>
 	<div class="pagination">

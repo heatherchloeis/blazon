@@ -1,17 +1,14 @@
-<div class="modal" tabindex="-1" role="dialog" id="modalChirp">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
 			<div class="modal-body">
 				<!-- Chirp header -->
-				<div class="row">
+				<div class="row no-gutters">
 					<!-- User image -->
 					<div class="col-auto">
 						<%= link_to gravatar_for(chirp.user, size: 50), chirp.user %>
 					</div>
 					<!-- User name and username -->
-					<div class="col">
+					<div class="chirp-content col">
 						<%= link_to chirp.user.name, chirp.user %><br>
-						@<%= link_to chirp.user.username, chirp.user%>
+						<%= link_to "@#{chirp.user.username}", chirp.user%>
 					</div>
 					<!-- Follow/unfollow btn || edit/delete btn -->
 					<div class="col-auto">
@@ -20,7 +17,8 @@
 								<%= icon('fas', 'angle-down') %>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="chirpMenuButton">
-								<%= link_to "Edit chirp", edit_chirp_path(chirp), class: "dropdown-item", method: :get %>
+								<!-- Edit modal path -->
+								<%= link_to "Edit chirp", edit_chirp_path(chirp), class: "dropdown-item", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
 								<%= link_to "Delete chirp", chirp, class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
 							</div>
 						<% elsif logged_in? %>
@@ -46,8 +44,8 @@
 				<div class="row">
 					<!-- comment btn and comment count -->
 					<div class="col-auto">
-						<%= link_to chirps_path(:parent_id => chirp) do %>
-							<%= icon('far', 'comment') %>
+						<%= link_to reply_chirp_path(current_user, parent_id: chirp.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+							<%= icon('far', 'comment') %> <%= chirp.children.size if chirp.children.size > 0 %>
 						<% end %>
 					</div>
 					<!-- Rechirp btn and rechirp count -->
@@ -77,7 +75,6 @@
 						<%= icon('far', 'envelope') %>
 					</div>
 				</div>
-				<hr>
 				<!-- Reply form -->
 				<div class="row">
 				</div>
@@ -85,12 +82,9 @@
 				<!-- Comments section -->
 				<div class="row">
 					<div class="col">
-						<%= chirp.children.each do |child| %>
-							<%= render 'chirps/inline_chirp', chirp: child %>
+						<% chirp.children.each do |child| %>
+							<%= render 'chirp', chirp: child %>
 						<% end %>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>

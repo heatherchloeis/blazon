@@ -11,7 +11,7 @@
 	<div class="col-md-6">
 		<% @chirps.each do |chirp| %>
 			<div class="users liked-chirps">
-				<%= render 'chirps/inline_chirp', chirp: chirp %>
+				<%= render 'chirps/chirp', chirp: chirp %>
 			</div>
 		<% end %>
 	</div>

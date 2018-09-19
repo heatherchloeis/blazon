@@ -8,6 +8,19 @@ class ChirpsController < ApplicationController
 																				 :unlike]
 	before_action :correct_user,		only: [:edit, :update, :destroy]
 	after_action  :new,							only: :create
+	after_action	:reply,						only: :create
+	# before_action :create,					only: :reply
+
+	def index
+	end
+
+	def show
+		@chirp = Chirp.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
 
 	def create
 		@chirp = current_user.chirps.build(chirp_params)
@@ -19,7 +32,15 @@ class ChirpsController < ApplicationController
 			@feed_items = []
 			flash[:danger] = "There was an error processing your chirp"
 			redirect_to root_url
-			# render 'static_pages/home'
+		end
+	end
+
+	# Remember to rename later
+	def new #create_modal
+		@chirp = current_user.chirps.new
+		respond_to do |format|
+			format.html
+			format.js
 		end
 	end
 
@@ -36,7 +57,6 @@ class ChirpsController < ApplicationController
 			flash[:success] = "Chirp successfully updated"
 			redirect_to root_url
 		else
-			# render 'edit'
 			flash[:danger] = "There was an error processing your chirp"
 			redirect_to root_url
 		end
@@ -65,37 +85,31 @@ class ChirpsController < ApplicationController
 	end
 
 	def reply
-		if !params[:parent_id].nil?
-			@chirp = current_user.chirps.build(chirp_params)
-			@parent = Chirp.find_by(id: params[:parent_id])
-			@parent.children.new(@chirp)
-			if @parent.save && @chirp.child_of?(@parent)
-			flash[:success] = "Chirp successfully sent"
-			redirect_to root_url
-			else
-				@feed_items = []
-				render 'static_pages/home'
-			end				
-		else
-			redirect_back fallback_location: root_path
-		end
-	end
-
-	def new
 		@chirp = current_user.chirps.new
+		@parent = Chirp.find_by(id: params[:parent_id])
+		@chirp.parent_id = params[:parent_id]
 		respond_to do |format|
-			format.html
 			format.js
+			format.html
 		end
 	end
 
-	def show
-		@chirp = Chirp.find(params[:id])
-		respond_to do |format|
-			format.html
-			format.js
-		end
-	end
+	# def reply
+	# 	@chirp = current_user.chirps.build(chirp_params)
+	# 	if !params[:parent_id].nil?
+	# 		@parent = Chirp.find_by(id: params[:parent_id])
+	# 		@parent.children.new(@chirp)
+	# 		if @parent.save && @chirp.child_of?(@parent)
+	# 		flash[:success] = "Chirp successfully sent"
+	# 		redirect_to root_url
+	# 		else
+	# 			@feed_items = []
+	# 			render 'static_pages/home'
+	# 		end				
+	# 	else
+	# 		redirect_back fallback_location: root_path
+	# 	end
+	# end
 
 	private
 

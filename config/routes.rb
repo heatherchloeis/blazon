@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   end
   resources :chirps do
     get 'chirps/edit',  to: 'chirps#edit',          as: :patch
-    # get 'chirps/show',  to: 'chirps#show',          as: :get
+    get 'chirps/show',  to: 'chirps#show'
     member do
       put 'like',       to: "chirps#like"
       put 'unlike',     to: "chirps#unlike"
-      post 'reply',     to: "chirps#reply"
+      get 'reply',      to: "chirps#reply",         as: 'reply'
     end
   end
   resources :account_activations, only: [:edit]
