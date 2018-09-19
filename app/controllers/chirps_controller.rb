@@ -9,7 +9,6 @@ class ChirpsController < ApplicationController
 	before_action :correct_user,		only: [:edit, :update, :destroy]
 	after_action  :new,							only: :create
 	after_action	:reply,						only: :create
-	# before_action :create,					only: :reply
 
 	def index
 	end
@@ -94,22 +93,8 @@ class ChirpsController < ApplicationController
 		end
 	end
 
-	# def reply
-	# 	@chirp = current_user.chirps.build(chirp_params)
-	# 	if !params[:parent_id].nil?
-	# 		@parent = Chirp.find_by(id: params[:parent_id])
-	# 		@parent.children.new(@chirp)
-	# 		if @parent.save && @chirp.child_of?(@parent)
-	# 		flash[:success] = "Chirp successfully sent"
-	# 		redirect_to root_url
-	# 		else
-	# 			@feed_items = []
-	# 			render 'static_pages/home'
-	# 		end				
-	# 	else
-	# 		redirect_back fallback_location: root_path
-	# 	end
-	# end
+	def rechirp
+	end
 
 	private
 

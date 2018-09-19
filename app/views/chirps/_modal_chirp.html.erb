@@ -10,21 +10,6 @@
 						<%= link_to chirp.user.name, chirp.user %><br>
 						<%= link_to "@#{chirp.user.username}", chirp.user%>
 					</div>
-					<!-- Follow/unfollow btn || edit/delete btn -->
-					<div class="col-auto">
-						<% if current_user?(chirp.user) %>
-							<a data-toggle="dropdown" id="chirpMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<%= icon('fas', 'angle-down') %>
-							</a>
-							<div class="dropdown-menu" aria-labelledby="chirpMenuButton">
-								<!-- Edit modal path -->
-								<%= link_to "Edit chirp", edit_chirp_path(chirp), class: "dropdown-item", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
-								<%= link_to "Delete chirp", chirp, class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
-							</div>
-						<% elsif logged_in? %>
-							<%= render 'follow_form' %>
-						<% end %>
-					</div>
 				</div>
 				<!-- Chirp content -->
 				<div class="row">

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       put 'like',       to: "chirps#like"
       put 'unlike',     to: "chirps#unlike"
       get 'reply',      to: "chirps#reply",         as: 'reply'
+      post :rechirp
     end
   end
   resources :account_activations, only: [:edit]

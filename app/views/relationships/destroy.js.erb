@@ -1,2 +1,2 @@
-$('#follow_form').html("<%= escape_javascript(render('users/follow')) %>");
+$('#follow_form').html("<%= escape_javascript(render('partials/profile_follow')) %>");
 $('#followers').html("<b>Followers</b><br><%= @user.followers.count %>");

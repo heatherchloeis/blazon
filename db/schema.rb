@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_225454) do
+ActiveRecord::Schema.define(version: 2018_09_19_181858) do
 
   create_table "chirps", force: :cascade do |t|
     t.text "content"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2018_09_13_225454) do
     t.index ["ancestry"], name: "index_chirps_on_ancestry"
     t.index ["user_id", "created_at"], name: "index_chirps_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_chirps_on_user_id"
+  end
+
+  create_table "rechirps", force: :cascade do |t|
+    t.text "content"
+    t.integer "rechirper_id"
+    t.integer "rechirp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rechirp_id", "rechirper_id"], name: "index_rechirps_on_rechirp_id_and_rechirper_id"
   end
 
   create_table "relationships", force: :cascade do |t|
