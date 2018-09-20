@@ -30,7 +30,9 @@
 					</div>
 					<!-- Rechirp btn and rechirp count -->
 					<div class="col-auto">
-						<%= icon('fas', 'retweet') %>
+						<%= link_to rechirp_chirp_path(current_user, reference_id: chirp.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+							<%= icon('fas', 'retweet') %> <%= count_rechirps(chirp) %>
+						<% end %>
 					</div>
 					<!-- like btn and like count -->
 					<div class="col-auto">

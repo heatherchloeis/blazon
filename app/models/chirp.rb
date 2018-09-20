@@ -12,9 +12,11 @@ class Chirp < ApplicationRecord
 
   has_ancestry
 
-  belongs_to :parent,    class_name: 'Chirp', optional: true
-  has_many   :children,  class_name: 'Chirp'
-  has_many   :rechirps,  class_name: 'Chirp'
+  belongs_to :parent,       class_name: 'Chirp', optional: true
+  has_many   :children,     class_name: 'Chirp'
+
+  has_one    :reference,    class_name: 'Chirp'
+  has_many   :referrals,    class_name: 'Chirp'
 
   private
 

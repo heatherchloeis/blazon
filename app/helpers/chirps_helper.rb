@@ -20,6 +20,10 @@ module ChirpsHelper
 		vote_count.to_s + ' likes'
 	end
 
+	def count_rechirps(chirp) 
+		return Chirp.where(reference_id: chirp.id).count if Chirp.where(reference_id: chirp.id).count > 0
+	end
+
 	private
 
 		def like_plural(votes)

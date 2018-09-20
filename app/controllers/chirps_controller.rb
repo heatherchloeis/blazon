@@ -9,6 +9,7 @@ class ChirpsController < ApplicationController
 	before_action :correct_user,		only: [:edit, :update, :destroy]
 	after_action  :new,							only: :create
 	after_action	:reply,						only: :create
+	after_action  :rechirp,					only: :create
 
 	def index
 	end
@@ -94,12 +95,19 @@ class ChirpsController < ApplicationController
 	end
 
 	def rechirp
+		@chirp = current_user.chirps.new
+		@reference = Chirp.find_by(id: params[:reference_id])
+		@chirp.reference_id = params[:reference_id]
+		respond_to do |format|
+			format.js
+			format.html
+		end 
 	end
 
 	private
 
 		def chirp_params
-			params.require(:chirp).permit(:content, :picture, :parent_id)
+			params.require(:chirp).permit(:content, :picture, :parent_id, :reference_id)
 		end
 
 		def correct_user

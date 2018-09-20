@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<h5 class="text-center">Rechirp this to your followers?</h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <i class="fas fa-times"></i>
+	</button>
+</div>
+<div class="modal-body">
+	<%= form_for(@chirp, html: { multipart: true }) do |f| %>
+		<%= f.hidden_field :parent_id %>
+		<%= f.hidden_field :chirp_reference_id %>
+		<div class="form-group chirp-content row">
+			<%= f.text_area :content, class: 'form-control', placeholder: "Add a comment", rows: '1' %>
+		</div>
+		<div class="row chirp-reference-content">
+			<%= render 'chirps/chirp', chirp: @chirp_reference %>
+		</div>
+		<div class="chirpFormFooter">
+			<%= f.submit "Rechirp", class: "btn-primary btn-round btn-no-border float-right" %>
+		</div>
+	<% end %>
+</div>

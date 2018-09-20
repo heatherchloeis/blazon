@@ -17,6 +17,20 @@
 			<%= image_tag @parent.picture.url if @parent.picture? %>
 		</div>
 	</div>
-	<p>Replying to <%= link_to "@#{@parent.user.username}", @parent.user %></p>
-	<%= render 'chirps/full_form' %>
+	<div class="reply-form">
+		<p>Replying to <%= link_to "@#{@parent.user.username}", @parent.user %></p>
+		<%= form_for(@chirp, html: { multipart: true }) do |f| %>
+			<%= f.hidden_field :parent_id %>
+			<%= f.hidden_field :reference_id %>
+			<div class="form-group row no-gutters">
+				<div class="col chirp-content">
+					<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '3' %>
+				</div>
+			</div>
+			<div class="chirpFormFooter clearfix">
+				<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload", class: "d-none" %>
+				<%= f.submit "Chirp", class: "btn-primary btn-round btn-no-border float-right" %>
+			</div>
+		<% end %>
+	</div>
 </div>
