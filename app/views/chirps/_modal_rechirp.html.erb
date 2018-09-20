@@ -6,17 +6,25 @@
 </div>
 <div class="modal-body">
 	<%= form_for(@chirp, html: { multipart: true }) do |f| %>
-		<%= f.hidden_field :parent_id %>
 		<%= f.hidden_field :reference_id %>
-		<div class="form-group row no-gutters">
+		<div class="form-group row">
 			<div class="col chirp-content">
-				<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '3' %>
+				<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '1' %>
 			</div>
 		</div>
 		<div class="chirpFormFooter clearfix rechirp-form">
 			<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload", class: "d-none" %>
-			<div class="row chirp-reference-content">
-				<%= render 'chirps/chirp', chirp: @reference %>
+			<div class="row no-gutters chirp-reference-content">
+				<div class="col-auto">
+					<%= link_to gravatar_for(@reference.user, size: 50), @reference.user, class: 'inline-chirp-avatar' %>
+				</div>
+				<div class="chirp-content col">
+					<%= link_to @reference.user.name, @reference.user %> <%= link_to "@#{@reference.user.username}", @reference.user%> · <%= time_ago_in_words(@reference.created_at) %>
+					<p>
+						<%= @reference.content %>
+					</p>
+					<%= image_tag @reference.picture.url if @reference.picture? %>
+				</div>
 			</div>
 			<%= f.submit "Chirp", class: "btn-primary btn-round btn-no-border float-right" %>
 		</div>

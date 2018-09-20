@@ -1,0 +1,78 @@
+			<div class="modal-body">
+				<!-- Chirp header -->
+				<div class="row no-gutters">
+					<!-- User image -->
+					<div class="col-auto">
+						<%= link_to gravatar_for(chirp.user, size: 50), chirp.user %>
+					</div>
+					<!-- User name and username -->
+					<div class="chirp-content col">
+						<%= link_to chirp.user.name, chirp.user %><br>
+						<%= link_to "@#{chirp.user.username}", chirp.user%>
+					</div>
+				</div>
+				<!-- Chirp content -->
+				<div class="row">
+					<div class="col">
+						<p><%= chirp.content %></p>
+						<%= render 'chirps/chirp_excerpt', chirp: Chirp.where(id: chirp.reference_id).first %>
+						<%= image_tag chirp.picture.url if chirp.picture? %>
+					</div>
+				</div>
+				<hr>
+				<!-- Chirp created at date -->
+				<div class="row">
+					<div class="col">
+						<%= chirp.created_at.strftime("%I:%M %p - %d %b %Y") %>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<!-- comment btn and comment count -->
+					<div class="col-auto">
+						<%= link_to reply_chirp_path(current_user, parent_id: chirp.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+							<%= icon('far', 'comment') %> <%= chirp.children.size if chirp.children.size > 0 %>
+						<% end %>
+					</div>
+					<!-- Rechirp btn and rechirp count -->
+					<div class="col-auto">
+						<%= link_to rechirp_chirp_path(current_user, reference_id: chirp.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+							<%= icon('fas', 'retweet') %>
+						<% end %>
+					</div>
+					<!-- like btn and like count -->
+					<div class="col-auto">
+						<% if current_user.liked? chirp %>
+							<%= link_to unlike_chirp_path(chirp), method: :put do %>
+								<%= icon('fas', 'heart') %>
+								<% if chirp.get_likes.size > 0 %>
+									<%= render "chirps/likes", chirp: chirp %>
+								<% end %>
+							<% end %>
+						<% else %>
+							<%= link_to like_chirp_path(chirp), method: :put do %>
+								<%= icon('far', 'heart') %>
+								<% if chirp.get_likes.size > 0 %>
+									<%= chirp.get_likes.size %>
+								<% end %>		
+							<% end %>
+						<% end %>
+					</div>
+					<!-- Direct message btn -->
+					<div class="col-auto">
+						<%= icon('far', 'envelope') %>
+					</div>
+				</div>
+				<!-- Reply form -->
+				<div class="row">
+				</div>
+				<hr>
+				<!-- Comments section -->
+				<div class="row">
+					<div class="col">
+						<% chirp.children.each do |child| %>
+							<%= render 'chirp', chirp: child %>
+						<% end %>
+					</div>
+				</div>
+			</div>

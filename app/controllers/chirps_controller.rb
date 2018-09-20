@@ -7,7 +7,7 @@ class ChirpsController < ApplicationController
 																				 :like, 
 																				 :unlike]
 	before_action :correct_user,		only: [:edit, :update, :destroy]
-	after_action  :new,							only: :create
+	after_action  :modal_create,		only: :create
 	after_action	:reply,						only: :create
 	after_action  :rechirp,					only: :create
 
@@ -35,8 +35,7 @@ class ChirpsController < ApplicationController
 		end
 	end
 
-	# Remember to rename later
-	def new #create_modal
+	def modal_create
 		@chirp = current_user.chirps.new
 		respond_to do |format|
 			format.html

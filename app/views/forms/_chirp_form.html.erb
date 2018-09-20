@@ -1,16 +1,19 @@
 <%= form_for(@chirp, html: { multipart: true }) do |f| %>
 	<%= f.hidden_field :parent_id %>
-	<div class="form-group row">
+	<%= f.hidden_field :reference_id %>
+	<div class="form-group row no-gutters">
 		<div class="col-auto">
-			<%= gravatar_for(current_user, size: 25) %>
+			<%= gravatar_for(current_user, size: 35) %>
 		</div>
-		<div class="col">
+		<div class="col chirp-content">
 			<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '3' %>
+			<div class="row chirp-footer">
+				<div class="col-12">
+					<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload" %>
+					<%= f.submit "Chirp", class: "btn-primary btn-round btn-no-border float-right" %>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="chirpFormFooter clearfix">
-		<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload" %>
-		<%= f.submit "Chirp", class: "btn-primary btn-round btn-no-border float-right" %>
 	</div>
 <% end %>
 

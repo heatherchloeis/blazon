@@ -2,6 +2,7 @@
 	<div class="chirps">
 		<% @feed_items.each do |item| %>
 			<%= render 'chirps/chirp', chirp: item %>
+			<hr class="chirp-divider">
 		<% end %>
 	</div>
 	<div class="pagination">

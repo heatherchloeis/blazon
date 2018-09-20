@@ -5,7 +5,7 @@
 	</button>
 </div>
 <div class="modal-body">
-		<div class="row no-gutters">
+	<div class="row no-gutters">
 		<div class="col-auto">
 			<%= link_to gravatar_for(@parent.user, size: 50), @parent.user, class: 'inline-chirp-avatar' %>
 		</div>
@@ -24,7 +24,7 @@
 			<%= f.hidden_field :reference_id %>
 			<div class="form-group row no-gutters">
 				<div class="col chirp-content">
-					<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '3' %>
+					<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '1' %>
 				</div>
 			</div>
 			<div class="chirpFormFooter clearfix">

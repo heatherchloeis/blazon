@@ -9,7 +9,7 @@ body, .container, .container-fluid {
 	margin: 0 !important;
 	color: #1d292f;
 	overflow-x: hidden;
-	// background-color: #c0deed;
+	background-color: #e6ecf0;
 }
 
 p {
@@ -23,6 +23,12 @@ section {
 textarea {
 	resize: none;
 }
+
+hr {
+	border: 1px solid #eaeaea;
+}
+
+/* buttons */
 
 .btn-round {
 	border-radius: 25px;
@@ -44,6 +50,7 @@ textarea {
 }
 
 .pagination {
+	width: 100%;
 	margin-top: 50px;
 }
 
@@ -118,19 +125,10 @@ button.chirp {
 .chirp {
 	width: 100%;
 	border: none;
-	border-bottom: 1px solid #eaeaea;
 	border-radius: 5px;
 	padding: 10px;
 	background-color: #fff;
 }
-
-// .chirp:last-of-type {
-// 	width: 100%;
-// 	border: none;
-// 	border-radius: 5px;
-// 	padding: 10px;
-// 	background-color: #fff;
-// }
 
 .chirp-avatar {
 	border-radius: 25px;
@@ -140,8 +138,33 @@ button.chirp {
 	text-align: left;
 }
 
+.chirp-context {
+	color: #8c8c8c;
+	margin: 0px;
+}
+
+.chirp-divider {
+	margin: 0px;
+}
+
+.chirp-excerpt {
+	border-radius: 5px;
+	border: 1px solid #eaeaea;
+	padding: 10px;
+}
+
+.chirp-header {
+	margin: 0 0 5px 35px;
+}
+
 /* alerts */
 
 .alert {
 	margin-bottom: 0 !important;
+}
+
+/* forms */
+
+.form-align-right {
+	padding-left: 25px;
 }

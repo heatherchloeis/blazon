@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get '/login',				  to: 'sessions#new'
   post '/login',			  to: 'sessions#create'
   delete '/logout',		  to: 'sessions#destroy'
-  post 'chirps/new',    to: 'chirps#new',           as: :post
 
   resources :users do 
     member do
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
       put 'unlike',     to: "chirps#unlike"
       get 'reply',      to: "chirps#reply",         as: 'reply'
       get 'rechirp',    to: "chirps#rechirp",       as: 'rechirp'
+      post 'modal_create',    to: 'chirps#modal_create',     as: 'modal_create'
     end
   end
   resources :account_activations, only: [:edit]
