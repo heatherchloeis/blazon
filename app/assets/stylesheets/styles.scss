@@ -28,6 +28,17 @@ hr {
 	border: 1px solid #eaeaea;
 }
 
+hr.hr-vertical {
+	width: 3px;
+	height: 100%;
+	margin-top: -50%;
+	background-color: #1da1f2;
+}
+
+.padding-10 {
+	padding: 10px;
+}
+
 /* buttons */
 
 .btn-round {
@@ -80,6 +91,7 @@ header {
 
 .search {
 	border-radius: 25px;
+	border: 1px solid #a4d9f9;
 	font-size: .8em;
 }
 
@@ -88,6 +100,11 @@ header {
 main {
 	margin-top: 10px;
 	margin-bottom: 100px;
+}
+
+.profile {
+	background-color: #fff;
+	margin-bottom: 10px;
 }
 
 .profile-nav {
@@ -99,9 +116,17 @@ main {
 	margin-bottom: 10px;
 }
 
+.profile-nav-item {
+	padding-left: 10px;
+	padding-right: 15px;
+	line-height: 1.25;
+}
+
 .profile-info-sm {
 	width: 32%;
 	margin: 10px 0 0 10px;
+	padding: 10px;
+	background-color: #fff;
 }
 
 .profile-info-lrg {
@@ -110,6 +135,40 @@ main {
 
 .profile-links, .chirp-content {
 	margin-left: 5px;
+}
+
+.profile-background-sm {
+	height: 100px;
+	margin-bottom: -40px;
+	width: 100%;
+	background-color: #000;
+}
+
+.profile-stat-number {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.trending, .suggestions {
+	background-color: #fff;
+	margin-bottom: 10px;
+	padding: 10px;
+	height: 400px;
+}
+
+.chirps-feed {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.footer {
+	width: 100%;
+	padding: 10px;
+	background-color: #fff;
+}
+
+.footer, .footer a {
+	color: #8c8c8c;
 }
 
 /* chirps */
@@ -138,6 +197,10 @@ button.chirp {
 	text-align: left;
 }
 
+.chirp-footer {
+	padding-top: 10px;
+}
+
 .chirp-context {
 	color: #8c8c8c;
 	margin: 0px;
@@ -157,6 +220,14 @@ button.chirp {
 	margin: 0 0 5px 35px;
 }
 
+.chirp-likes {
+	display: inline;
+}
+
+.chirp-reply {
+	margin-top: 10px;
+}
+
 /* alerts */
 
 .alert {
@@ -165,6 +236,36 @@ button.chirp {
 
 /* forms */
 
+.chirp-form {
+	padding: 10px;
+	padding-bottom: 5px;
+	background-color: #e8f5fd;
+}
+
+.form-content {
+	border-radius: 10px;
+	border: 2px solid #a4d9f9;
+}
+
 .form-align-right {
 	padding-left: 25px;
 }
+
+.reply-form, .rechirp-form {
+	width: 100%;
+	padding: 20px;
+	background-color: #e8f5fd;
+}
+
+/* modals */
+
+.modal-content, .modal-body {
+	padding: 0;
+	margin: 0;
+}
+
+.modal-padding-20 {
+	padding: 20px;
+}
+
+/* backgrounds */

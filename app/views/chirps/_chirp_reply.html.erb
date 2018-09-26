@@ -38,7 +38,7 @@
 						<%= link_to unlike_chirp_path(chirp), method: :put do %>
 							<%= icon('fas', 'heart') %>
 							<% if chirp.get_likes.size > 0 %>
-								<%= render "chirps/likes", chirp: chirp %>
+								<%= chirp.get_likes.size %>
 							<% end %>
 						<% end %>
 					<% else %>

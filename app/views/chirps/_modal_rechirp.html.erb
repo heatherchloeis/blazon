@@ -7,14 +7,12 @@
 <div class="modal-body">
 	<%= form_for(@chirp, html: { multipart: true }) do |f| %>
 		<%= f.hidden_field :reference_id %>
-		<div class="form-group row">
-			<div class="col chirp-content">
-				<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '1' %>
+			<div class="rechirp-form">
+				<%= f.text_area :content, class: 'form-control form-content', placeholder: "What's happening?", rows: '1' %>
 			</div>
-		</div>
-		<div class="chirpFormFooter clearfix rechirp-form">
+		<div class="chirpFormFooter clearfix modal-padding-20">
 			<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload", class: "d-none" %>
-			<div class="row no-gutters chirp-reference-content">
+			<div class="row no-gutters">
 				<div class="col-auto">
 					<%= link_to gravatar_for(@reference.user, size: 50), @reference.user, class: 'inline-chirp-avatar' %>
 				</div>

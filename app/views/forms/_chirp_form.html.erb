@@ -6,7 +6,7 @@
 			<%= gravatar_for(current_user, size: 35) %>
 		</div>
 		<div class="col chirp-content">
-			<%= f.text_area :content, class: 'form-control', placeholder: "What's happening?", rows: '3' %>
+			<%= f.text_area :content, class: 'form-control form-content', placeholder: "What's happening?", rows: '3' %>
 			<div class="row chirp-footer">
 				<div class="col-12">
 					<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload" %>

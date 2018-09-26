@@ -9,7 +9,7 @@ module ChirpsHelper
 		usernames = []
 		unless votes.blank?
 			votes.voters.each do |voter|
-				usernames.push(link_to voter.username, voter, class: "user-name")
+				usernames.push(link_to voter.username, voter, class: "chirp-likes")
 			end
 			usernames.to_sentence.html_safe + like_plural(votes)
 		end

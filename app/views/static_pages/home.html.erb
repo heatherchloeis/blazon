@@ -1,23 +1,39 @@
 <% if logged_in? %>
 	<div class="row">
 		<aside class="col-3">
-			<div class="user-excerpt">
+			<div class="profile">
+				<div class="row no-gutters profile-background-sm"></div>
 				<%= render 'partials/profile_info_sm', @user => current_user %>
 				<%= render 'partials/profile_stats' %>
 			</div>
 			<div class="trending">
-				<h3>Trends for you</h3>
+				<h5>Trends for you</h5>
 				<p>trending trending trending</p>
 			</div>
 		</aside>
 		<div class="col-6">
-			<div class="form-align-right">
+			<div class="chirp-form form-align-right">
 				<%= render 'forms/chirp_form' %>
 			</div>
 			<%= render 'users/feed' %>
 		</div>
 		<div class="col-3">
-			<h3>Who to follow</h3>
+			<div class="suggestions">
+				<h5>Who to follow</h5>
+			</div>
+			<div class="footer">
+				<small>
+					&copy; 2018 Canary	&nbsp;
+					<%= link_to "About", about_path %>	&nbsp;
+					<%= link_to "Help Center", help_path %> &nbsp;
+					<%= link_to "Terms", "" %>	&nbsp;
+					<%= link_to "Privacy Policy", "" %>	&nbsp;
+					<%= link_to "Cookies", "" %>	&nbsp;
+					<%= link_to "Brand", "" %>	&nbsp;
+					<%= link_to "Status", "" %>	&nbsp;
+					<%= link_to "Developers", "" %>	&nbsp;
+				</small>
+			</div>
 		</div>
 	</div>
 <% else %>

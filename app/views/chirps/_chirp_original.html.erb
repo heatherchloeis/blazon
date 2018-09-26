@@ -2,6 +2,8 @@
 	<div class="row no-gutters">
 		<div class="col-auto">
 			<%= link_to gravatar_for(chirp.user, size: 50), chirp.user, class: 'chirp-avatar' %>
+			<% if chirp.children.size > 0 %>
+			<% end %>
 		</div>
 		<div class="chirp-content col">
 			<%= link_to chirp.user.name, chirp.user %> <%= link_to "@#{chirp.user.username}", chirp.user%> · <%= time_ago_in_words(chirp.created_at) %>
@@ -39,7 +41,7 @@
 						<%= link_to unlike_chirp_path(chirp), method: :put do %>
 							<%= icon('fas', 'heart') %>
 							<% if chirp.get_likes.size > 0 %>
-								<%= render "chirps/likes", chirp: chirp %>
+								<%= chirp.get_likes.size %>
 							<% end %>
 						<% end %>
 					<% else %>

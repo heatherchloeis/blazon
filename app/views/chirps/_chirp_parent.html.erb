@@ -1,16 +1,10 @@
 <div id="chirp-<%= chirp.id %>">
-	<div class="row chirp-header">
-		<small class="chirp-context"><%= icon('fas', 'retweet') %>
-			<% if current_user = chirp.user %>
-				You
-			<% else %>
-				chirp.user.name
-			<% end %> Retweeted
-		</small>
-	</div>
 	<div class="row no-gutters">
 		<div class="col-auto">
 			<%= link_to gravatar_for(chirp.user, size: 50), chirp.user, class: 'chirp-avatar' %>
+			<% if chirp.children.size > 0 %>
+				<hr class="hr-vertical">
+			<% end %>
 		</div>
 		<div class="chirp-content col">
 			<%= link_to chirp.user.name, chirp.user %> <%= link_to "@#{chirp.user.username}", chirp.user%> · <%= time_ago_in_words(chirp.created_at) %>
@@ -27,8 +21,8 @@
 			<% end %>
 			<p>
 				<%= chirp.content %>
-				<%= render 'chirps/chirp_excerpt', chirp: Chirp.where(id: chirp.reference_id).first %>
 			</p>
+			<%= image_tag chirp.picture.url if chirp.picture? %>
 			<div class="row chirp-footer">
 				<!-- comment btn and comment count -->
 				<div class="col-auto">

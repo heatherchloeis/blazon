@@ -1,4 +1,4 @@
-			<div class="modal-body">
+			<div class="modal-body modal-padding-20">
 				<!-- Chirp header -->
 				<div class="row no-gutters">
 					<!-- User image -->
@@ -14,7 +14,7 @@
 				<!-- Chirp content -->
 				<div class="row">
 					<div class="col">
-						<p><%= chirp.content %></p>
+						<h2><%= chirp.content %></h2>
 						<%= render 'chirps/chirp_excerpt', chirp: Chirp.where(id: chirp.reference_id).first %>
 						<%= image_tag chirp.picture.url if chirp.picture? %>
 					</div>
@@ -37,7 +37,7 @@
 					<!-- Rechirp btn and rechirp count -->
 					<div class="col-auto">
 						<%= link_to rechirp_chirp_path(current_user, reference_id: chirp.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
-							<%= icon('fas', 'retweet') %>
+							<%= icon('fas', 'retweet') %> <%= count_rechirps(chirp) %>
 						<% end %>
 					</div>
 					<!-- like btn and like count -->
@@ -46,7 +46,7 @@
 							<%= link_to unlike_chirp_path(chirp), method: :put do %>
 								<%= icon('fas', 'heart') %>
 								<% if chirp.get_likes.size > 0 %>
-									<%= render "chirps/likes", chirp: chirp %>
+									<%= chirp.get_likes.size %>
 								<% end %>
 							<% end %>
 						<% else %>

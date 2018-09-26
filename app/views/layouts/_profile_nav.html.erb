@@ -3,27 +3,27 @@
 	<nav class="navbar navbar-expand-xs col-6 offset-4">
 		<ul class="navbar-nav flex-row">
 			<!--Chirp Count-->
-			<li class="nav-item">
-				<%= link_to current_user, class: "nav-link" do %>
-					<small id="following" class="stat"><b>Chirps</b><br><%= @user.chirps.count %></small>
+			<li class="nav-item profile-nav-item">
+				<%= link_to current_user, class: "nav-link text-center" do %>
+					<small><b>Chirps</b><br><span class="profile-stat-number"><%= @user.chirps.count %></span></small>
 				<% end %>
 			</li>
 			<!--Following Count-->
-			<li class="nav-item">
-				<a href="<%= following_user_path(@user) %>" class="nav-link">
-					<small id="following" class="stat"><b>Following</b><br><%= @user.following.count %></small>
+			<li class="nav-item profile-nav-item">
+				<a href="<%= following_user_path(@user) %>" class="nav-link text-center">
+					<small><b>Following</b><br><span class="profile-stat-number"><%= @user.following.count %></span></small>
 				</a>
 			</li>
 			<!-- Followers Count -->
-			<li class="nav-item">
-				<a href="<%= followers_user_path(@user) %>" class="nav-link">
-					<small id="followers" class="stat"><b>Followers</b><br><%= @user.followers.count %></small>
+			<li class="nav-item profile-nav-item">
+				<a href="<%= followers_user_path(@user) %>" class="nav-link text-center">
+					<small><b>Followers</b><br><span class="profile-stat-number"><%= @user.followers.count %></span></small>
 				</a>
 			</li>
 			<!--Likes Count-->
-			<li class="nav-item">
-				<a href="<%= liked_chirps_user_path(@user) %>" class="nav-link">
-					<small id="likes" class="stat"><b>Likes</b><br><%= @user.find_liked_items.count %></small>
+			<li class="nav-item profile-nav-item">
+				<a href="<%= liked_chirps_user_path(@user) %>" class="nav-link text-center">
+					<small><b>Likes</b><br><span class="profile-stat-number"><%= @user.find_liked_items.count %></span></small>
 				</a>
 			</li>
 		</ul>
