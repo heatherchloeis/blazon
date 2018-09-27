@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       post 'modal_create',    to: 'chirps#modal_create',     as: 'modal_create'
     end
   end
+  resources :conversations do
+    resources :messages
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships,       only: [:create, :destroy]

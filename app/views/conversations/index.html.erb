@@ -1,0 +1,40 @@
+<h5 class="text-center">Direct Messages</h5>
+<div class="row">
+    <div class="col">
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <% if !conversation.messages.last.nil? %>
+            <div>
+              <b><%= link_to "#{recipient.name}", conversation_messages_path(conversation) %></b><br>
+              <span class="message-last"><%= User.find(conversation.messages.last.user_id).name %>: <%= conversation.messages.last.body %></span>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+</div>
+<div class="row">
+  <% @users.each do |user| %>
+    <% if user.id != current_user.id %>
+      <div class="row no-gutters profile-info-sm">
+        <div class="col-auto">
+          <%= link_to gravatar_for(user, size: 75), user %>
+        </div>
+        <div class="col align-self-end profile-links">
+          <%= link_to user.name, user %><br>
+          <%= link_to "@#{user.username}", @user %>
+        </div>
+        <div class="col-auto align-self-end">
+          <% if !current_user?(user) %>
+            <%= button_to "message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post, class: "btn-round btn-outline-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

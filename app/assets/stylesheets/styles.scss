@@ -39,6 +39,10 @@ hr.hr-vertical {
 	padding: 10px;
 }
 
+.padding-bottom-10 {
+	padding-bottom: 10px;
+}
+
 /* buttons */
 
 .btn-round {
@@ -228,6 +232,42 @@ button.chirp {
 	margin-top: 10px;
 }
 
+/* messages */
+
+.message-field {
+	padding: 25px 0;
+	background-color: #fff;
+}
+
+.message-content {
+	padding: 5px 15px;
+}
+
+.message-from {
+	border-radius: 25px 25px 25px 0;
+	background-color: #e6ecf0;
+}
+
+.message-to {
+	border-radius: 25px 25px 0 25px;
+	background-color: #007bff;
+	color: #fff;
+}
+
+.message-previous i {
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	color: #8c8c8c;
+	&:hover {
+		color: #8c8c8c;
+	}
+}
+
+.message-last {
+	color: #8c8c8c;
+}
+
 /* alerts */
 
 .alert {
@@ -236,7 +276,7 @@ button.chirp {
 
 /* forms */
 
-.chirp-form {
+.chirp-form, .message-form {
 	padding: 10px;
 	padding-bottom: 5px;
 	background-color: #e8f5fd;
@@ -269,3 +309,5 @@ button.chirp {
 }
 
 /* backgrounds */
+
+/* text */

@@ -1,0 +1,30 @@
+<h5 class="text-center"><%= User.find(@conversation.recipient_id).name %> @<%= User.find(@conversation.recipient_id).username %></h5>
+<div class="row no-gutters">
+  <div class="col-6 offset-3 message-field">
+
+      <% if @over_ten %>
+        <%= link_to '?m=all', class: "message-previous" do %>
+          <%= icon('fas', 'ellipsis-h') %>
+        <% end %>
+      <% end %>
+
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <%= render 'message', message: message %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+    
+
+<div class="row">
+  <%= form_for [@conversation, @message], html: {class: "col-6 offset-3"} do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="form-row message-form">
+      <%= f.text_area :body, class: "form-control form-content col", 'rows': '1' %>
+      <div class="col-auto">
+        <%= f.submit "Send", class: "btn-primary btn-round btn-no-border" %>
+      </div>
+    </div>
+  <% end %>
+</div>

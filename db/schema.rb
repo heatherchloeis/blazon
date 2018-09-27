@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_204522) do
+ActiveRecord::Schema.define(version: 2018_09_26_205504) do
 
   create_table "chirps", force: :cascade do |t|
     t.text "content"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_26_204522) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content"
+    t.text "body"
     t.integer "conversation_id"
     t.integer "user_id"
     t.boolean "read", default: false

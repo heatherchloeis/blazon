@@ -1,0 +1,21 @@
+<% user = User.find(message.user_id) %>
+
+<% if user != current_user %>
+	<div class="col-6 text-left padding-bottom-10">
+	  <span class="message-content message-from"><%= message.body %></span><br>
+	  <small>
+	     <%= user.username %> · <%= time_ago_in_words(message.created_at) %>
+	  </small>
+	</div>
+	<div class="col-6"></div>
+<% else %>
+	<div class="col-6 offset-6 text-right padding-bottom-10">
+	  <span class="message-content message-to"><%= message.body %></span><br>
+	  <small>
+	    <% if user != current_user %>
+	      <%= user.username %> · 
+	    <% end %>
+	    <%= time_ago_in_words(message.created_at) %>
+	  </small>
+	</div>
+<% end %>
