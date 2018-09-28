@@ -3,10 +3,11 @@ require 'test_helper'
 class ChirpsInterfaceTest < ActionDispatch::IntegrationTest
 	def setup
 		@user = users(:cirilla)
+		@chirp = chirps(:two)
+		log_in_as(@user)
 	end
 
 	test "chirp interface" do 
-		log_in_as(@user)
 		get root_path
 		assert_select 'div.pagination'
 		assert_select 'input[type=file]'
@@ -23,10 +24,46 @@ class ChirpsInterfaceTest < ActionDispatch::IntegrationTest
 		assert @user.chirps.first.picture?
 		assert_redirected_to root_url
 		follow_redirect!
+		# Try to reply to chirp
+		assert_select 'a[href=?]', reply_chirp_path(@user, parent_id: @chirp.id)
+		assert_difference 'Chirp.count', 1 do
+			get reply_chirp_path(@user, parent_id: @chirp), xhr: true
+			post chirps_path, params: { chirp: { content: content, parent_id: @chirp.id } }
+			assert :success
+		end
+		assert_redirected_to root_url
+		follow_redirect!
+		assert_select 'p.chirp-context', text: "Replying to @#{@chirp.user.username}"
+		# Try to rechirp chirp
+		assert_select 'a[href=?]', rechirp_chirp_path(@user, reference_id: @chirp.id)
+		assert_difference 'Chirp.count', 1 do
+			get rechirp_chirp_path(@user, reference_id: @chirp), xhr: true
+			post chirps_path, params: { chirp: { content: content, reference_id: @chirp.id } }
+			assert :success
+		end
+		assert_redirected_to root_url
+		follow_redirect!
+		assert_select 'small.chirp-context', text: "You
+ Retweeted"
+ 		# Try to like chirp and then unlike chirp
+ 		assert_select 'a[href=?]', like_chirp_path(@chirp)
+ 		assert_difference '@chirp.votes_for.up.by_type(User).count', 1 do
+ 			put like_chirp_path(@chirp)
+ 			assert :success
+ 		end
+		assert_redirected_to root_url
+		follow_redirect!
+		assert_select 'a[href=?]', unlike_chirp_path(@chirp)
+ 		assert_difference '@chirp.votes_for.up.by_type(User).count', -1 do
+ 			put unlike_chirp_path(@chirp)
+ 			assert :success
+ 		end
+		assert_redirected_to root_url
+		follow_redirect!
 		# Try delete chirp
+		first_chirp = @user.chirps.paginate(page: 1).first 
 		assert_select 'div.chirp-content > div.dropdown-menu > a.dropdown-item', text: 'Edit chirp'
 		assert_select 'div.chirp-content > div.dropdown-menu > a.dropdown-item', text: 'Delete chirp'
-		first_chirp = @user.chirps.paginate(page: 1).first 
 		assert_difference 'Chirp.count', -1 do
 			delete chirp_path(first_chirp)
 		end
