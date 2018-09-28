@@ -14,7 +14,6 @@ class ChirpsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_no_difference 'Chirp.count' do
 			post chirps_path, params: { chirp: { content: "" } }
 		end
-		assert_select 'div#error_explanation'
 		# Try valid submission
 		content = "This chirp is a test chirp."
 		picture = fixture_file_upload('test/fixtures/test_picture.png', 'image/png')
@@ -25,19 +24,14 @@ class ChirpsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_redirected_to root_url
 		follow_redirect!
 		# Try delete chirp
-		assert_select 'a', text: 'delete'
+		assert_select 'div.chirp-content > div.dropdown-menu > a.dropdown-item', text: 'Edit chirp'
+		assert_select 'div.chirp-content > div.dropdown-menu > a.dropdown-item', text: 'Delete chirp'
 		first_chirp = @user.chirps.paginate(page: 1).first 
 		assert_difference 'Chirp.count', -1 do
 			delete chirp_path(first_chirp)
 		end
 		# Try visit other user
 		get user_path(users(:triss))
-		assert_select 'a', text: 'delete', count: 0
+		assert_select 'a.dropdown-item', text: 'delete chirp', count: 0
 	end
-
-	# test "chirp sidebar count" do
-	# 	log_in_as(@user)
-	# 	get root_path
-	# 	assert_match Chirp.count, response.body
-	# end
 end

@@ -7,6 +7,51 @@ User.create!(name: "Vesemir of Kaer Mohren",
 						 activated: true,
 						 activated_at: Time.zone.now)
 
+User.create!(name: "Cirilla of Cintra",
+					   username: "cirilla",
+					   email: "ciri@cintra.com",
+					   password: "password",
+					   password_confirmation: "password",
+						 admin: true,
+						 activated: true,
+						 activated_at: Time.zone.now)
+
+User.create!(name: "Geralt of Rivia",
+  					 username: "geralt",
+  					 email: "daddygeralt@rivia.com",
+					   password: "password",
+					   password_confirmation: "password",
+						 admin: true,
+						 activated: true,
+						 activated_at: Time.zone.now)
+
+User.create!(name: "Roach",
+  					 username: "roach",
+  					 email: "roach_the_horse@rivia.com",
+					   password: "password",
+					   password_confirmation: "password",
+						 admin: true,
+						 activated: true,
+						 activated_at: Time.zone.now)
+
+User.create!(name: "Triss Merigold",
+  					 username: "triss",
+  					 email: "triss_merigold@maribor.com",
+					   password: "password",
+					   password_confirmation: "password",
+						 admin: true,
+						 activated: true,
+						 activated_at: Time.zone.now)
+
+User.create!(name: "Yennifer of Vengerberg",
+					   username: "yen",
+					   email: "yennifer@vengerberg.com",
+					   password: "password",
+					   password_confirmation: "password",
+						 admin: true,
+						 activated: true,
+						 activated_at: Time.zone.now)
+
 99.times do |n|
 	name = Faker::Name.name
 	email = Faker::Internet.email
