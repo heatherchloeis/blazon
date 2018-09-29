@@ -1,13 +1,13 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-main">
-    <%= link_to root_path, class: "nav-link offset-2" do %>
-      <%= icon('fas', 'home') %> Home
-    <% end %>
-    <%= link_to "#", class: "nav-link" do %>
-      <%= icon('far', 'bell') %> Notifications
-    <% end %>
-    <%= link_to conversations_path, class: "nav-link" do %>
-      <%= icon('far', 'envelope') %> Messages
+    <% if logged_in? %>
+      <%= link_to root_path, class: "nav-link offset-2" do %>
+        <%= icon('fas', 'home') %> Home
+      <% end %>
+      <%= render 'notifications/dropdown' %>
+      <%= link_to conversations_path, class: "nav-link" do %>
+        <%= icon('far', 'envelope') %> Messages
+      <% end %>
     <% end %>
     <%= link_to "canary", root_path, id: "logo", class: "navbar-brand center-horizontal" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

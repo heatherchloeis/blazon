@@ -26,6 +26,13 @@ class ChirpsController < ApplicationController
 		@chirp = current_user.chirps.build(chirp_params)
 		@chirp.children = []
 		if @chirp.save
+			if !@chirp.parent_id.nil? 
+				@notice = "reply"
+				create_notification @chirp, @notice
+			elsif !@chirp.reference_id.nil?
+				@notice = "rechirp"
+				create_notification @chirp, @notice
+			end
 			flash[:success] = "Chirp successfully sent"
 			redirect_to root_url
 		else
@@ -69,6 +76,8 @@ class ChirpsController < ApplicationController
 
 	def like
 		@chirp.liked_by current_user
+		@notice = "like"
+		create_notification @chirp, @notice 
 		respond_to do |format|
 			format.html { redirect_back fallback_location: root_path }
 			format.js { render layout: false }
@@ -116,5 +125,23 @@ class ChirpsController < ApplicationController
 
 		def set_chirp
 			@chirp = Chirp.find(params[:id])
+		end
+
+		def create_notification(chirp, notice)
+			if notice == "reply"
+				parent = Chirp.find_by(id: chirp.parent_id)
+				Notification.create(user_id: parent.user_id,
+														sender_id: current_user.id,
+														chirp_id: parent.id,
+														identifier: chirp.id,
+														n_type: notice)
+			elsif notice == "rechirp"
+				reference = Chirp.find_by(id: chirp.reference_id)
+				Notification.create(user_id: reference.user_id,
+														sender_id: current_user.id,
+														chirp_id: reference.id,
+														identifier: chirp.id,
+														n_type: notice)
+			end				
 		end
 end

@@ -1,0 +1,8 @@
+<div class="dropdown">
+	<a href="#"  id="notifDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= icon('far', 'bell') %><% if current_user.notifications.where(read: false).count > 0 %><sup><%= current_user.notifications.where(read: false).count %></sup><% end %> Notifications</a>
+	<% if current_user.notifications.where(read: false).any? %>
+		<div class="dropdown-menu" aria-labelledby="notifDropdown">
+			<%= render current_user.notifications.where(read: false).order('created_at DESC') %>
+		</div>
+	<% end %>
+</div>

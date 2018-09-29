@@ -17,6 +17,8 @@ class Chirp < ApplicationRecord
 
   has_one    :reference,    class_name: 'Chirp'
   has_many   :referrals,    class_name: 'Chirp'
+  
+  has_many :notifications, dependent: :destroy
 
   private
 

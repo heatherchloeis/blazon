@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/link_through'
 	root 'static_pages#home'
   get '/about', 			  to: 'static_pages#about'
   get '/contact', 		  to: 'static_pages#contact'
@@ -27,6 +28,9 @@ Rails.application.routes.draw do
   end
   resources :conversations do
     resources :messages
+  end
+  resources :notifications do
+    get 'link_through', to: "notifications#link_through",    as: 'link_through'
   end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

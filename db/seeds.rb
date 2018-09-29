@@ -1,3 +1,5 @@
+# Create users
+
 User.create!(name: "Vesemir of Kaer Mohren",
 						 email: "vesemir@kaermohren.com",
 						 username: "vesemir",
@@ -66,6 +68,8 @@ User.create!(name: "Yennifer of Vengerberg",
 							 activated_at: Time.zone.now)
 end
 
+# Create chirps
+
 users = User.order(:created_at).take(6)
 
 50.times do
@@ -73,9 +77,30 @@ users = User.order(:created_at).take(6)
 	users.each { |user| user.chirps.create!(content: content) }
 end
 
+# Create following/followers
+
 users = User.all 
-user = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+
+vesemir = users.first
+ciri = users[1]
+geralt = users[2]
+roach = users[3]
+triss = users[4]
+yen = users[5]
+
+following = users[6..50]
+followers = users[6..40]
+
+following.each { |followed| vesemir.follow(followed) }
+following.each { |followed| ciri.follow(followed) }
+following.each { |followed| geralt.follow(followed) }
+following.each { |followed| roach.follow(followed) }
+following.each { |followed| triss.follow(followed) }
+following.each { |followed| yen.follow(followed) }
+
+followers.each { |follower| follower.follow(vesemir) }
+followers.each { |follower| follower.follow(ciri) }
+followers.each { |follower| follower.follow(geralt) }
+followers.each { |follower| follower.follow(roach) }
+followers.each { |follower| follower.follow(triss) }
+followers.each { |follower| follower.follow(yen) }

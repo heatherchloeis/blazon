@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_205504) do
+ActiveRecord::Schema.define(version: 2018_09_28_213501) do
 
   create_table "chirps", force: :cascade do |t|
     t.text "content"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 2018_09_26_205504) do
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sender_id"
+    t.integer "chirp_id"
+    t.integer "conversation_id"
+    t.integer "identifier"
+    t.string "n_type"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chirp_id"], name: "index_notifications_on_chirp_id"
+    t.index ["conversation_id"], name: "index_notifications_on_conversation_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

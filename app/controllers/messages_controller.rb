@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
 	def create
 		@message = @conversation.messages.new(message_params)
 		if @message.save
+			create_notification @conversation, @message
 			redirect_to conversation_messages_path(@conversation)
 		end
 	end
@@ -37,5 +38,13 @@ class MessagesController < ApplicationController
 
 		def message_params
 			params.require(:message).permit(:body, :user_id)
+		end
+
+		def create_notification(conversation, message)
+			Notification.create(user_id: conversation.recipient.id,
+													sender_id: current_user.id,
+													conversation_id: conversation.id,
+													identifier: message.id,
+													n_type: "message")
 		end
 end
