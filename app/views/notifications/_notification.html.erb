@@ -4,4 +4,6 @@
 	<%= link_to "#{notification.sender.username} has replied to your post · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
 <% elsif notification.n_type == "rechirp" %>
 	<%= link_to "#{notification.sender.username} has rechirped your post · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
+<% elsif notification.n_type == "message" %>
+	<%= link_to "#{notification.sender.username} has sent you a message · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
 <% end %>

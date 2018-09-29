@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   	@notification.update read: true
   	if !@notification.chirp.nil?
   		redirect_back fallback_location: root_path
-  	else
+  	elsif !@notification.conversation.nil?
   		redirect_to conversation_path @notification.conversation
   	end
   end
