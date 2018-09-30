@@ -17,9 +17,7 @@
       <ul class="navbar-nav ml-auto">
         <% if logged_in? %>
           <li>
-            <form class="form-inline my-2">
-              <input type="search" class="form-control form-control-sm search" placeholder="Search Canary" aria-label="Search">
-            </form>
+            <%= render 'forms/search_form' %>
           </li>
           <li class="nav-item dropdown">
             <a href="#"  id="navbarDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= gravatar_for(current_user, size: 30) %></a>

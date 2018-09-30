@@ -53,6 +53,12 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def search
+    term = params[:term] || nil
+    result = User.where('name LIKE ? OR username LIKE ?', "%#{term}%", "%#{term}%").first if term
+    redirect_to user_path(result)
+  end
+
   def following
     @title = "Following"
     @user = User.find(params[:id])

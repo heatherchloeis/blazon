@@ -1,0 +1,12 @@
+<%= form_tag search_users_path, class: "form-inline my-2 search", method: :get do %>
+	<%= text_field_tag :term, nil, placeholder: "Search Canary", id: "user_search" class: "form-control form-control-sm" %>
+	<%= button_tag do %>
+		<%= icon('fas', 'search') %>
+	<% end %>
+<% end %>
+
+<script type="text/javascript">
+	$("#user_search").autocomplete({
+		source: "/search_users_suggestions"
+	});
+</script>

@@ -35,7 +35,7 @@ gem 'faker', '1.9.1'
 gem 'carrierwave', '1.2.2'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'ancestry'
-gem 'pg_search'
+gem 'jquery-ui-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
