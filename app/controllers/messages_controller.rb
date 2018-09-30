@@ -41,8 +41,15 @@ class MessagesController < ApplicationController
 		end
 
 		def create_notification(conversation, message)
-			Notification.create(user_id: conversation.recipient.id,
-													sender_id: current_user.id,
+			if conversation.recipient_id == current_user.id 
+				sender = conversation.recipient_id
+				recipient = conversation.sender_id
+			else
+				sender = conversation.sender_id
+				recipient = conversation.recipient_id
+			end					
+			Notification.create(user_id: recipient,
+													sender_id: sender,
 													conversation_id: conversation.id,
 													identifier: message.id,
 													n_type: "message")

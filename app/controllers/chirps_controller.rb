@@ -142,6 +142,12 @@ class ChirpsController < ApplicationController
 														chirp_id: reference.id,
 														identifier: chirp.id,
 														n_type: notice)
-			end				
+			elsif notice == "like"
+				Notification.create(user_id: chirp.user_id,
+													  sender_id: current_user.id,
+													  chirp_id: chirp.id,
+													  identifier: chirp.id,
+													  n_type: notice)
+			end		
 		end
 end

@@ -1,8 +1,10 @@
-<div class="dropdown">
-	<a href="#"  id="notifDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= icon('far', 'bell') %><% if current_user.notifications.where(read: false).count > 0 %><sup><%= current_user.notifications.where(read: false).count %></sup><% end %> Notifications</a>
-	<% if current_user.notifications.where(read: false).any? %>
+<% if !current_user.notifications.where.not(sender_id: current_user.id, read: true).any? %>
+	<a href="#" class="nav-link"><%= icon('far', 'bell') %> Notifications</a>
+<% else %>
+	<div class="dropdown">
+		<a href="#"  id="notifDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= icon('far', 'bell') %><% if count_notifications > 0 %><small><sup><%= count_notifications %></sup></small><% end %> Notifications</a>
 		<div class="dropdown-menu" aria-labelledby="notifDropdown">
-			<%= render current_user.notifications.where(read: false).order('created_at DESC') %>
+			<%= render current_user.notifications.where.not(sender_id: current_user.id, read: true).order('created_at DESC') %>
 		</div>
-	<% end %>
-</div>
+	</div>
+<% end %>

@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   	if !@notification.chirp.nil?
   		redirect_back fallback_location: root_path
   	elsif !@notification.conversation.nil?
-  		redirect_to conversation_path @notification.conversation
+  		redirect_to conversation_messages_path @notification.conversation
   	end
   end
 end

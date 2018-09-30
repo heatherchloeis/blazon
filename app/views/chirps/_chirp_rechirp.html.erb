@@ -1,10 +1,10 @@
 <div id="chirp-<%= chirp.id %>">
 	<div class="row chirp-header">
 		<small class="chirp-context"><%= icon('fas', 'retweet') %>
-			<% if current_user = chirp.user %>
+			<% if current_user == chirp.user %>
 				You
 			<% else %>
-				chirp.user.name
+				<%= chirp.user.name %>
 			<% end %> Retweeted
 		</small>
 	</div>

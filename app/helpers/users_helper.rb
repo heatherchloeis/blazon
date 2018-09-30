@@ -6,4 +6,9 @@ module UsersHelper
 		gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
 		image_tag(gravatar_url, alt: user.name, class: "gravatar")
 	end
+
+	def count_notifications
+		notifications = current_user.notifications.where.not(sender_id: current_user.id, read: true)
+		return notifications.size
+	end
 end
