@@ -36,6 +36,7 @@ gem 'carrierwave', '1.2.2'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'ancestry'
 gem 'jquery-ui-rails'
+gem 'ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
