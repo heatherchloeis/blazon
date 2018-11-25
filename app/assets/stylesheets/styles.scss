@@ -104,6 +104,7 @@ header {
 .search {
 	border-radius: 25px;
 	border: 1px solid #a4d9f9;
+	background-color: #fff;
 	font-size: .8em;
 }
 
@@ -119,11 +120,36 @@ header {
 
 .search button {
 	border: none;
-	margin-left: 10px;
+	margin: 0px 5px;
 	background-color: transparent;
 	color: #8c8c8c;
 	&:hover {
 		cursor: pointer;
+	}
+}
+
+#q {
+	width: 200px;
+	box-shadow: none;
+}
+
+#eac-container-q {
+	width: 150%;
+	top: 50px;
+	line-height: auto;
+	ul {
+		border: 1px solid rgba(0, 0, 0, .15);
+		border-radius: 5px;
+		box-shadow: none;
+		li {
+			border: none;
+			&:first-of-type {
+				border-radius: 5px 5px 0px 0px;
+			}
+			&:last-of-type {
+				border-radius: 0px 0px 5px 5px;
+			}
+		}
 	}
 }
 
@@ -139,7 +165,7 @@ main {
 	margin-bottom: 10px;
 }
 
-.profile-nav {
+.profile-nav, .search-term {
 	width: 100vw;
 	position: relative;
 	left: calc(-1 * (100vw - 100%) / 2.1);
@@ -191,6 +217,15 @@ main {
 .chirps-feed {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+.search-term {
+	background-color: #007bff;
+	h3 {
+		color: #fff;
+		margin: 15px 0px;
+		text-transform: lowercase;
+	}
 }
 
 .footer {

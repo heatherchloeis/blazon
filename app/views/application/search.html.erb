@@ -1,0 +1,41 @@
+<% provide(:title, "Search Results") %>
+
+<!-- Search Term -->
+<div class="row search-term">
+	<div class="col-md-8 offset-md-2">
+		<h3>Search Results</h3>
+	</div>
+</div>
+<div class="row">
+	<!-- Side Bar -->
+	<div class="col-md-3">
+		<div class="trending">
+			<h5>Trends for you</h5>
+			<p>trending trending trending</p>
+		</div>
+		<div class="suggestions">
+			<h5>Who to follow</h5>
+		</div>
+	</div>
+	<!-- Search Results -->
+	<div class="col-md-9">
+		<h5>People</h5>
+		<div class="row">
+			<% @users.each do |user| %>
+		    <% if user.id != current_user.id %>
+		      <div class="row no-gutters profile-info-sm">
+		        <div class="col-auto">
+		          <%= link_to gravatar_for(user, size: 75), user %>
+		        </div>
+		        <div class="col align-self-end profile-links">
+		          <%= link_to user.name, user %><br>
+		          <%= link_to "@#{user.username}", @user %>
+		        </div>
+		      </div>
+		    <% end %>
+			<% end %>
+		</div>
+		<h5>Latest</h5>
+		<div class="row"></div>
+	</div>
+</div>

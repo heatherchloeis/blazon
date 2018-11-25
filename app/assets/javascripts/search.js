@@ -22,7 +22,9 @@
 					input.val("");
 					Turbolinks.visit(url);
 				}
-			}
+			},
+			highlightPhrase: false,
+			theme: "blue-light"
 		}
 
 		input.easyAutocomplete(options);
