@@ -1,5 +1,5 @@
 <% if !current_user.notifications.where.not(sender_id: current_user.id, read: true).any? %>
-	<a href="#" class="nav-link"><%= icon('far', 'bell') %> Notifications</a>
+	<a href="#" class="nav-link"><%= icon('far', 'bell') %><span class="d-none d-lg-inline"> Notifications</span></a>
 <% else %>
 	<div class="dropdown">
 		<a href="#"  id="notifDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= icon('far', 'bell') %><% if count_notifications > 0 %><small><sup><%= count_notifications %></sup></small><% end %> Notifications</a>

@@ -13,8 +13,11 @@
 		<div class="row">
 			<% @users.each do |user| %>
 				<div class="row no-gutters profile-info-sm">
+					<%= image_tag current_user.cover.url, class: "profile-cover-sm negative-margin-10" %>
 					<div class="col-auto">
-						<%= link_to gravatar_for(user, size: 75), user %>
+						<%= link_to user do %>
+							<%= image_tag user.avatar.url, class: "profile-pic-md" %>
+						<% end %>
 					</div>
 					<div class="col align-self-end profile-links">
 						<%= link_to user.name, user %><br>

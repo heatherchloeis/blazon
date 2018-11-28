@@ -10,7 +10,9 @@
 	</div>
 	<div class="row no-gutters">
 		<div class="col-auto">
-			<%= link_to gravatar_for(chirp.user, size: 50), chirp.user, class: 'chirp-avatar' %>
+			<%= link_to chirp.user do %>
+				<%= image_tag chirp.user.avatar.url, class: "profile-pic-sm" %>
+			<% end %>
 		</div>
 		<div class="chirp-content col">
 			<%= link_to chirp.user.name, chirp.user %> <%= link_to "@#{chirp.user.username}", chirp.user%> · <%= time_ago_in_words(chirp.created_at) %>

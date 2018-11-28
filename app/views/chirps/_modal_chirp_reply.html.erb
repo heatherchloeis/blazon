@@ -6,7 +6,9 @@
 				<div class="row no-gutters chirp-reply">
 					<!-- User image -->
 					<div class="col-auto">
-						<%= link_to gravatar_for(chirp.user, size: 50), chirp.user %>
+						<%= link_to chirp.user do %>
+							<%= image_tag chirp.user.avatar.url, class: "profile-pic-sm" %>
+						<% end %>
 					</div>
 					<!-- User name and username -->
 					<div class="chirp-content col">

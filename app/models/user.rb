@@ -31,6 +31,12 @@ class User < ApplicationRecord
 
 	acts_as_voter
 
+	mount_uploader :avatar, AvatarUploader
+	mount_uploader :cover, 	CoverUploader
+
+	validate :avatar_size
+	validate :cover_size
+
 	# Returns the hash digest of the given string
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -126,5 +132,17 @@ class User < ApplicationRecord
 			if User.where(email: username).exists?
 				errors.add(:username, :invalid)
 			end
+		end
+
+		def avatar_size
+			if avatar.size > 5.megabytes
+  			errors.add(:avatar, "Image Uploads cannot be greater than 5MB")
+  		end
+		end
+
+		def cover_size
+			if cover.size > 5.megabytes
+  			errors.add(:cover, "Image Uploads cannot be greater than 5MB")
+  		end
 		end
 end

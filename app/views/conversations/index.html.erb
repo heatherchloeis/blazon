@@ -10,6 +10,7 @@
           <% end %>
           <% if !conversation.messages.last.nil? %>
             <div>
+              <%= image_tag recipient.avatar.url, class: "profile-pic-xs" %>
               <b><%= link_to "#{recipient.name}", conversation_messages_path(conversation) %></b><br>
               <span class="message-last"><%= User.find(conversation.messages.last.user_id).name %>: <%= conversation.messages.last.body %></span>
             </div>

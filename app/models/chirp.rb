@@ -25,7 +25,7 @@ class Chirp < ApplicationRecord
   	# Validates the size of an uploaded picture
   	def picture_size
   		if picture.size > 5.megabytes
-  			errors.add(:picture, "Pictures cannot be greater than 5MB")
+  			errors.add(:picture, "Image Uploads cannot be greater than 5MB")
   		end
   	end
 end

@@ -1,7 +1,9 @@
 <div id="chirp-<%= chirp.id %>">
 	<div class="row no-gutters">
 		<div class="col-auto">
-			<%= link_to gravatar_for(chirp.user, size: 50), chirp.user, class: 'chirp-avatar' %>
+			<%= link_to chirp.user do %>
+				<%= image_tag chirp.user.avatar.url, class: "profile-pic-sm" %>
+			<% end %>
 			<% if chirp.children.size > 0 %>
 			<% end %>
 		</div>

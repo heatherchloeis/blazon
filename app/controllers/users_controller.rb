@@ -81,7 +81,9 @@ class UsersController < ApplicationController
   																 :email, 
                                    :username,
   																 :password, 
-  																 :password_confirmation)
+  																 :password_confirmation,
+                                   :avatar,
+                                   :cover)
   	end
 
     def correct_user

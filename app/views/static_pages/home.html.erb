@@ -2,7 +2,9 @@
 	<div class="row">
 		<aside class="col-3">
 			<div class="profile">
-				<div class="row no-gutters profile-background-sm"></div>
+				<div class="row no-gutters">
+					<%= image_tag current_user.cover.url, class: "profile-cover-sm" %>
+				</div>
 				<%= render 'partials/profile_info_sm', @user => current_user %>
 				<%= render 'partials/profile_stats' %>
 			</div>

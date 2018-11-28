@@ -3,7 +3,7 @@
 	<%= f.hidden_field :reference_id %>
 	<div class="form-group row no-gutters">
 		<div class="col-auto">
-			<%= gravatar_for(current_user, size: 35) %>
+			<%= image_tag current_user.avatar.url, class: "profile-pic-xs" %>
 		</div>
 		<div class="col chirp-content">
 			<%= f.text_area :content, class: 'form-control form-content', placeholder: "What's happening?", rows: '3' %>

@@ -7,7 +7,9 @@
 <div class="modal-body">
 	<div class="row no-gutters modal-padding-20">
 		<div class="col-auto">
-			<%= link_to gravatar_for(@parent.user, size: 50), @parent.user, class: 'inline-chirp-avatar' %>
+			<%= link_to @parent.user do %>
+				<%= image_tag @parent.user.avatar.url, class: "profile-pic-sm" %>
+			<% end %>
 		</div>
 		<div class="chirp-content col">
 			<%= link_to @parent.user.name, @parent.user %> <%= link_to "@#{@parent.user.username}", @parent.user%> · <%= time_ago_in_words(@parent.created_at) %>

@@ -51,11 +51,15 @@ sup {
 	padding-bottom: 10px;
 }
 
+.negative-margin-10 {
+	margin: -10px -10px 10px -10px;
+}
+
 /* buttons */
 
 .btn-round {
 	border-radius: 25px;
-	border: 1px solid #343a40;
+	border: 1px solid #1da1f2;
 	padding: 5px 15px;
 	&:hover {
 		cursor: pointer;
@@ -129,7 +133,8 @@ header {
 }
 
 #q {
-	width: 200px;
+	max-width: 200px;
+	min-width: 100px;
 	box-shadow: none;
 }
 
@@ -166,9 +171,9 @@ main {
 }
 
 .profile-nav, .search-term {
-	width: 100vw;
+	width: 102vw;
 	position: relative;
-	left: calc(-1 * (100vw - 100%) / 2.1);
+	left: calc(-1 * (100vw - 100%) / 2);
 	border-bottom: 2px solid #eaeaea;
 	margin-top: -10px;
 	margin-bottom: 10px;
@@ -188,18 +193,68 @@ main {
 }
 
 .profile-info-lrg {
-	margin-top: -60px;
+	margin-top: -175px;
+}
+
+.profile-pic-xl, .profile-pic-lg, .profile-pic-md, .profile-pic-sm, .profile-pic-xs {
+	border-radius: 50%;
+}
+
+.profile-pic-xl {
+	width: 300px;
+	height: 300px;
+}
+
+.profile-pic-lg {
+	max-width: 200px;
+	max-height: 200px;
+	border: 7px solid #fff;
+	margin-bottom: 10px;
+}
+
+.profile-pic-md {
+	width: 75px;
+	height: 75px;	
+}
+
+.profile-pic-sm {
+	width: 50px;
+	height: 50px;
+}
+
+.profile-pic-xs {
+	width: 35px;
+	height: 35px;
+}
+
+.profile-cover-container {
+	display: block;
+	width: 100vw;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+	left: calc(-1 * (100vw - 100%) / 2);
+	margin-top: -10px;
+}
+
+.profile-cover-lg {
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.profile-cover-md {
+
+}
+
+.profile-cover-sm {
+	height: 100px;
+	margin-bottom: -40px;
+	width: calc(100% + 20px);
+	overflow: hidden;
 }
 
 .profile-links, .chirp-content {
 	margin-left: 5px;
-}
-
-.profile-background-sm {
-	height: 100px;
-	margin-bottom: -40px;
-	width: 100%;
-	background-color: #000;
 }
 
 .profile-stat-number {
@@ -239,10 +294,6 @@ main {
 }
 
 /* chirps */
-
-.profile-pic-xs {
-	margin-left: 25px;
-}
 
 button.chirp {
 	margin: 0 !important;

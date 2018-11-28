@@ -1,5 +1,8 @@
 <% provide(:title, "#{@user.name} (@#{@user.username})") %>
 
+<div class="profile-cover-container">
+	<%= image_tag @user.cover.url, class: "profile-cover-lg" %>
+</div>
 <%= render 'layouts/profile_nav' %>
 <div class="row">
 	<!-- User profile -->

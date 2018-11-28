@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_213501) do
+ActiveRecord::Schema.define(version: 2018_11_25_205950) do
 
   create_table "chirps", force: :cascade do |t|
     t.text "content"
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 2018_09_28_213501) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "search_suggestions", force: :cascade do |t|
+    t.string "term"
+    t.integer "popularity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -84,6 +91,8 @@ ActiveRecord::Schema.define(version: 2018_09_28_213501) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "username"
+    t.string "avatar"
+    t.string "cover"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

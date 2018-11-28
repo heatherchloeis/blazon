@@ -14,7 +14,9 @@
 			<%= f.file_field :picture, accept: 'image/*', id: "chirpPictureUpload", class: "d-none" %>
 			<div class="row no-gutters">
 				<div class="col-auto">
-					<%= link_to gravatar_for(@reference.user, size: 50), @reference.user, class: 'inline-chirp-avatar' %>
+					<%= link_to @reference.user do %>
+						<%= image_tag @reference.user.avatar.url, class: "profile-pic-sm" %>
+					<% end %>
 				</div>
 				<div class="chirp-content col">
 					<%= link_to @reference.user.name, @reference.user %> <%= link_to "@#{@reference.user.username}", @reference.user%> · <%= time_ago_in_words(@reference.created_at) %>

@@ -1,5 +1,5 @@
 <div class="profile-info-lrg">
-	<%= gravatar_for(@user, size: 150) %>
+	<%= image_tag @user.avatar.url, class: "profile-pic-lg" %>
 	<div class="">
 		<b><%= link_to @user.name, @user %></b><br>
 		<%= link_to "@#{@user.username}", @user %>

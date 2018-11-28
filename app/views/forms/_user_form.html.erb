@@ -1,20 +1,27 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: { multipart: true }) do |f| %>
 	<%= render 'partials/error_messages', object: f.object %>
+	<div class="row">
+		<div class="col-3">
+			<%= image_tag @user.avatar.url, class: "profile-pic-xl" %>
+			<%= f.file_field :avatar, class: "form-control-file" %>
+		</div>
+		<div class="col-6">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "form-control" %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name, class: "form-control" %>
+			<%= f.label :email %>
+			<%= f.text_field :email, class: "form-control" %>
 
-	<%= f.label :email %>
-	<%= f.text_field :email, class: "form-control" %>
+			<%= f.label :username %>
+			<%= f.text_field :username, class: "form-control" %>
 
-	<%= f.label :username %>
-	<%= f.text_field :username, class: "form-control" %>
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
 
-	<%= f.label :password %>
-	<%= f.password_field :password, class: "form-control" %>
+			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.password_field :password_confirmation, class: "form-control" %>
 
-	<%= f.label :password_confirmation, "Confirmation" %>
-	<%= f.password_field :password_confirmation, class: "form-control" %>
-
-	<%= f.submit yield(:button_text), class: "btn-primary btn-round btn-no-border" %>
+			<%= f.submit yield(:button_text), class: "btn-primary btn-round btn-no-border" %>
+		</div>
+	</div>
 <% end %>
