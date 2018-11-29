@@ -8,7 +8,7 @@
 		<div class="chirp-content col">
 			<%= link_to chirp.user.name, chirp.user %> <%= link_to "@#{chirp.user.username}", chirp.user%> · <%= time_ago_in_words(chirp.created_at) %>
 			<p>
-				<%= chirp.content %>
+				<%= markdown(chirp.content) %>
 			</p>
 			<%= image_tag chirp.picture.url if chirp.picture? %>
 		</div>

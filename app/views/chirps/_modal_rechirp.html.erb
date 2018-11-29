@@ -21,7 +21,7 @@
 				<div class="chirp-content col">
 					<%= link_to @reference.user.name, @reference.user %> <%= link_to "@#{@reference.user.username}", @reference.user%> · <%= time_ago_in_words(@reference.created_at) %>
 					<p>
-						<%= @reference.content %>
+						<%= markdown(@reference.content) %>
 					</p>
 					<%= image_tag @reference.picture.url if @reference.picture? %>
 				</div>

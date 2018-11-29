@@ -17,6 +17,9 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.easy-autocomplete
+//= require jquery.carat
+//= require jquery.atwho
+//= require chirps
 //= require popper
 //= require bootstrap
 //= require_tree .

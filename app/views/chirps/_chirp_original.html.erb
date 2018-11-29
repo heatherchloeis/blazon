@@ -21,7 +21,7 @@
 				</div>
 			<% end %>
 			<p>
-				<%= chirp.content %>
+				<%= markdown(chirp.content) %>
 			</p>
 			<%= image_tag chirp.picture.url if chirp.picture? %>
 			<div class="row chirp-footer">

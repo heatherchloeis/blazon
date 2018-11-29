@@ -28,7 +28,7 @@
 				</div>
 			<% end %>
 			<p>
-				<%= chirp.content %>
+				<%= markdown(chirp.content) %>
 				<%= render 'chirps/chirp_excerpt', chirp: Chirp.where(id: chirp.reference_id).first %>
 			</p>
 			<div class="row chirp-footer">

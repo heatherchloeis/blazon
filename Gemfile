@@ -37,6 +37,8 @@ gem 'acts_as_votable', '~> 0.11.1'
 gem 'ancestry'
 gem 'jquery-ui-rails'
 gem 'ransack'
+gem 'jquery-atwho-rails'
+gem 'redcarpet'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

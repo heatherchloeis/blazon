@@ -20,6 +20,12 @@ class Chirp < ApplicationRecord
   
   has_many :notifications, dependent: :destroy
 
+  after_create :add_mentions
+
+  def add_mentions
+    Mention.create_from_text(self)
+  end
+
   private
 
   	# Validates the size of an uploaded picture

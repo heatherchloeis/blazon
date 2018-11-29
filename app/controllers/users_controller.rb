@@ -74,6 +74,12 @@ class UsersController < ApplicationController
     render 'show_likes'
   end
 
+  def mentions
+    respond_to do |format|
+      format.json { render :jsn => Mention.all(params[:q]) }
+    end
+  end
+
   private
 
   	def user_params

@@ -19,7 +19,7 @@
 				</div>
 			<% end %>
 			<p class="chirp-context">Replying to <%= link_to "@#{Chirp.where(id: chirp.parent_id).first.user.username}", User.where(id: chirp.parent_id).first %></p>
-			<p><%= chirp.content %></p>
+			<p><%= markdown(chirp.content) %></p>
 			<%= image_tag chirp.picture.url if chirp.picture? %>
 			<div class="row chirp-footer">
 				<!-- comment btn and comment count -->

@@ -16,7 +16,7 @@
 				<!-- Chirp content -->
 				<div class="row">
 					<div class="col">
-						<h2><%= chirp.content %></h2>
+						<h2><%= markdown(chirp.content) %></h2>
 						<%= image_tag chirp.picture.url if chirp.picture? %>
 					</div>
 				</div>

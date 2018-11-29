@@ -346,6 +346,16 @@ button.chirp {
 	margin-top: 10px;
 }
 
+.mention-item {
+  display: inline-block;
+  height: 2.0em;
+  font-size: 1.1em;
+  img {
+    height: 2.0em;
+    margin-left: 0.25em;
+  }
+}
+
 /* messages */
 
 .message-field {
