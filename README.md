@@ -12,7 +12,7 @@ Things you may want to cover:
 
 * ...
 
-# Canary Application README
+# Blazon Application README
 
 This is the appliation for a mock social media platform
 

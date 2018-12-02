@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 	
   def show
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
     redirect_to root_url and return unless @user.activated?
     @chirps = @user.chirps.paginate(page: params[:page])
 	end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   def update
@@ -55,21 +55,21 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def liked_chirps
     @title = "Liked chirps"
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @chirps = @user.find_liked_items
     render 'show_likes'
   end
@@ -78,6 +78,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json { render :jsn => Mention.all(params[:q]) }
     end
+  end
+
+  def format_birthdate
+    @user = User.friendly.find(params[:id])
+    birthdate = @user.birthdate.split("/")
   end
 
   private
@@ -93,7 +98,7 @@ class UsersController < ApplicationController
   	end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.friendly.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 

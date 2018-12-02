@@ -1,5 +1,6 @@
 <div>
+	<p><%= icon('far', 'image') %> Photos</p>
 	<% @user.chirps.each do |chirp| %>
-		<% image_tag chirp.picture.url if chirp.picture? %>
+		<% image_tag chirp.picture.url, class: "col-4" if chirp.picture? %>
 	<% end %>
 </div>

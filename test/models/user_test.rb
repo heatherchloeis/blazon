@@ -7,10 +7,14 @@ class UserTest < ActiveSupport::TestCase
 										 email: "janedoe@geemail.com",
 										 username: "jane_doe",
 										 password: "canarycanary",
-										 password_confirmation: "canarycanary")
+										 password_confirmation: "canarycanary",
+										 bio: "Lorem ispum",
+										 birthdate: Date.current.strftime("%m/%d/%Y"),
+										 location: "Nebraska, USA")
 	end
 
 	test "user should be valid" do
+		@user.save!
 		assert @user.valid?
 	end
 
@@ -40,6 +44,7 @@ class UserTest < ActiveSupport::TestCase
 		valid_addresses = %w[janedoe@geemail.com JOHNdoe@geemail.COM jane_doe@gee.mail.com JOHN+JANE_DOE@geemail.co]
 		valid_addresses.each do |valid_address|
 			@user.email = valid_address
+			@user.save!
 			assert @user.valid?, "#{valid_address.inspect} should be valid"
 		end
 	end
@@ -82,6 +87,7 @@ class UserTest < ActiveSupport::TestCase
 		valid_usernames = %w[janedoe JOHNdoe jane_doe john.doe JOHN.JANE_DOE123]
 		valid_usernames.each do |valid_username|
 			@user.username = valid_username
+			@user.save!
 			assert @user.valid?, "#{valid_username.inspect} should be valid"
 		end
 	end
@@ -112,7 +118,7 @@ class UserTest < ActiveSupport::TestCase
 	test "usernames should be saved as lowercase" do
 		mixed_case_username = "JaNe_DoE"
 		@user.username = mixed_case_username
-		@user.save
+		@user.save!
 		assert_equal mixed_case_username.downcase, @user.reload.username
 	end
 
@@ -128,6 +134,56 @@ class UserTest < ActiveSupport::TestCase
 		assert_not @user.valid?
 	end
 
+	# User bio testing suite
+
+	test "bio should not exceed 500 char" do
+		@user.bio = "a" * 501
+		assert_not @user.valid?
+	end
+
+	# User birthdate testing suite
+
+	test "birthdate should be present" do
+		@user.birthdate = "     "
+		assert_not @user.valid?		
+	end
+
+	test "birthdate should be in MM/DD/YYYY format" do
+		valid_birthdates = %w[10/31/1990 01/01/2001 03/31/1938]
+		valid_birthdates.each do |valid_birthdate|
+			@user.birthdate = valid_birthdate
+			assert @user.valid?
+		end
+		invalid_birthdates = %w[10-31-1990 1/1/2001 3/31/38]
+		invalid_birthdates.each do |invalid_birthdate|
+			@user.birthdate = invalid_birthdate
+			assert_not @user.valid?
+		end
+	end
+
+	# User location testing suite
+
+	test "location should be present" do
+		@user.location = "     "
+		assert_not @user.valid?		
+	end
+
+	test "location validation should accept valid locations" do
+		valid_locations = %w[California,\ USA Sydney,\ AUS London,\ GBR South\ Carolina,\ USA]
+		valid_locations.each do |valid_location|
+			@user.location = valid_location
+			assert @user.valid?, "#{valid_location.inspect} should be valid"
+		end
+	end
+
+	test "location validation should reject invalid locations" do
+		invalid_locations = %w[Ca1if0rnia Sydney\ AUS London,\ UK South-Carolina,\ US]
+		invalid_locations.each do |invalid_location|
+			@user.location = invalid_location
+			assert_not @user.valid?, "#{invalid_location.inspect} should NOT be valid"
+		end
+	end
+
 	# User login/logout testing suite
 
 	test "authenticated? should return false for a user with nil digest" do
@@ -138,7 +194,7 @@ class UserTest < ActiveSupport::TestCase
 
 	test "associated chirps should be destroyed" do
 		@user.save
-		@user.chirps.create!(content: "Lorem ipsum")
+		@user.chirps.create!(content: "Lorem ipsum", parent_id: nil)
 		assert_difference 'Chirp.count', -1 do
 			@user.destroy
 		end

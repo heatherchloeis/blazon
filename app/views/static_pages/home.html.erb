@@ -1,6 +1,6 @@
 <% if logged_in? %>
 	<div class="row">
-		<aside class="col-3">
+		<aside class="col-lg-3 col-sm-4">
 			<div class="profile">
 				<div class="row no-gutters">
 					<%= image_tag current_user.cover.url, class: "profile-cover-sm" %>
@@ -8,18 +8,18 @@
 				<%= render 'partials/profile_info_sm', @user => current_user %>
 				<%= render 'partials/profile_stats' %>
 			</div>
-			<div class="trending">
+			<div class="trending d-none d-sm-block">
 				<h5>Trends for you</h5>
 				<p>trending trending trending</p>
 			</div>
 		</aside>
-		<div class="col-6">
+		<div class="col-lg-6 col-sm-8">
 			<div class="chirp-form form-align-right">
 				<%= render 'forms/chirp_form' %>
 			</div>
 			<%= render 'users/feed' %>
 		</div>
-		<div class="col-3">
+		<div class="col-3 d-none d-lg-block">
 			<div class="suggestions">
 				<h5>Who to follow</h5>
 			</div>

@@ -1,24 +1,27 @@
 <h5 class="text-center">Direct Messages</h5>
 <div class="row">
-    <div class="col">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <% if !conversation.messages.last.nil? %>
-            <div>
-              <%= image_tag recipient.avatar.url, class: "profile-pic-xs" %>
-              <b><%= link_to "#{recipient.name}", conversation_messages_path(conversation) %></b><br>
-              <span class="message-last"><%= User.find(conversation.messages.last.user_id).name %>: <%= conversation.messages.last.body %></span>
-            </div>
-          <% end %>
+  <div class="col">
+    <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+        <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+        <% if !conversation.messages.last.nil? %>
+          <div>
+            <%= image_tag recipient.avatar.url, class: "profile-pic-xs align-text-bottom" %>
+            <%= link_to conversation_messages_path(conversation) do %>
+              <span class="profile-links-name"><%= recipient.name %></span> <span class="profile-links-username">@<%= recipient.username %></span>
+            <% end %><br>
+            <span class="message-last"><%= User.find(conversation.messages.last.user_id).name %>: <%= conversation.messages.last.body %></span>
+          </div>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>
+
 <div class="row">
   <% @users.each do |user| %>
     <% if user.id != current_user.id %>

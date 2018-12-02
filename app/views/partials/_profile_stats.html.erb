@@ -1,18 +1,18 @@
 <% @user ||= current_user %>
-<div class="row padding-10">
-	<div class="col-4">
-		<%= link_to current_user do %>
-			<small id="following"><b>Chirps</b><br><%= @user.chirps.count %></small>
+<div class="row padding-10 ">
+	<div class="col col-sm-auto">
+		<%= link_to current_user, class: "profile-stat-link"  do %>
+			<span class="profile-stat-heading">Chirps</span><br><span class="profile-stat-number"><%= @user.chirps.count %></span>
 		<% end %>
 	</div>
-	<div class="col-4">
-		<a href="<%= following_user_path(@user) %>">
-			<small id="following"><b>Following</b><br><%= @user.following.count %></small>
+	<div class="col col-sm-4">
+		<a class="profile-stat-link" href="<%= following_user_path(@user) %>">
+			<span class="profile-stat-heading">Following</span><br><span class="profile-stat-number"><%= @user.following.count %></span>
 		</a>
 	</div>
-	<div class="col-4">
-		<a href="<%= followers_user_path(@user) %>">
-			<small id="followers"><b>Followers</b><br><%= @user.followers.count %></small>
+	<div class="col col-sm-4">
+		<a class="profile-stat-link" href="<%= followers_user_path(@user) %>">
+			<span class="profile-stat-heading">Followers</span><br><span class="profile-stat-number"><%= @user.followers.count %></span>
 		</a>
 	</div>
 </div>

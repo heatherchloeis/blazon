@@ -2,15 +2,15 @@
 
 <% if user != current_user %>
 	<div class="col-6 text-left padding-bottom-10">
-	  <span class="message-content message-from"><%= message.body %></span><br>
+	  <p class="message-content message-from"><%= message.body %></p>
 	  <small>
 	     <%= user.username %> · <%= time_ago_in_words(message.created_at) %>
 	  </small>
 	</div>
 	<div class="col-6"></div>
 <% else %>
-	<div class="col-6 offset-6 text-right padding-bottom-10">
-	  <span class="message-content message-to"><%= message.body %></span><br>
+	<div class="col-6 offset-6 padding-bottom-10 text-right">
+	  <p class="message-content message-to"><%= message.body %></p>
 	  <small>
 	    <% if user != current_user %>
 	      <%= user.username %> · 

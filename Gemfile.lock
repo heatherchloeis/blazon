@@ -255,6 +255,8 @@ GEM
     font-awesome-sass (5.3.1)
       sassc (>= 1.11)
     formatador (0.2.5)
+    friendly_id (5.2.4)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -440,6 +442,7 @@ DEPENDENCIES
   faker (= 1.9.1)
   fog (= 1.42)
   font-awesome-sass (~> 5.3.1)
+  friendly_id (~> 5.2.4)
   jbuilder (~> 2.5)
   jquery-atwho-rails
   jquery-rails (= 4.3.1)

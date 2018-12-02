@@ -9,8 +9,11 @@ class User < ApplicationRecord
 						format: { with: URI::MailTo::EMAIL_REGEXP }, 
 						uniqueness: { case_sensitive: false }
 	validates :username, presence: true, length: { maximum: 25 }, 
-						format: { with: /^[a-zA-Z0-9_\.]*$/, :multiline => true },
+						format: { with: /\A[a-zA-Z0-9_\.]+\z/ },
 						uniqueness: { case_sensitive: false }
+	validates :bio, length: { maximum: 500 }
+	validates :birthdate, presence: true, format: { with: /\A\d{2}\/\d{2}\/\d{4}\z/ }
+	validates :location, presence: true, format: { with: /\A[a-zA-Z ]+,[ ][A-Z]{3}\z/ }
 
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
@@ -36,6 +39,9 @@ class User < ApplicationRecord
 
 	validate :avatar_size
 	validate :cover_size
+
+	extend FriendlyId
+	friendly_id :username, use: :slugged
 
 	# Returns the hash digest of the given string
 	def User.digest(string)
@@ -111,6 +117,15 @@ class User < ApplicationRecord
 	# Returns true if the current user is following the other user
 	def following?(other_user)
 		following.include?(other_user)
+	end
+
+	def to_param
+		# return nil unless persisted?
+		slug
+	end
+
+	def self.sluggable
+		all.extending(Sluggable::Finder)
 	end
 
 	private

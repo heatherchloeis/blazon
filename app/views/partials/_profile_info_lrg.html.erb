@@ -1,7 +1,11 @@
 <div class="profile-info-lrg">
 	<%= image_tag @user.avatar.url, class: "profile-pic-lg" %>
 	<div class="">
-		<b><%= link_to @user.name, @user %></b><br>
-		<%= link_to "@#{@user.username}", @user %>
+		<%= link_to @user.name, @user, class: "profile-links-name" %></span><br>
+		<%= link_to "@#{@user.username}", @user, class: "profile-links-username" %></span>
+		<p><%= @user.bio %></p>
+		<p><%= icon('fas', 'map-marker-alt') %> <%= @user.location %></p>
+		<p><%= icon('far', 'calendar-alt') %> Joined <%= @user.created_at.strftime("%B %Y") %></p>
+		<p><%= icon('fas', 'birthday-cake') %> Born <%= @user.birthdate %></p>
 	</div>
 </div>

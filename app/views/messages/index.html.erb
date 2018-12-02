@@ -17,13 +17,13 @@
 </div>
     
 
-<div class="row">
+<div class="row no-gutters">
   <%= form_for [@conversation, @message], html: {class: "col-6 offset-3"} do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <div class="form-row message-form">
-      <%= f.text_area :body, class: "form-control form-content col", 'rows': '1' %>
+    <div class="row no-gutters message-form">
+      <%= f.text_area :body, class: "form-control message-form-content col", 'rows': '1' %>
       <div class="col-auto">
-        <%= f.submit "Send", class: "btn-primary btn-round btn-no-border" %>
+        <%= f.submit "Send", class: "btn-primary btn-round btn-no-border d-inline" %>
       </div>
     </div>
   <% end %>

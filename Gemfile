@@ -39,6 +39,7 @@ gem 'jquery-ui-rails'
 gem 'ransack'
 gem 'jquery-atwho-rails'
 gem 'redcarpet'
+gem 'friendly_id', '~> 5.2.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

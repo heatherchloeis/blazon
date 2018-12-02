@@ -6,6 +6,9 @@ cirilla:
   admin: true
   activated: true
   activated_at: <%= Time.zone.now %>
+  bio: Faker::Lorem.sentence(3)
+  birthdate: Date.current.strftime("%m/%d/%Y")
+  location: "Kaer Mohren, WCH"
 
 geralt:
   name: Geralt of Rivia
@@ -14,6 +17,9 @@ geralt:
   password_digest: <%= User.digest('password') %> 
   activated: true
   activated_at: <%= Time.zone.now %>
+  bio: Faker::Lorem.sentence(3)
+  birthdate: Date.current.strftime("%m/%d/%Y")
+  location: "Kaer Mohren, WCH"
 
 roach:
   name: Roach
@@ -22,6 +28,9 @@ roach:
   password_digest: <%= User.digest('password') %> 
   activated: true
   activated_at: <%= Time.zone.now %>
+  bio: Faker::Lorem.sentence(3)
+  birthdate: Date.current.strftime("%m/%d/%Y")
+  location: "Kaer Mohren, WCH"
 
 triss:
   name: Triss Merigold
@@ -30,6 +39,9 @@ triss:
   password_digest: <%= User.digest('password') %> 
   activated: true
   activated_at: <%= Time.zone.now %>
+  bio: Faker::Lorem.sentence(3)
+  birthdate: Date.current.strftime("%m/%d/%Y")
+  location: "Kaer Mohren, WCH"
 
 yen:
   name: Yennifer of Vengerberg
@@ -38,3 +50,6 @@ yen:
   password_digest: <%= User.digest('password') %> 
   activated: true
   activated_at: <%= Time.zone.now %>
+  bio: Faker::Lorem.sentence(3)
+  birthdate: Date.current.strftime("%m/%d/%Y")
+  location: "Kaer Mohren, WCH"

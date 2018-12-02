@@ -1,27 +1,43 @@
 <%= form_for(@user, html: { multipart: true }) do |f| %>
 	<%= render 'partials/error_messages', object: f.object %>
 	<div class="row">
-		<div class="col-3">
-			<%= image_tag @user.avatar.url, class: "profile-pic-xl" %>
+		<div class="col-10 offset-1 col-sm-6 offset-sm-0">
+			<%= image_tag @user.avatar.url, class: "profile-pic-xl img-fluid" %>
 			<%= f.file_field :avatar, class: "form-control-file" %>
 		</div>
-		<div class="col-6">
+		<div class="col-10 offset-1 col-sm-6 offset-sm-0">
 			<%= f.label :name %>
 			<%= f.text_field :name, class: "form-control" %>
+
+			<%= f.label :username %>
+			<div class="input-group">
+				<div class="input-group-prepend">
+		      <div class="input-group-text">@</div>
+		    </div>
+				<%= f.text_field :username, class: "form-control" %>
+			</div>
+
+			<%= f.label :bio %>
+			<%= f.text_area :bio, class: "form-control form-content", placeholder: "Tell us about yourself", rows: '3' %>
+
+			<%= f.label :location %>
+			<%= f.text_field :location, class: "form-control" %>
+
+			<h3 class="text-center">Account Settings</h3>
 
 			<%= f.label :email %>
 			<%= f.text_field :email, class: "form-control" %>
 
-			<%= f.label :username %>
-			<%= f.text_field :username, class: "form-control" %>
+			<%= f.label :birthdate %>
+			<%= f.date_field :birthdate, class: "form-control" %>
 
 			<%= f.label :password %>
 			<%= f.password_field :password, class: "form-control" %>
 
-			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.label :password_confirmation, "Comfirm Password" %>
 			<%= f.password_field :password_confirmation, class: "form-control" %>
 
-			<%= f.submit yield(:button_text), class: "btn-primary btn-round btn-no-border" %>
+			<%= f.submit yield(:button_text), class: "btn btn-primary btn-round btn-no-border user-submit" %>
 		</div>
 	</div>
 <% end %>

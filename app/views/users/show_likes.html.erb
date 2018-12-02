@@ -1,14 +1,17 @@
 <% provide(:title, @title) %>
 
+<div class="profile-cover-container">
+	<%= image_tag @user.cover.url, class: "profile-cover-lg" %>
+</div>
 <%= render 'layouts/profile_nav' %>
 <div class="row">
 	<!-- User profile -->
-	<div class="col-md-3">
+	<aside class="col-lg-3 col-sm-4">
 		<%= render "partials/profile_info_lrg" %>
 		<%= render "partials/profile_album" %>
-	</div>
+	</aside>
 	<!-- Chirps -->
-	<div class="col-md-6">
+	<div class="col-lg-6 col-sm-8">
 		<% @chirps.each do |chirp| %>
 			<div class="users liked-chirps">
 				<%= render 'chirps/chirp', chirp: chirp %>
@@ -16,7 +19,7 @@
 		<% end %>
 	</div>
 	<!-- Who to follow??? -->
-	<div class="col-md-3 suggestions">
+	<div class="col-3 d-none d-lg-block suggestions">
 		<h3>Who to follow</h3>
 	</div>
 </div>

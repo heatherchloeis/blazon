@@ -7,6 +7,9 @@ User.create!(name: "Vesemir of Kaer Mohren",
 						 password_confirmation: "backinmyday",
 						 admin: true,
 						 activated: true,
+						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 birthdate: Date.current.strftime("%m/%d/%Y"),
+						 location: "Kaer Mohren, WCH",
 						 activated_at: Time.zone.now)
 
 User.create!(name: "Cirilla of Cintra",
@@ -16,6 +19,9 @@ User.create!(name: "Cirilla of Cintra",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
+						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 birthdate: Date.current.strftime("%m/%d/%Y"),
+						 location: "Cintra, WCH",
 						 activated_at: Time.zone.now)
 
 User.create!(name: "Geralt of Rivia",
@@ -25,6 +31,9 @@ User.create!(name: "Geralt of Rivia",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
+						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 birthdate: Date.current.strftime("%m/%d/%Y"),
+						 location: "Rivia, WCH",
 						 activated_at: Time.zone.now)
 
 User.create!(name: "Roach",
@@ -34,6 +43,9 @@ User.create!(name: "Roach",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
+						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 birthdate: Date.current.strftime("%m/%d/%Y"),
+						 location: "Rivia, WCH",
 						 activated_at: Time.zone.now)
 
 User.create!(name: "Triss Merigold",
@@ -43,6 +55,9 @@ User.create!(name: "Triss Merigold",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
+						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 birthdate: Date.current.strftime("%m/%d/%Y"),
+						 location: "Maribor, WCH",
 						 activated_at: Time.zone.now)
 
 User.create!(name: "Yennifer of Vengerberg",
@@ -52,6 +67,9 @@ User.create!(name: "Yennifer of Vengerberg",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
+						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 birthdate: Date.current.strftime("%m/%d/%Y"),
+						 location: "Vengerberg, WCH",
 						 activated_at: Time.zone.now)
 
 99.times do |n|
@@ -65,6 +83,9 @@ User.create!(name: "Yennifer of Vengerberg",
 							 password: password,
 							 password_confirmation: password,
 							 activated: true,
+						 	 bio: Faker::Lorem.paragraph_by_chars(300),
+						   birthdate: Date.current.strftime("%m/%d/%Y"),
+						   location: "California, USA",
 							 activated_at: Time.zone.now)
 end
 

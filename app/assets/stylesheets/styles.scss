@@ -10,6 +10,11 @@ body, .container, .container-fluid {
 	color: #1d292f;
 	overflow-x: hidden;
 	background-color: #e6ecf0;
+	font-size: 14px;
+}
+
+aside {
+	// min-width: 290px;
 }
 
 p {
@@ -88,7 +93,7 @@ header {
 }
 
 #logo {
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	color: #1d292f;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -109,7 +114,7 @@ header {
 	border-radius: 25px;
 	border: 1px solid #a4d9f9;
 	background-color: #fff;
-	font-size: .8em;
+	font-size: .8rem;
 }
 
 .search input[type=text] {
@@ -158,6 +163,16 @@ header {
 	}
 }
 
+
+nav a {
+	color: #8c8c8c;
+	font-weight: bold;
+	font-size: .8rem;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 /* main content */
 
 main {
@@ -201,8 +216,10 @@ main {
 }
 
 .profile-pic-xl {
-	width: 300px;
-	height: 300px;
+	width: 100%;
+	height: auto;
+	max-width: 300px;
+	max-height: 300px;
 }
 
 .profile-pic-lg {
@@ -257,9 +274,40 @@ main {
 	margin-left: 5px;
 }
 
-.profile-stat-number {
-	font-size: 1.5em;
+.profile-links-name {
+	font-size: 1.2rem;
+	line-height: .8rem;
 	font-weight: bold;
+	color: #000;
+	&:hover {
+		text-decoration: underline;
+		color: #000;
+	}
+}
+
+.profile-links-username {
+	font-size: .8rem;
+	color: #8c8c8c;
+	&:hover {
+		text-decoration: underline;
+		color: #8c8c8c;
+	}
+}
+
+.profile-stat-link:hover {
+	text-decoration: none;
+}
+
+.profile-stat-heading {
+	font-size: .8rem;
+	color: #8c8c8c;
+	font-weight: bold;
+}
+
+.profile-stat-number {
+	font-size: 1.3rem;
+	font-weight: bold;
+	line-height: .8rem;
 }
 
 .trending, .suggestions {
@@ -291,6 +339,12 @@ main {
 
 .footer, .footer a {
 	color: #8c8c8c;
+}
+
+/* users */
+
+.user-submit {
+	margin-top: 15px;
 }
 
 /* chirps */
@@ -348,19 +402,29 @@ button.chirp {
 
 .mention-item {
   display: inline-block;
-  height: 2.0em;
-  font-size: 1.1em;
+  height: 2.0rem;
+  font-size: 1.1rem;
   img {
-    height: 2.0em;
-    margin-left: 0.25em;
+    height: 2.0rem;
+    margin-left: 0.25rem;
   }
 }
 
 /* messages */
 
 .message-field {
+	width: 100%;
 	padding: 25px 0;
 	background-color: #fff;
+}
+
+.message-form-content, .form-content {
+	border-radius: 10px;
+	border: 2px solid #a4d9f9;
+}
+
+.message-form-content {
+	margin-right: 10px;
 }
 
 .message-content {
@@ -389,6 +453,7 @@ button.chirp {
 }
 
 .message-last {
+	margin-left: 40px;
 	color: #8c8c8c;
 }
 
@@ -404,11 +469,6 @@ button.chirp {
 	padding: 10px;
 	padding-bottom: 5px;
 	background-color: #e8f5fd;
-}
-
-.form-content {
-	border-radius: 10px;
-	border: 2px solid #a4d9f9;
 }
 
 .form-align-right {
@@ -435,3 +495,33 @@ button.chirp {
 /* backgrounds */
 
 /* text */
+
+h3 {
+	margin-top: 15px;
+}
+
+/** breakpoints */
+
+@media (max-width: 650px) {
+	.profile-nav-item:first-of-type {
+		margin-left: 10px;
+	}
+} 
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: .9rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: .9rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1rem;
+  }
+}

@@ -1,12 +1,12 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-main">
     <% if logged_in? %>
-      <%= link_to root_path, class: "nav-link offset-xl-2 offset-lg-1" do %>
-        <%= icon('fas', 'home') %><span class="d-none d-lg-inline"> Home</span>
+      <%= link_to root_path, class: "nav-link offset-xl-2" do %>
+        <%= icon('fas', 'home') %><span class="d-none d-md-inline"> Home</span>
       <% end %>
       <%= render 'notifications/dropdown' %>
       <%= link_to conversations_path, class: "nav-link" do %>
-        <%= icon('far', 'envelope') %><span class="d-none d-lg-inline"> Messages</span>
+        <%= icon('far', 'envelope') %><span class="d-none d-md-inline"> Messages</span>
       <% end %>
     <% end %>
     <%= link_to root_path, id: "logo", class: "navbar-brand center-horizontal" do %> 
@@ -43,6 +43,6 @@
         <% end %>
       </ul>
     </div>
-    <div class="col-xl-2 col-lg-1 col d-none d-lg-block"></div>
+    <div class="col-xl-2 d-none d-xl-block"></div>
   </nav>
 </header>
