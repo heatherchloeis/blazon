@@ -190,12 +190,12 @@ class UserTest < ActiveSupport::TestCase
 		assert_not @user.authenticated?(:remember, '')
 	end
 
-	# User chirps
+	# User posts
 
-	test "associated chirps should be destroyed" do
+	test "associated posts should be destroyed" do
 		@user.save
-		@user.chirps.create!(content: "Lorem ipsum", parent_id: nil)
-		assert_difference 'Chirp.count', -1 do
+		@user.posts.create!(content: "Lorem ipsum", parent_id: nil)
+		assert_difference 'Post.count', -1 do
 			@user.destroy
 		end
 	end
@@ -218,15 +218,15 @@ class UserTest < ActiveSupport::TestCase
 		roach = users(:roach)
 		yen = users(:yen)
 		# Posts from followed user
-		yen.chirps.each do |chirp_following|
-			assert ciri.feed.include?(chirp_following)
+		yen.posts.each do |post_following|
+			assert ciri.feed.include?(post_following)
 		end
 		# Posts from self
-		ciri.chirps.each do |post_self|
+		ciri.posts.each do |post_self|
 			assert ciri.feed.include?(post_self)
 		end
 		# Post from unfollowed user
-		roach.chirps.each do |post_unfollowed|
+		roach.posts.each do |post_unfollowed|
 			assert_not yen.feed.include?(post_unfollowed)
 		end
 	end

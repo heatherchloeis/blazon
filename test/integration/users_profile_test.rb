@@ -13,10 +13,10 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
 		assert_template 'users/show'
 		assert_select 'title', text: "#{@user.name} (@#{@user.username}) | Canary"
 		assert_select 'img.gravatar'
-		assert_match @user.chirps.count.to_s, response.body
+		assert_match @user.posts.count.to_s, response.body
 		assert_select 'div.pagination'
-		@user.chirps.paginate(page: 1).each do |chirp|
-			assert_match chirp.content, response.body
+		@user.posts.paginate(page: 1).each do |post|
+			assert_match post.content, response.body
 		end
 	end
 end

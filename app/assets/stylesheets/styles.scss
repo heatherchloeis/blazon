@@ -37,14 +37,14 @@ hr.hr-vertical {
 	width: 3px;
 	height: 100%;
 	margin-top: -50%;
-	background-color: #1da1f2;
+	background-color: #e68318;
 }
 
 sup {
 	border-radius: 10px;
 	padding: 0 4px;
 	margin-left: -5px;
-	background-color: #007bff;
+	background-color: #e68318;
 	color: #fff;
 }
 
@@ -64,7 +64,7 @@ sup {
 
 .btn-round {
 	border-radius: 25px;
-	border: 1px solid #1da1f2;
+	border: 1px solid #e68318;
 	padding: 5px 15px;
 	&:hover {
 		cursor: pointer;
@@ -73,6 +73,26 @@ sup {
 
 .btn-no-border {
 	border: none;
+}
+
+.btn-primary {
+	background-color: #e68318;
+	&:hover {
+		background-color: #b36512;
+	}
+	&:active {
+		background-color: #b36512;
+	} 
+}
+
+.btn-outline-primary {
+	border-color: #e68318;
+	color: #e68318;
+	&:hover {
+		color: #fff;
+		background-color: #e68318;
+		border-color: #e68318;
+	}
 }
 
 .center-horizontal {
@@ -92,15 +112,18 @@ header {
 	border-bottom: 2px solid #eaeaea;
 }
 
-#logo {
-	font-size: 1.5rem;
-	color: #1d292f;
-	text-transform: uppercase;
-	font-weight: bold;
-	&:hover {
-		color: #697075;
-		text-decoration: none;
-	}
+.logo {
+	display: block;
+	margin: auto;
+}
+
+.dark-icon, .light-icon {
+	width: 35px;
+	height: auto;
+}
+
+.light-icon {
+	display: none;
 }
 
 /* nav */
@@ -112,7 +135,7 @@ header {
 
 .search {
 	border-radius: 25px;
-	border: 1px solid #a4d9f9;
+	border: 1px solid #e68318;
 	background-color: #fff;
 	font-size: .8rem;
 }
@@ -169,6 +192,7 @@ nav a {
 	font-weight: bold;
 	font-size: .8rem;
 	&:hover {
+		color: #e68318;
 		text-decoration: none;
 	}
 }
@@ -270,7 +294,7 @@ main {
 	overflow: hidden;
 }
 
-.profile-links, .chirp-content {
+.profile-links, .post-content {
 	margin-left: 5px;
 }
 
@@ -302,12 +326,16 @@ main {
 	font-size: .8rem;
 	color: #8c8c8c;
 	font-weight: bold;
+	&:hover {
+		color: #e68318;
+	}
 }
 
 .profile-stat-number {
 	font-size: 1.3rem;
 	font-weight: bold;
 	line-height: .8rem;
+	color: #e68318;
 }
 
 .trending, .suggestions {
@@ -317,7 +345,7 @@ main {
 	height: 400px;
 }
 
-.chirps-feed {
+.posts-feed {
 	margin-left: 10px;
 	margin-right: 10px;
 }
@@ -347,13 +375,13 @@ main {
 	margin-top: 15px;
 }
 
-/* chirps */
+/* posts */
 
-button.chirp {
+button.post {
 	margin: 0 !important;
 }
 
-.chirp {
+.post {
 	width: 100%;
 	border: none;
 	border-radius: 5px;
@@ -361,42 +389,71 @@ button.chirp {
 	background-color: #fff;
 }
 
-.chirp-avatar {
+.post-avatar {
 	border-radius: 25px;
 }
 
-.chirp-content {
+.post-name {
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #000;
+	&:hover {
+		color: #000;
+	}
+}
+
+.post-username {
+	color: #8c8c8c;
+	&:hover {
+		color: #8c8c8c;
+	}
+}
+
+.post-date {
+	color: #8c8c8c;
+}
+
+.post-content {
 	text-align: left;
+	& p > a {
+		color: #e68318;
+	}
 }
 
-.chirp-footer {
+.post-footer {
 	padding-top: 10px;
+	& a {
+		color: #e68318;
+		&:hover {
+			color: #b36512;
+		}
+	}
 }
 
-.chirp-context {
+.post-context {
 	color: #8c8c8c;
 	margin: 0px;
 }
 
-.chirp-divider {
+.post-divider {
 	margin: 0px;
 }
 
-.chirp-excerpt {
+.post-excerpt {
 	border-radius: 5px;
 	border: 1px solid #eaeaea;
 	padding: 10px;
 }
 
-.chirp-header {
+.post-header {
 	margin: 0 0 5px 35px;
 }
 
-.chirp-likes {
+.post-likes {
 	display: inline;
 }
 
-.chirp-reply {
+.post-reply {
 	margin-top: 10px;
 }
 
@@ -420,7 +477,7 @@ button.chirp {
 
 .message-form-content, .form-content {
 	border-radius: 10px;
-	border: 2px solid #a4d9f9;
+	border: 2px solid #e68318;
 }
 
 .message-form-content {
@@ -438,7 +495,7 @@ button.chirp {
 
 .message-to {
 	border-radius: 25px 25px 0 25px;
-	background-color: #007bff;
+	background-color: #e68318;
 	color: #fff;
 }
 
@@ -465,20 +522,20 @@ button.chirp {
 
 /* forms */
 
-.chirp-form, .message-form {
+.post-form, .message-form {
 	padding: 10px;
 	padding-bottom: 5px;
-	background-color: #e8f5fd;
+	background-color: #fcf3e8;
 }
 
 .form-align-right {
 	padding-left: 25px;
 }
 
-.reply-form, .rechirp-form {
+.reply-form, .repost-form {
 	width: 100%;
 	padding: 20px;
-	background-color: #e8f5fd;
+	background-color: #fcf3e8;
 }
 
 /* modals */

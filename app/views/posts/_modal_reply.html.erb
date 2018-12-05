@@ -1,0 +1,38 @@
+<div class="modal-header">
+	<h5 class="text-center">Reply to <%= @parent.user.name %></h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <i class="fas fa-times"></i>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="row no-gutters modal-padding-20">
+		<div class="col-auto">
+			<%= link_to @parent.user do %>
+				<%= image_tag @parent.user.avatar.url, class: "profile-pic-sm" %>
+			<% end %>
+		</div>
+		<div class="post-content col">
+			<%= link_to @parent.user.name, @parent.user, class: "post-name" %> <%= link_to "@#{@parent.user.username}", @parent.user, class: "post-username" %><span class="post-date"> · <%= time_ago_in_words(@parent.created_at) %></span>
+			<p>
+				<%= markdown(@parent.content) %>
+			</p>
+			<%= image_tag @parent.picture.url if @parent.picture? %>
+		</div>
+	</div>
+	<div class="reply-form">
+		<p>Replying to <%= link_to "@#{@parent.user.username}", @parent.user %></p>
+		<%= form_for(@post, html: { multipart: true }) do |f| %>
+			<%= f.hidden_field :parent_id %>
+			<%= f.hidden_field :reference_id %>
+			<div class="form-group row no-gutters">
+				<div class="col post-content">
+					<%= f.text_area :content, class: 'form-control form-content', placeholder: "What's happening?", rows: '1' %>
+				</div>
+			</div>
+			<div class="postFormFooter clearfix">
+				<%= f.file_field :picture, accept: 'image/*', id: "postPictureUpload", class: "d-none" %>
+				<%= f.submit "Post", class: "btn-primary btn-round btn-no-border float-right" %>
+			</div>
+		<% end %>
+	</div>
+</div>

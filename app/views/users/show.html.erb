@@ -13,9 +13,9 @@
 	<!-- Chirps -->
 	<div class="col-lg-6 col-sm-8">
 		<!-- Chirps if any -->
-		<%= render @user.chirps %>
+		<%= render @user.posts %>
 		<div class="pagination">
-			<%= will_paginate @chirps, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+			<%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 			
 		</div>
 	</div>

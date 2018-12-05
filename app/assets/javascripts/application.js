@@ -19,7 +19,7 @@
 //= require jquery.easy-autocomplete
 //= require jquery.carat
 //= require jquery.atwho
-//= require chirps
+//= require posts
 //= require popper
 //= require bootstrap
 //= require_tree .

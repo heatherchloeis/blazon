@@ -10,11 +10,11 @@
 		<%= render "partials/profile_info_lrg" %>
 		<%= render "partials/profile_album" %>
 	</aside>
-	<!-- Chirps -->
+	<!-- Posts -->
 	<div class="col-lg-6 col-sm-8">
-		<% @chirps.each do |chirp| %>
-			<div class="users liked-chirps">
-				<%= render 'chirps/chirp', chirp: chirp %>
+		<% @posts.each do |post| %>
+			<div class="users liked-posts">
+				<%= render 'posts/post', post: post %>
 			</div>
 		<% end %>
 	</div>

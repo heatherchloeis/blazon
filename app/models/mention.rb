@@ -10,12 +10,12 @@ class Mention < ApplicationRecord
 		end
 	end
 
-	def self.create_from_text(chirp)
-		potential_matches = chirp.content.scan(/@\w+/i)
+	def self.create_from_text(post)
+		potential_matches = post.content.scan(/@\w+/i)
 		potential_matches.uniq.map do |match|
 			mention = Mention.create_from_match(match)
 			next unless mention
-			chirp.update_attributes!(content: mention.markdown_string(chirp.content))
+			post.update_attributes!(content: mention.markdown_string(post.content))
 			mention
 		end.compact
 	end

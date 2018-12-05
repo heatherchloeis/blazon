@@ -13,18 +13,18 @@ Rails.application.routes.draw do
 
   resources :users do 
     member do
-      get :following, :followers, :liked_chirps
+      get :following, :followers, :liked_posts
     end
   end
-  resources :chirps do
-    get 'chirps/edit',  to: 'chirps#edit',          as: :patch
-    get 'chirps/show',  to: 'chirps#show'
+  resources :posts do
+    get 'posts/edit',  to: 'posts#edit',          as: :patch
+    get 'posts/show',  to: 'posts#show'
     member do
-      put 'like',       to: "chirps#like"
-      put 'unlike',     to: "chirps#unlike"
-      get 'reply',      to: "chirps#reply",         as: 'reply'
-      get 'rechirp',    to: "chirps#rechirp",       as: 'rechirp'
-      post 'modal_create',    to: 'chirps#modal_create',     as: 'modal_create'
+      put 'like',       to: "posts#like"
+      put 'unlike',     to: "posts#unlike"
+      get 'reply',      to: "posts#reply",         as: 'reply'
+      get 'repost',    to: "posts#repost",       as: 'repost'
+      post 'modal_create',    to: 'posts#modal_create',     as: 'modal_create'
     end
   end
   resources :conversations do

@@ -14,8 +14,8 @@
 			</div>
 		</aside>
 		<div class="col-lg-6 col-sm-8">
-			<div class="chirp-form form-align-right">
-				<%= render 'forms/chirp_form' %>
+			<div class="post-form form-align-right">
+				<%= render 'forms/post_form' %>
 			</div>
 			<%= render 'users/feed' %>
 		</div>
@@ -25,7 +25,7 @@
 			</div>
 			<div class="footer">
 				<small>
-					&copy; 2018 Canary	&nbsp;
+					&copy; 2018 Blazon	&nbsp;
 					<%= link_to "About", about_path %>	&nbsp;
 					<%= link_to "Help Center", help_path %> &nbsp;
 					<%= link_to "Terms", "" %>	&nbsp;
@@ -40,7 +40,8 @@
 	</div>
 <% else %>
 	<div class="center jumbotron">
-		<h1 class="text-center">Canary</h1>
+		<%= image_tag asset_path("blazon_icon_orange.png"), class: "logo" %>
+		<h1 class="text-center">Blazon</h1>
 		<h2 class="text-center">Welcome!</h2>
 		<%= link_to "Sign up now!", signup_path, class: "btn-lrg btn-primary btn-round btn-no-border center-horizontal" %>
 	</div>

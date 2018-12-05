@@ -1,0 +1,9 @@
+<div class="modal-body">
+	<% if !@post.reference_id.nil? %>
+		<%= render 'posts/modal_post_repost', post: @post %>
+	<% elsif !@post.parent_id.nil? %>
+		<%= render 'posts/modal_post_reply', post: @post %>
+	<% else %>
+		<%= render 'posts/modal_post', post: @post %>
+	<% end %>
+</div>

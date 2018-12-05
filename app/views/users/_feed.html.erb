@@ -1,8 +1,8 @@
 <% if @feed_items.any? %>
-	<div class="chirps">
+	<div class="posts">
 		<% @feed_items.each do |item| %>
-			<%= render 'chirps/chirp', chirp: item %>
-			<hr class="chirp-divider">
+			<%= render 'posts/post', post: item %>
+			<hr class="post-divider">
 		<% end %>
 	</div>
 	<div class="pagination">

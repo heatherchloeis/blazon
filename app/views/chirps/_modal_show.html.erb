@@ -1,9 +1,0 @@
-<div class="modal-body">
-	<% if !@chirp.reference_id.nil? %>
-		<%= render 'chirps/modal_chirp_rechirp', chirp: @chirp %>
-	<% elsif !@chirp.parent_id.nil? %>
-		<%= render 'chirps/modal_chirp_reply', chirp: @chirp %>
-	<% else %>
-		<%= render 'chirps/modal_chirp', chirp: @chirp %>
-	<% end %>
-</div>

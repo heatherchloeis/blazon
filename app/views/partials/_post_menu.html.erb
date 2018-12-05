@@ -1,0 +1,11 @@
+<% if current_user?(post.user) %>
+	<a class="float-right" data-toggle="dropdown" id="postMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<%= icon('fas', 'angle-down') %>
+	</a>
+	<div class="dropdown-menu" aria-labelledby="postMenuButton">
+		<!-- Edit modal path -->
+		<%= link_to "Edit post", edit_post_path(post), class: "dropdown-item", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
+		<!-- Edit modal path -->
+		<%= link_to "Delete post", post, class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
+	</div>
+<% end %>

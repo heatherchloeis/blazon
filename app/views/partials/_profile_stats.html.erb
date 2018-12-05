@@ -2,7 +2,7 @@
 <div class="row padding-10 ">
 	<div class="col col-sm-auto">
 		<%= link_to current_user, class: "profile-stat-link"  do %>
-			<span class="profile-stat-heading">Chirps</span><br><span class="profile-stat-number"><%= @user.chirps.count %></span>
+			<span class="profile-stat-heading">Posts</span><br><span class="profile-stat-number"><%= @user.posts.count %></span>
 		<% end %>
 	</div>
 	<div class="col col-sm-4">

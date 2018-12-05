@@ -1,0 +1,9 @@
+<%= button_to post_path(post), class: "post", remote: true, method: :get, data: { target: '#modal_container', toggle: 'modal' } do %>
+	<% if !post.reference_id.nil? %>
+		<%= render 'posts/post_repost', post: post %>
+	<% elsif !post.parent_id.nil? %>
+		<%= render 'posts/post_reply', post: post %>
+	<% else %>
+		<%= render 'posts/post_original', post: post %>
+	<% end %>
+<% end %>

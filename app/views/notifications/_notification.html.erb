@@ -1,10 +1,10 @@
 <% if notification.sender.id != current_user.id %>
 	<% if notification.n_type == "like" %>
-		<%= link_to "#{notification.sender.username} liked your chirp · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
+		<%= link_to "#{notification.sender.username} liked your post · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
 	<% elsif notification.n_type == "reply" %>
-		<%= link_to "#{notification.sender.username} replied to your chirp · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
-	<% elsif notification.n_type == "rechirp" %>
-		<%= link_to "#{notification.sender.username} rechirped your chirp · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
+		<%= link_to "#{notification.sender.username} replied to your post · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
+	<% elsif notification.n_type == "repost" %>
+		<%= link_to "#{notification.sender.username} reposted your post · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
 	<% elsif notification.n_type == "message" %>
 		<%= link_to "#{notification.sender.username} sent you a message · #{time_ago_in_words(notification.created_at)}", notification_link_through_path(notification_id: notification.id), class: "dropdown-item" %>
 	<% end %>

@@ -1,9 +1,0 @@
-<%= button_to chirp_path(chirp), class: "chirp", remote: true, method: :get, data: { target: '#modal_container', toggle: 'modal' } do %>
-	<% if !chirp.reference_id.nil? %>
-		<%= render 'chirps/chirp_rechirp', chirp: chirp %>
-	<% elsif !chirp.parent_id.nil? %>
-		<%= render 'chirps/chirp_reply', chirp: chirp %>
-	<% else %>
-		<%= render 'chirps/chirp_original', chirp: chirp %>
-	<% end %>
-<% end %>

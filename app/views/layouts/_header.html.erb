@@ -9,8 +9,9 @@
         <%= icon('far', 'envelope') %><span class="d-none d-md-inline"> Messages</span>
       <% end %>
     <% end %>
-    <%= link_to root_path, id: "logo", class: "navbar-brand center-horizontal" do %> 
-      <%= icon('fas', 'feather') %>
+    <%= link_to root_path, class: "navbar-brand center-horizontal" do %> 
+      <%= image_tag asset_path("blazon_icon_dark.png"), class: "dark-icon" %>
+      <%= image_tag asset_path("blazon_icon_light.png"), class: "light-icon" %>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,7 +37,7 @@
             </div>
           </li>
           <li class="nav-item align-self-center">
-            <%= button_to "Chirp", modal_create_chirp_path(current_user), class: "btn-primary btn-round btn-no-border", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
+            <%= button_to "Post", modal_create_post_path(current_user), class: "btn-primary btn-round btn-no-border", remote: true, data: { target: '#modal_container', toggle: 'modal' } %>
           </li>
         <% else %>
           <li class="nav-item"><%= link_to "Log in", login_path, class: "nav-link" %></li>

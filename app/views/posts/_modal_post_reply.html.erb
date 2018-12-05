@@ -1,0 +1,44 @@
+<div class="modal-body modal-padding-20">
+<!-- Parent -->
+	<%= render 'posts/post_parent', post: post.parent %>
+<!-- child-->
+	<!-- Post header -->
+	<div class="row no-gutters post-reply">
+		<!-- User image -->
+		<div class="col-auto">
+			<%= link_to post.user do %>
+				<%= image_tag post.user.avatar.url, class: "profile-pic-sm" %>
+			<% end %>
+		</div>
+		<!-- User name and username -->
+		<div class="post-content col">
+			<%= link_to post.user.name, post.user, class: "post-name" %><br>
+			<%= link_to "@#{post.user.username}", post.user, class: "post-username" %>
+		</div>
+	</div>
+	<!-- Post content -->
+	<div class="row">
+		<div class="col">
+			<h2><%= markdown(post.content) %></h2>
+			<%= image_tag post.picture.url if post.picture? %>
+		</div>
+	</div>
+	<hr>
+	<!-- Post created at date -->
+	<div class="row">
+		<div class="col post-date">
+			<%= post.created_at.strftime("%I:%M %p - %d %b %Y") %>
+		</div>
+	</div>
+	<hr>
+	<%= render 'partials/post_footer', post: post %>
+	<hr>
+	<!-- Comments section -->
+	<div class="row">
+		<div class="col">
+			<% post.children.each do |child| %>
+				<%= render 'post', post: child %>
+			<% end %>
+		</div>
+	</div>
+</div>

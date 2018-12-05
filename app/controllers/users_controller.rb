@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
 		@user = User.friendly.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    @chirps = @user.chirps.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page])
 	end
 
   def new
@@ -67,10 +67,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def liked_chirps
-    @title = "Liked chirps"
+  def liked_posts
+    @title = "Liked posts"
     @user = User.friendly.find(params[:id])
-    @chirps = @user.find_liked_items
+    @posts = @user.find_liked_items
     render 'show_likes'
   end
 

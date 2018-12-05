@@ -27,11 +27,11 @@
     <% if user.id != current_user.id %>
       <div class="row no-gutters profile-info-sm">
         <div class="col-auto">
-          <%= link_to gravatar_for(user, size: 75), user %>
+          <%= image_tag user.avatar.url, class: "profile-pic-md" %>
         </div>
         <div class="col align-self-end profile-links">
-          <%= link_to user.name, user %><br>
-          <%= link_to "@#{user.username}", @user %>
+          <%= link_to user.name, user, class: "profile-links-name" %><br>
+          <%= link_to "@#{user.username}", @user, class: "profile-links-username" %>
         </div>
         <div class="col-auto align-self-end">
           <% if !current_user?(user) %>

@@ -12,20 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_12_02_211259) do
 
-  create_table "chirps", force: :cascade do |t|
-    t.text "content"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "picture"
-    t.string "ancestry"
-    t.integer "reference_id"
-    t.index ["ancestry"], name: "index_chirps_on_ancestry"
-    t.index ["reference_id"], name: "index_chirps_on_reference_id"
-    t.index ["user_id", "created_at"], name: "index_chirps_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_chirps_on_user_id"
-  end
-
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "recipient_id"
@@ -64,17 +50,31 @@ ActiveRecord::Schema.define(version: 2018_12_02_211259) do
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.integer "sender_id"
-    t.integer "chirp_id"
+    t.integer "post_id"
     t.integer "conversation_id"
     t.integer "identifier"
     t.string "n_type"
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chirp_id"], name: "index_notifications_on_chirp_id"
     t.index ["conversation_id"], name: "index_notifications_on_conversation_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "picture"
+    t.string "ancestry"
+    t.integer "reference_id"
+    t.index ["ancestry"], name: "index_posts_on_ancestry"
+    t.index ["reference_id"], name: "index_posts_on_reference_id"
+    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

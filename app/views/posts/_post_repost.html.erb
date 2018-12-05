@@ -1,0 +1,27 @@
+<div id="post-<%= post.id %>">
+	<div class="row post-header">
+		<small class="post-context"><%= icon('fas', 'retweet') %>
+			<% if current_user == post.user %>
+				You
+			<% else %>
+				<%= post.user.name %>
+			<% end %> Retweeted
+		</small>
+	</div>
+	<div class="row no-gutters">
+		<div class="col-auto">
+			<%= link_to post.user do %>
+				<%= image_tag post.user.avatar.url, class: "profile-pic-sm" %>
+			<% end %>
+		</div>
+		<div class="post-content col">
+			<%= link_to post.user.name, post.user, class: "post-name" %> <%= link_to "@#{post.user.username}", post.user, class: "post-username" %><span class="post-date"> · <%= time_ago_in_words(post.created_at) %></span>
+			<%= render 'partials/post_menu', post: post %>
+			<p>
+				<%= markdown(post.content) %>
+				<%= render 'posts/post_excerpt', post: Post.where(id: post.reference_id).first %>
+			</p>
+			<%= render 'partials/post_footer', post: post %>
+		</div>
+	</div>
+</div>

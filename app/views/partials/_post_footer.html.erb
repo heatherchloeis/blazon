@@ -1,0 +1,38 @@
+<div class="row post-footer">
+	<!-- comment btn and comment count -->
+	<div class="col-auto">
+		<%= link_to reply_post_path(current_user, parent_id: post.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+			<%= icon('far', 'comment') %> <%= post.children.size if post.children.size > 0 %>
+		<% end %>
+	</div>
+	<!-- Repost btn and repost count -->
+	<div class="col-auto">
+		<%= link_to repost_post_path(current_user, reference_id: post.id), remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+			<%= icon('fas', 'retweet') %> <%= count_reposts(post) %>
+		<% end %>
+	</div>
+	<!-- like btn and like count -->
+	<div class="col-auto">
+		<% if current_user.liked? post %>
+			<%= link_to unlike_post_path(post), method: :put do %>
+				<%= icon('fas', 'heart') %>
+				<% if post.get_likes.size > 0 %>
+					<%= post.get_likes.size %>
+				<% end %>
+			<% end %>
+		<% else %>
+			<%= link_to like_post_path(post), method: :put do %>
+				<%= icon('far', 'heart') %>
+				<% if post.get_likes.size > 0 %>
+					<%= post.get_likes.size %>
+				<% end %>		
+			<% end %>
+		<% end %>
+	</div>
+	<!-- Direct message btn -->
+	<div class="col-auto">
+		<%= link_to conversations_path(sender_id: current_user.id, recipient_id: post.user.id), method: :post do %>
+			<%= icon('far', 'envelope') %>
+		<% end %>
+	</div>
+</div>

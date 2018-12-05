@@ -10,7 +10,7 @@ module ApplicationHelper
 		end
 	end
 
-	# Styles @mentions when added to chirp content
+	# Styles @mentions when added to post content
 	def markdown(text)
 		renderer = Redcarpet::Render::SmartyHTML.new(filter_html: true,
 																								 hard_wrap: true,

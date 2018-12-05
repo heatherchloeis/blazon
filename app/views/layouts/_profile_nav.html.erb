@@ -2,10 +2,10 @@
 	<!-- Stats Bar -->
 	<nav class="navbar navbar-expand-xs col-xl-6 offset-xl-4 offset-lg-3 offset-sm-4 offset-5">
 		<ul class="navbar-nav flex-row">
-			<!--Chirp Count-->
+			<!--Post Count-->
 			<li class="nav-item profile-nav-item">
 				<%= link_to @user, class: "nav-link text-center" do %>
-					<span class="profile-stat-heading">Chirps</span><br><span class="profile-stat-number"><%= @user.chirps.count %></span>
+					<span class="profile-stat-heading">Posts</span><br><span class="profile-stat-number"><%= @user.posts.count %></span>
 				<% end %>
 			</li>
 			<!--Following Count-->
@@ -22,7 +22,7 @@
 			</li>
 			<!--Likes Count-->
 			<li class="nav-item profile-nav-item">
-				<a href="<%= liked_chirps_user_path(@user) %>" class="nav-link text-center">
+				<a href="<%= liked_posts_user_path(@user) %>" class="nav-link text-center">
 					<span class="profile-stat-heading">Likes</span><br><span class="profile-stat-number"><%= @user.find_liked_items.count %></span>
 				</a>
 			</li>

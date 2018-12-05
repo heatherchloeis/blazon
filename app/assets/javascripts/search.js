@@ -2,7 +2,7 @@
 	"use strict";
 
 	document.addEventListener("turbolinks:load", function() {
-		var input = $(".search[data-behavior='autocomplete']")
+		var input = $("[data-behavior='autocomplete']")
 
 		var options = {
 			getValue: "user",

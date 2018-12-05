@@ -1,4 +1,5 @@
 # Create users
+require 'faker'
 
 User.create!(name: "Vesemir of Kaer Mohren",
 						 email: "vesemir@kaermohren.com",
@@ -7,7 +8,7 @@ User.create!(name: "Vesemir of Kaer Mohren",
 						 password_confirmation: "backinmyday",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
 						 birthdate: Date.current.strftime("%m/%d/%Y"),
 						 location: "Kaer Mohren, WCH",
 						 activated_at: Time.zone.now)
@@ -19,7 +20,7 @@ User.create!(name: "Cirilla of Cintra",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
 						 birthdate: Date.current.strftime("%m/%d/%Y"),
 						 location: "Cintra, WCH",
 						 activated_at: Time.zone.now)
@@ -31,7 +32,7 @@ User.create!(name: "Geralt of Rivia",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
 						 birthdate: Date.current.strftime("%m/%d/%Y"),
 						 location: "Rivia, WCH",
 						 activated_at: Time.zone.now)
@@ -43,7 +44,7 @@ User.create!(name: "Roach",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
 						 birthdate: Date.current.strftime("%m/%d/%Y"),
 						 location: "Rivia, WCH",
 						 activated_at: Time.zone.now)
@@ -55,7 +56,7 @@ User.create!(name: "Triss Merigold",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
 						 birthdate: Date.current.strftime("%m/%d/%Y"),
 						 location: "Maribor, WCH",
 						 activated_at: Time.zone.now)
@@ -67,15 +68,16 @@ User.create!(name: "Yennifer of Vengerberg",
 					   password_confirmation: "password",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.paragraph_by_chars(300),
+						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
 						 birthdate: Date.current.strftime("%m/%d/%Y"),
 						 location: "Vengerberg, WCH",
 						 activated_at: Time.zone.now)
 
 99.times do |n|
-	name = Faker::Name.name
-	email = Faker::Internet.email
-	username = Faker::Internet.username
+	name = Faker::Name.unique.name
+	email = Faker::Internet.unique.email
+	username = Faker::Internet.unique.username
+	bio = Faker::Lorem.unique.paragraph_by_chars(140)
 	password = "password"
 	User.create!(name: name,
 							 email: email,
@@ -83,19 +85,35 @@ User.create!(name: "Yennifer of Vengerberg",
 							 password: password,
 							 password_confirmation: password,
 							 activated: true,
-						 	 bio: Faker::Lorem.paragraph_by_chars(300),
+						 	 bio: bio,
 						   birthdate: Date.current.strftime("%m/%d/%Y"),
 						   location: "California, USA",
 							 activated_at: Time.zone.now)
 end
 
-# Create chirps
+# 99.times do |n|
+# 	Faker.define :user do |u|
+# 		u.name { Faker::Name.unique.name }
+# 		u.username { Faker::Internet.unique.username }
+# 		u.email { Faker::Internet.unique.email }
+# 		u.password "password"
+# 		u.password_confirmation "password"
+# 		u.activated true
+# 		u.bio { Faker::Lorem.paragraph_by_chars(140) }
+# 		u.birthdate Date.current.strftime("%m/%d/%Y")
+# 		u.location "California, USA"
+# 		u.activated_at Time.zone.now
+# 	end
+# 	User.create!(:user)
+# end
+
+# Create posts
 
 users = User.order(:created_at).take(6)
 
 50.times do
 	content = Faker::Lorem.sentence(5)
-	users.each { |user| user.chirps.create!(content: content) }
+	users.each { |user| user.posts.create!(content: content) }
 end
 
 # Create following/followers
