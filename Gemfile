@@ -43,6 +43,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'carrierwave-aws'
 gem 'aws-sdk-rails'
 gem 'figaro'
+gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -51,8 +52,7 @@ gem 'figaro'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
+	# Use sqlite3 as the database for Active Record	
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
