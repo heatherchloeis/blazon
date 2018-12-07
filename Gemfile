@@ -40,6 +40,9 @@ gem 'ransack'
 gem 'jquery-atwho-rails'
 gem 'redcarpet'
 gem 'friendly_id', '~> 5.2.4'
+gem 'carrierwave-aws'
+gem 'aws-sdk-rails'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -67,7 +70,7 @@ group :test do
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'chromedriver-helper', '1.2.0'
   gem 'rails-controller-testing', '1.0.2'
   # gem 'minitest', '5.10.3'
   # gem 'minitest-reporters', '1.1.14'
@@ -77,7 +80,6 @@ end
 
 group :production do
 	gem 'pg', '0.20.0'
-	gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

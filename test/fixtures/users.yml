@@ -8,7 +8,7 @@ cirilla:
   activated_at: <%= Time.zone.now %>
   bio: Faker::Lorem.sentence(3)
   birthdate: Date.current.strftime("%m/%d/%Y")
-  location: "Kaer Mohren, WCH"
+  location: Kaer Mohren, WCH
 
 geralt:
   name: Geralt of Rivia
@@ -19,7 +19,7 @@ geralt:
   activated_at: <%= Time.zone.now %>
   bio: Faker::Lorem.sentence(3)
   birthdate: Date.current.strftime("%m/%d/%Y")
-  location: "Kaer Mohren, WCH"
+  location: Kaer Mohren, WCH
 
 roach:
   name: Roach
@@ -30,7 +30,7 @@ roach:
   activated_at: <%= Time.zone.now %>
   bio: Faker::Lorem.sentence(3)
   birthdate: Date.current.strftime("%m/%d/%Y")
-  location: "Kaer Mohren, WCH"
+  location: Kaer Mohren, WCH
 
 triss:
   name: Triss Merigold
@@ -41,7 +41,7 @@ triss:
   activated_at: <%= Time.zone.now %>
   bio: Faker::Lorem.sentence(3)
   birthdate: Date.current.strftime("%m/%d/%Y")
-  location: "Kaer Mohren, WCH"
+  location: Kaer Mohren, WCH
 
 yen:
   name: Yennifer of Vengerberg
@@ -52,4 +52,4 @@ yen:
   activated_at: <%= Time.zone.now %>
   bio: Faker::Lorem.sentence(3)
   birthdate: Date.current.strftime("%m/%d/%Y")
-  location: "Kaer Mohren, WCH"
+  location: Kaer Mohren, WCH
