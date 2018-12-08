@@ -5,7 +5,7 @@
 		function Post() {}
 
 		Post.add_atwho = function() {
-			return $(.chirp-content).atwho({
+			return $(".chirp-content").atwho({
 				at: '@',
 				displayTpl: "<li class='mention-item' data-value='(${name}, ${username})'>${name} @${username}</li>",
 				callbacks: {
