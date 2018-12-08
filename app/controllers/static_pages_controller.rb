@@ -12,6 +12,12 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-  def contact
+  def developer
+  end
+
+  def terms
+  end
+
+  def cookies
   end
 end

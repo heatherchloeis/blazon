@@ -1,8 +1,12 @@
 <%= form_for(@user, html: { multipart: true }) do |f| %>
 	<%= render 'partials/error_messages', object: f.object %>
+	<div class="row profile-cover-container" >
+		<%= image_tag @user.cover.url, class: "profile-cover-lg img-fluid" %>
+	</div>
+	<%= f.file_field :cover, class: "form-control-file" %>
 	<div class="row">
 		<div class="col-10 offset-1 col-sm-6 offset-sm-0">
-			<%= image_tag @user.avatar.url, class: "profile-pic-xl img-fluid" %>
+			<%= image_tag @user.avatar.url, class: "profile-pic-xl img-fluid mx-auto d-block" %>
 			<%= f.file_field :avatar, class: "form-control-file" %>
 		</div>
 		<div class="col-10 offset-1 col-sm-6 offset-sm-0">

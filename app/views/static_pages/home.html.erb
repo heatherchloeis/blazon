@@ -2,7 +2,7 @@
 	<div class="row">
 		<aside class="col-lg-3 col-sm-4">
 			<div class="profile">
-				<div class="row no-gutters">
+				<div class="row no-gutters profile-cover-sm-container">
 					<%= image_tag current_user.cover.url, class: "profile-cover-sm" %>
 				</div>
 				<%= render 'partials/profile_info_sm', @user => current_user %>
@@ -10,7 +10,7 @@
 			</div>
 			<div class="trending d-none d-sm-block">
 				<h5>Trends for you</h5>
-				<p>trending trending trending</p>
+				<p></p>
 			</div>
 		</aside>
 		<div class="col-lg-6 col-sm-8">
@@ -23,25 +23,13 @@
 			<div class="suggestions">
 				<h5>Who to follow</h5>
 			</div>
-			<div class="footer">
-				<small>
-					&copy; 2018 Blazon	&nbsp;
-					<%= link_to "About", about_path %>	&nbsp;
-					<%= link_to "Help Center", help_path %> &nbsp;
-					<%= link_to "Terms", "" %>	&nbsp;
-					<%= link_to "Privacy Policy", "" %>	&nbsp;
-					<%= link_to "Cookies", "" %>	&nbsp;
-					<%= link_to "Brand", "" %>	&nbsp;
-					<%= link_to "Status", "" %>	&nbsp;
-					<%= link_to "Developers", "" %>	&nbsp;
-				</small>
-			</div>
+			<%= render 'partials/footer' %>
 		</div>
 	</div>
 <% else %>
 	<div class="center jumbotron">
 		<%= image_tag asset_path("blazon_icon_orange.png"), class: "logo" %>
-		<h1 class="text-center">Blazon</h1>
+		<h1 class="text-center">blazon</h1>
 		<h2 class="text-center">Welcome!</h2>
 		<%= link_to "Sign up now!", signup_path, class: "btn-lrg btn-primary btn-round btn-no-border center-horizontal" %>
 	</div>
