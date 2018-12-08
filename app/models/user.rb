@@ -12,7 +12,7 @@ class User < ApplicationRecord
 						format: { with: /\A[a-zA-Z0-9_\.]+\z/ },
 						uniqueness: { case_sensitive: false }
 	validates :bio, length: { maximum: 500 }
-	validates :birthdate, presence: true, format: { with: /\A\d{2}\/\d{2}\/\d{4}\z/ }
+	validates :birthdate, presence: true, format: { with: /\A[a-zA-Z]{4,9}[ ]\d{2},[ ]\d{4}\z/ }
 	validates :location, presence: true, format: { with: /\A[a-zA-Z ]+,[ ][A-Z]{3}\z/ }
 
 	has_secure_password

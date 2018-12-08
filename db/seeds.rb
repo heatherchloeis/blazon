@@ -1,145 +1,26 @@
 # Create users
 require 'faker'
 
-User.create!(name: "Vesemir of Kaer Mohren",
-						 email: "vesemir@kaermohren.com",
-						 username: "vesemir",
-						 password: "backinmyday",
-						 password_confirmation: "backinmyday",
+User.create!(name: "Effy :•* ☆",
+						 email: "fawnnne@gmail.com",
+						 username: "fawnnne",
+						 password: "new12334",
+						 password_confirmation: "new12334",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
-						 birthdate: Date.current.strftime("%m/%d/%Y"),
-						 location: "Kaer Mohren, WCH",
+						 bio: "beep boop",
+						 birthdate: "June 10, 1991",
+						 location: "California, USA",
 						 activated_at: Time.zone.now)
 
-User.create!(name: "Cirilla of Cintra",
-					   username: "cirilla",
-					   email: "ciri@cintra.com",
-					   password: "password",
-					   password_confirmation: "password",
+User.create!(name: "Burnt",
+						 email: "DJCarrillo89@gmail.com",
+						 username: "burnt89",
+						 password: "new12334",
+						 password_confirmation: "new12334",
 						 admin: true,
 						 activated: true,
-						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
-						 birthdate: Date.current.strftime("%m/%d/%Y"),
-						 location: "Cintra, WCH",
+						 bio: "beep boop",
+						 birthdate: "June 09, 1989",
+						 location: "California, USA",
 						 activated_at: Time.zone.now)
-
-User.create!(name: "Geralt of Rivia",
-  					 username: "geralt",
-  					 email: "daddygeralt@rivia.com",
-					   password: "password",
-					   password_confirmation: "password",
-						 admin: true,
-						 activated: true,
-						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
-						 birthdate: Date.current.strftime("%m/%d/%Y"),
-						 location: "Rivia, WCH",
-						 activated_at: Time.zone.now)
-
-User.create!(name: "Roach",
-  					 username: "roach",
-  					 email: "roach_the_horse@rivia.com",
-					   password: "password",
-					   password_confirmation: "password",
-						 admin: true,
-						 activated: true,
-						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
-						 birthdate: Date.current.strftime("%m/%d/%Y"),
-						 location: "Rivia, WCH",
-						 activated_at: Time.zone.now)
-
-User.create!(name: "Triss Merigold",
-  					 username: "triss",
-  					 email: "triss_merigold@maribor.com",
-					   password: "password",
-					   password_confirmation: "password",
-						 admin: true,
-						 activated: true,
-						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
-						 birthdate: Date.current.strftime("%m/%d/%Y"),
-						 location: "Maribor, WCH",
-						 activated_at: Time.zone.now)
-
-User.create!(name: "Yennifer of Vengerberg",
-					   username: "yen",
-					   email: "yennifer@vengerberg.com",
-					   password: "password",
-					   password_confirmation: "password",
-						 admin: true,
-						 activated: true,
-						 bio: Faker::Lorem.unique.paragraph_by_chars(140),
-						 birthdate: Date.current.strftime("%m/%d/%Y"),
-						 location: "Vengerberg, WCH",
-						 activated_at: Time.zone.now)
-
-99.times do |n|
-	name = Faker::Name.unique.name
-	email = Faker::Internet.unique.email
-	username = Faker::Internet.unique.username
-	bio = Faker::Lorem.unique.paragraph_by_chars(140)
-	password = "password"
-	User.create!(name: name,
-							 email: email,
-							 username: username,
-							 password: password,
-							 password_confirmation: password,
-							 activated: true,
-						 	 bio: bio,
-						   birthdate: Date.current.strftime("%m/%d/%Y"),
-						   location: "California, USA",
-							 activated_at: Time.zone.now)
-end
-
-# 99.times do |n|
-# 	Faker.define :user do |u|
-# 		u.name { Faker::Name.unique.name }
-# 		u.username { Faker::Internet.unique.username }
-# 		u.email { Faker::Internet.unique.email }
-# 		u.password "password"
-# 		u.password_confirmation "password"
-# 		u.activated true
-# 		u.bio { Faker::Lorem.paragraph_by_chars(140) }
-# 		u.birthdate Date.current.strftime("%m/%d/%Y")
-# 		u.location "California, USA"
-# 		u.activated_at Time.zone.now
-# 	end
-# 	User.create!(:user)
-# end
-
-# Create posts
-
-users = User.order(:created_at).take(6)
-
-50.times do
-	content = Faker::Lorem.sentence(5)
-	users.each { |user| user.posts.create!(content: content) }
-end
-
-# Create following/followers
-
-users = User.all 
-
-vesemir = users.first
-ciri = users[1]
-geralt = users[2]
-roach = users[3]
-triss = users[4]
-yen = users[5]
-
-following = users[6..50]
-followers = users[6..40]
-
-following.each { |followed| vesemir.follow(followed) }
-following.each { |followed| ciri.follow(followed) }
-following.each { |followed| geralt.follow(followed) }
-following.each { |followed| roach.follow(followed) }
-following.each { |followed| triss.follow(followed) }
-following.each { |followed| yen.follow(followed) }
-
-followers.each { |follower| follower.follow(vesemir) }
-followers.each { |follower| follower.follow(ciri) }
-followers.each { |follower| follower.follow(geralt) }
-followers.each { |follower| follower.follow(roach) }
-followers.each { |follower| follower.follow(triss) }
-followers.each { |follower| follower.follow(yen) }

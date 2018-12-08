@@ -80,11 +80,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def format_birthdate
-    @user = User.friendly.find(params[:id])
-    birthdate = @user.birthdate.split("/")
-  end
-
   private
 
   	def user_params
