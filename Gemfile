@@ -10,7 +10,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '3.2.0'
 # # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'duktape'
 # Use CoffeeScript for .coffee assets and views
@@ -43,7 +43,6 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'carrierwave-aws'
 gem 'aws-sdk-rails'
 gem 'figaro'
-gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -53,6 +52,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
 	# Use sqlite3 as the database for Active Record	
+  gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
