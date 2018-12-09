@@ -1,6 +1,6 @@
-<h5 class="text-center"><%= User.find(@conversation.recipient_id).name %> @<%= User.find(@conversation.recipient_id).username %></h5>
+<h5 class="text-center"><span class="profile-links-name"><%= User.find(@conversation.recipient_id).name %></span> <span class="profile-links-username">@<%= User.find(@conversation.recipient_id).username %></span></h5>
 <div class="row no-gutters">
-  <div class="col-6 offset-3 message-field">
+  <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3 message-field">
 
       <% if @over_ten %>
         <%= link_to '?m=all', class: "message-previous" do %>
@@ -18,7 +18,7 @@
     
 
 <div class="row no-gutters">
-  <%= form_for [@conversation, @message], html: {class: "col-6 offset-3"} do |f| %>
+  <%= form_for [@conversation, @message], html: {class: "col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3"} do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="row no-gutters message-form">
       <%= f.text_area :body, class: "form-control message-form-content col", 'rows': '1' %>

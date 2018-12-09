@@ -11,6 +11,7 @@
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
     <% end %>
     <%= render 'layouts/header' %>
+    <%= render 'layouts/header_mobile' %>
     <%= render 'layouts/modal_container' %>
     <main class="col-lg-12 col-xl-8 offset-xl-2">
       <%= yield %>

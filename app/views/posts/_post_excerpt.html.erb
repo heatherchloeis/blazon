@@ -10,7 +10,7 @@
 			<p>
 				<%= markdown(post.content) %>
 			</p>
-			<%= image_tag post.picture.url if post.picture? %>
+			<%= image_tag post.picture.url, class: "img-fluid post-photo" if post.picture? %>
 		</div>
 	</div>
 </div>

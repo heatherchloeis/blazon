@@ -1,29 +1,18 @@
 <% provide(:title, "User Index") %>
 
-<h1 class="text-center">User Index</h1>
+<h1 class="text-center pre-logo black">User Index</h1>
 <div class="row">
 	<% @users.each do |user| %>
 		<div class="row no-gutters profile-info-sm">
-			<div class="profile-cover-sm-container">
-				<%= image_tag user.cover.url, class: "profile-cover-sm" %>				
-			</div>
-			<div class="col-auto">
-				<%= link_to user do %>
-					<%= image_tag user.avatar.url, class: "profile-pic-md" %>
-				<% end %>
-			</div>
-			<div class="col align-self-end profile-links">
-				<p>
-					<%= link_to user.name, user, class: "profile-links-name" %><br>
-					<%= link_to "@#{user.username}", @user, class: "profile-links-username" %>
-				</p>
-			</div>
-			<div class="col-auto align-self-end">
+			<%= render 'partials/profile_info_sm', user: user %>
+		  <div class="col self-align-end">
 				<% if current_user.admin? && !current_user?(user) %>
-					<%= button_to "delete", user, class: "btn-danger btn-round btn-no-border", method: :delete, data: { confirm: "Are you sure?" } %>
+					<%= button_to "delete", user, class: "btn-danger btn-round btn-no-border follow-button", method: :delete, data: { confirm: "Are you sure?" } %>
 				<% end %>
 			</div>
-			<p><%= truncate user.bio, length: 70 %></p>
+			<div class="col-12">
+				<p class="padding-10"><%= truncate user.bio, length: 70 %></p>
+			</div>
 		</div>
 	<% end %>
 </div>

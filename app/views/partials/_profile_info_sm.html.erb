@@ -1,11 +1,14 @@
+<div class="row no-gutters profile-cover-sm-container">
+	<%= image_tag current_user.cover.url, class: "profile-cover-sm" %>
+</div>
 <div class="row no-gutters padding-10">
 	<div class="col-auto">
-		<%= link_to current_user do %>
-			<%= image_tag current_user.avatar.url, class: "profile-pic-md" %>
+		<%= link_to user do %>
+			<%= image_tag user.avatar.url, class: "profile-pic-md" %>
 		<% end %>
 	</div>
 	<div class="col align-self-end profile-links">
-		<%= link_to current_user.name, current_user, class: "profile-links-name" %><br>
-		<%= link_to "@#{current_user.username}", current_user, class: "profile-links-username" %>
+		<%= link_to user.name, user, class: "profile-links-name" %><br>
+		<%= link_to "@#{user.username}", user, class: "profile-links-username" %>
 	</div>
 </div>

@@ -2,10 +2,7 @@
 	<div class="row">
 		<aside class="col-lg-3 col-sm-4">
 			<div class="profile">
-				<div class="row no-gutters profile-cover-sm-container">
-					<%= image_tag current_user.cover.url, class: "profile-cover-sm" %>
-				</div>
-				<%= render 'partials/profile_info_sm', @user => current_user %>
+				<%= render 'partials/profile_info_sm', user: current_user %>
 				<%= render 'partials/profile_stats' %>
 			</div>
 			<div class="trending d-none d-sm-block">
@@ -19,8 +16,8 @@
 			</div>
 			<%= render 'users/feed' %>
 		</div>
-		<div class="col-3 d-none d-lg-block">
-			<div class="suggestions">
+		<div class="col-lg-3 col-12">
+			<div class="d-none d-lg-block suggestions">
 				<h5>Who to follow</h5>
 			</div>
 			<%= render 'partials/footer' %>
@@ -29,8 +26,5 @@
 <% else %>
 	<div class="center jumbotron">
 		<%= image_tag asset_path("blazon_icon_orange.png"), class: "icon" %>
-		<p class="text-center pre-logo black">Welcome!</p>
-		<p class="text-center logo black">blazon</p>
-		<%= link_to "Sign up now!", signup_path, class: "btn-lrg btn-primary btn-round btn-no-border center-horizontal" %>
 	</div>
 <% end %>

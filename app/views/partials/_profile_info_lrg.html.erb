@@ -1,11 +1,13 @@
 <div class="profile-info-lrg">
 	<%= image_tag @user.avatar.url, class: "profile-pic-lg" %>
-	<div class="">
-		<%= link_to @user.name, @user, class: "profile-links-name" %></span><br>
-		<%= link_to "@#{@user.username}", @user, class: "profile-links-username" %></span>
-		<p><%= @user.bio %></p>
-		<p><%= icon('fas', 'map-marker-alt') %> <%= @user.location %></p>
-		<p><%= icon('far', 'calendar-alt') %> Joined <%= @user.created_at.strftime("%B %Y") %></p>
-		<p><%= icon('fas', 'birthday-cake') %> Born <%= @user.birthdate %></p>
+	<div class="row no-gutters">
+		<p><%= link_to @user.name, @user, class: "profile-links-name" %><br>
+		<%= link_to "@#{@user.username}", @user, class: "profile-links-username" %></p>
+		<p class="col-12"><%= @user.bio %></p>
+		<p class="col-12"><%= icon('fas', 'map-marker-alt') %> <%= @user.location %></p>
+		<p class="col-sm-12 col-6"><%= icon('far', 'calendar-alt') %> Joined <%= @user.created_at.strftime("%B %Y") %></p>
+		<p class="col-sm-12 col-6"><%= icon('fas', 'birthday-cake') %> Born <%= @user.birthdate.strftime("%B %d, %Y") %></p>
+		<p class="d-block d-sm-none col-6"><b><%= @user.followers.count %></b> Followers</p>
+		<p class="d-block d-sm-none col-6"><b><%= @user.following.count %></b> Following</p>
 	</div>
 </div>

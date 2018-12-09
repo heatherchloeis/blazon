@@ -10,7 +10,7 @@
 			<%= render 'partials/post_menu', post: post %>
 			<p class="post-context">Replying to <%= link_to "@#{Post.where(id: post.parent_id).first.user.username}", User.where(id: post.parent_id).first %></p>
 			<p><%= markdown(post.content) %></p>
-			<%= image_tag post.picture.url if post.picture? %>
+			<%= image_tag post.picture.url, class: "img-fluid post-photo" if post.picture? %>
 			<%= render 'partials/post_footer', post: post %>
 		</div>
 	</div>

@@ -21,9 +21,9 @@
 				<div class="post-content col">
 					<%= link_to @reference.user.name, @reference.user, class: "post-name" %> <%= link_to "@#{@reference.user.username}", @reference.user, class: "post-username" %><span class="post-date"> · <%= time_ago_in_words(@reference.created_at) %></span>
 					<p>
-						<%= markdown(@reference.content) %>
+						<%= markdown(post.content) %>
 					</p>
-					<%= image_tag @reference.picture.url if @reference.picture? %>
+					<%= image_tag post.picture.url, class: "img-fluid post-photo" if post.picture? %>
 				</div>
 			</div>
 			<%= f.submit "Post", class: "btn-primary btn-round btn-no-border float-right" %>

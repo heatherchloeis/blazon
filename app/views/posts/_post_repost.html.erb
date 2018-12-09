@@ -19,6 +19,7 @@
 			<%= render 'partials/post_menu', post: post %>
 			<p>
 				<%= markdown(post.content) %>
+				<%= image_tag post.picture.url, class: "img-fluid post-photo" if post.picture? %>
 				<%= render 'posts/post_excerpt', post: Post.where(id: post.reference_id).first %>
 			</p>
 			<%= render 'partials/post_footer', post: post %>

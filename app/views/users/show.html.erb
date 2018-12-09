@@ -16,11 +16,10 @@
 		<%= render @user.posts %>
 		<div class="pagination">
 			<%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-			
 		</div>
 	</div>
 	<!-- Who to follow??? -->
-	<div class="col-3 d-none d-lg-block suggestions">
-		<h3>Who to follow</h3>
+	<div class="col-lg-3 d-none d-lg-block suggestions">
+		<h5>Who to follow</h5>
 	</div>
 </div>

@@ -11,7 +11,6 @@
 			},
 			categories: [
 				{
-
 					listLocation: "users",
 				}
 			],

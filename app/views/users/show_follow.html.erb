@@ -6,28 +6,24 @@
 <%= render 'layouts/profile_nav' %>
 <div class="row">
 	<!-- User profile -->
-	<aside class="col-lg-3 col-4">
+	<aside class="col-lg-3 col-sm-4">
 		<%= render "partials/profile_info_lrg" %>
 		<%= render "partials/profile_album" %>
 	</aside>
 	<!-- Followers/Following -->
-	<div class="col-lg-9 col-8">
+	<div class="col-lg-9 col-sm-8 col-12">
 		<h3><%= @title %></h3>
 		<div class="row">
 			<% @users.each do |user| %>
-				<div class="profile-info-sm">
-					<div class="profile-cover-sm-container">
-						<%= image_tag user.cover.url, class: "profile-cover-sm" %>				
-					</div>
-						<%= link_to user do %>
-							<%= image_tag user.avatar.url, class: "profile-pic-md" %>
-						<% end %>
-						<p>
-							<%= link_to user.name, user, class: "profile-links-name" %><br>
-							<%= link_to "@#{user.username}", user, class: "profile-links-username" %>
-						</p>
-						<p><%= truncate user.bio, length: 70 %></p>
-				</div>
+	      <div class="row no-gutters profile-info-follow">
+		      <%= render 'partials/profile_info_sm', user: user %>
+	        <div class="col self-align-end">
+	        	<%= render 'forms/full_follow_form', user: user %>
+	        </div>
+		     	<div class="col-12">
+		     		<p class="padding-10"><%= user.bio %></p>
+		     	</div>
+	      </div>
 			<% end %>
 		</div>
 	</div>

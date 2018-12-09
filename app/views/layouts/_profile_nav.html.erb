@@ -1,6 +1,6 @@
-<div class="navbar-light bg-light row profile-nav">
+<div class="navbar-dark bg-dark row profile-nav">
 	<!-- Stats Bar -->
-	<nav class="navbar navbar-expand-xs col-xl-6 offset-xl-4 offset-lg-3 offset-sm-4 offset-5">
+	<nav class="navbar col-xl-6 offset-xl-4 offset-lg-3 offset-sm-4 offset-5 d-none d-sm-block">
 		<ul class="navbar-nav flex-row">
 			<!--Post Count-->
 			<li class="nav-item profile-nav-item">
@@ -27,12 +27,14 @@
 				</a>
 			</li>
 		</ul>
-		<!--Follow/Unfollow || Edit Profile-->				
+	</nav>
+	<!--Follow/Unfollow || Edit Profile-->
+	<div class="profile-nav-button">		
 		<% if (current_user == @user) %>
-			<%= button_to "Edit profile", edit_user_path(current_user), method: :get, class: "btn-round btn-outline-dark float-right" %>
+			<%= button_to "Edit profile", edit_user_path(current_user), method: :get, class: "btn-round btn-no-border btn-primary" %>
 		<% elsif logged_in? %>
 			<%= render 'forms/follow_form' %>
 		<% end %>
-	</nav>	
+	</div>
 	<div class="col-xl-2 d-none d-xl-block"></div>
 </div>

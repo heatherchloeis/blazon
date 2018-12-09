@@ -1,15 +1,21 @@
 <%= form_for(@user, html: { multipart: true }) do |f| %>
 	<%= render 'partials/error_messages', object: f.object %>
-	<div class="row profile-cover-container" >
-		<%= image_tag @user.cover.url, class: "profile-cover-lg img-fluid" %>
+	<div class="profile-cover-container">
+		<%= image_tag @user.cover.url, class: "profile-cover-lg" %>
 	</div>
-	<%= f.file_field :cover, class: "form-control-file" %>
 	<div class="row">
-		<div class="col-10 offset-1 col-sm-6 offset-sm-0">
+		<div class="col-12 col-sm-6 offset-sm-0">
+			<%= f.label :avatar, class: "file-container" do %>
+				<span class="file-container-label"><%= icon('fas', 'camera') %> update cover photo</span>
+				<%= f.file_field :cover, class: "form-control-file" %>
+			<% end %>
 			<%= image_tag @user.avatar.url, class: "profile-pic-xl img-fluid mx-auto d-block" %>
-			<%= f.file_field :avatar, class: "form-control-file" %>
+			<%= f.label :avatar, class: "file-container" do %>
+				<span class="file-container-label"><%= icon('fas', 'camera') %> update profile photo</span>
+				<%= f.file_field :avatar, class: "form-control-file" %>
+			<% end %>
 		</div>
-		<div class="col-10 offset-1 col-sm-6 offset-sm-0">
+		<div class="col-12 col-sm-6 offset-sm-0">
 			<%= f.label :name %>
 			<%= f.text_field :name, class: "form-control" %>
 
@@ -27,13 +33,13 @@
 			<%= f.label :location %>
 			<%= f.text_field :location, class: "form-control" %>
 
-			<h3 class="text-center">Account Settings</h3>
+			<h3 class="text-center pre-logo black">Account Settings</h3>
 
 			<%= f.label :email %>
 			<%= f.text_field :email, class: "form-control" %>
 
 			<%= f.label :birthdate %>
-			<%= f.text_field :birthdate, class: "form-control", placeholder: "Month Day, Year" %>
+			<%= f.date_field :birthdate, class: "form-control" %>
 
 			<%= f.label :password %>
 			<%= f.password_field :password, class: "form-control" %>

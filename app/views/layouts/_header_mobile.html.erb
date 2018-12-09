@@ -1,0 +1,50 @@
+<header id="header_mobile">
+  <% if logged_in? %>
+    <%= button_to modal_create_post_path(current_user), class: "btn-primary btn-no-border btn-post-new", remote: true, data: { target: '#modal_container', toggle: 'modal' } do %>
+      <%= icon('fas', 'pencil-alt') %>
+    <% end %>
+  <% end %>
+  <nav class="navbar navbar-dark bg-dark navbar-main">
+    <%= link_to root_path, class: "navbar-brand center-horizontal" do %> 
+      <%= image_tag asset_path("blazon_icon_dark.png"), class: "dark-icon" %>
+      <%= image_tag asset_path("blazon_icon_light.png"), class: "light-icon" %>
+    <% end %>
+    <% if logged_in? %>
+      <a href="#"  id="navbarDropdown" class="nav-link float-right" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.url, class: "profile-pic-xs" %></a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to current_user, class: "dropdown-item"  do %>
+          <%= current_user.name %><br>
+          @<%= current_user.username %>
+        <% end %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Profile", current_user, class: "dropdown-item" %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item" %>
+        <%= link_to "Log out", logout_path, method: "delete", class: "dropdown-item" %>
+      </div>
+    <% end %>
+  </nav>
+  <nav class="navbar navbar-dark bg-dark navbar-main fixed-bottom row">
+      <ul class="nav justify-content-center col-12">
+        <% if logged_in? %>
+          <li class="nav-item ">
+            <%= link_to root_path, class: "nav-link" do %>
+              <%= icon('fas', 'home') %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= render 'notifications/dropdown' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to conversations_path, class: "nav-link" do %>
+              <%= icon('far', 'envelope') %>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log in", login_path, class: "nav-link text-center" %>
+          </li>
+        <% end %>
+      </ul>
+  </nav>
+</header>

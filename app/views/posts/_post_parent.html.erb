@@ -14,7 +14,7 @@
 			<p>
 				<%= markdown(post.content) %>
 			</p>
-			<%= image_tag post.picture.url if post.picture? %>
+			<%= image_tag post.picture.url, class: "img-fluid post-photo" if post.picture? %>
 			<%= render 'partials/post_footer', post: post %>
 		</div>
 	</div>

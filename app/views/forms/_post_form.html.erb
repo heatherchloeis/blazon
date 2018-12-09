@@ -9,7 +9,10 @@
 			<%= f.text_area :content, class: 'form-control form-content', placeholder: "What's happening?", rows: '3' %>
 			<div class="row post-footer">
 				<div class="col-12">
-					<%= f.file_field :picture, accept: 'image/*', id: "postPictureUpload" %>
+					<%= f.label :picture, class: "file-container" do %>
+						<span class="file-container-label"><%= icon('fas', 'camera') %> add photo</span>
+						<%= f.file_field :picture, accept: 'image/*', id: "postPictureUpload" %>
+					<% end %>
 					<%= f.submit "Post", class: "btn-primary btn-round btn-no-border float-right" %>
 				</div>
 			</div>

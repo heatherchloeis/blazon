@@ -9,7 +9,7 @@ User.create!(name: "Effy :•* ☆",
 						 admin: true,
 						 activated: true,
 						 bio: "beep boop",
-						 birthdate: "June 10, 1991",
+						 birthdate: Date.current,
 						 location: "California, USA",
 						 activated_at: Time.zone.now)
 
@@ -21,6 +21,6 @@ User.create!(name: "Burnt",
 						 admin: true,
 						 activated: true,
 						 bio: "beep boop",
-						 birthdate: "June 09, 1989",
+						 birthdate: Date.current,
 						 location: "California, USA",
 						 activated_at: Time.zone.now)

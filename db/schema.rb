@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_211259) do
     t.string "avatar"
     t.string "cover"
     t.text "bio"
-    t.string "birthdate"
+    t.date "birthdate"
     t.string "location"
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
