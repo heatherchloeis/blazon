@@ -18,6 +18,6 @@ class StaticPagesController < ApplicationController
   def terms
   end
 
-  def cookies
+  def cookie_recipe
   end
 end

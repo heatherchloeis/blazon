@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/help',          to: 'static_pages#help'
   get '/developer', 		to: 'static_pages#developer'
   get '/terms',         to: 'static_pages#terms'
-  get '/cookies',       to: 'static_pages#cookies'
+  get '/cookie_recipe', to: 'static_pages#cookie_recipe'
   get '/signup',  		  to: 'users#new'
   post '/signup',			  to: 'users#create'
   get '/login',				  to: 'sessions#new'

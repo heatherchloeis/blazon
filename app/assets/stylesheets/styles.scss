@@ -114,6 +114,11 @@ header {
 	border-bottom: 2px solid #eaeaea;
 }
 
+.icon {
+	display: block;
+	margin: auto;
+}
+
 .dark-icon, .light-icon {
 	width: 35px;
 	height: auto;
@@ -583,6 +588,10 @@ h3 {
 	&:hover {
 		color: #e68318;
 	}
+}
+
+.black {
+	color: #000;
 }
 
 /** breakpoints */
