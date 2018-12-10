@@ -2,7 +2,7 @@
 	<p><%= icon('far', 'image') %> Photos</p>
 	<% @user.posts.each do |post| %>
 		<div class="row">
-			<% if !post.picture.nil? || !post.picture.blank? %>
+			<% if post.picture.present? %>
 				<div class="col-6">
 					<%= button_to post_path(post), class: "post", remote: true, method: :get, data: { target: '#modal_container', toggle: 'modal' } do %>
 						<%= image_tag post.picture.url, class: "post-picture" %>

@@ -1,0 +1,8 @@
+<div class="d-none d-lg-block suggestions">
+	<h5>Who to follow</h5>
+	<% if !@suggestions.nil? %>
+		<% @suggestions.each do |s| %>
+			<%= render 'partials/profile_info_sm', user: s %>
+		<% end %>
+	<% end %>
+</div>

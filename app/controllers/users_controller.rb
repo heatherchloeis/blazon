@@ -80,6 +80,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def suggestions
+    @user = User.friendly.find(params[:id])
+    @suggestions = User.where(activated: true)
+    @suggestions = @suggestions.select { |u| !@user.following?(u) }
+    @suggestions = @suggestions.limit(5).order("RAND()")
+    render 'suggestions'
+  end
+
   private
 
   	def user_params
