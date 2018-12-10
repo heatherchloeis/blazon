@@ -31,7 +31,7 @@ class Mention < ApplicationRecord
 
 	class UserMention < Mention
 		def markdown_string(text)
-			host = Rails.env.development? ? 'localhost:3000' : ''
+			host = Rails.env.development? ? 'localhost:3000' : 'blazon.herokuapp.com'
 			text.gsub(/@#{mentionable.username}/i,
 								"[**@#{mentionable.username}**](#{user_url(mentionable, host: host)})")
 		end

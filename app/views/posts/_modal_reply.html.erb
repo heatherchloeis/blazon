@@ -14,9 +14,9 @@
 		<div class="post-content col">
 			<%= link_to @parent.user.name, @parent.user, class: "post-name" %> <%= link_to "@#{@parent.user.username}", @parent.user, class: "post-username" %><span class="post-date"> · <%= time_ago_in_words(@parent.created_at) %></span>
 			<p>
-				<%= markdown(post.content) %>
+				<%= markdown(@parent.content) %>
 			</p>
-			<%= image_tag post.picture.url, class: "img-fluid post-photo" if post.picture? %>
+			<%= image_tag @parent.picture.url, class: "img-fluid post-photo" if @parent.picture? %>
 		</div>
 	</div>
 	<div class="reply-form">

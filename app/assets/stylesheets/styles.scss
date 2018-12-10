@@ -210,6 +210,8 @@ header {
 	width: 150%;
 	top: 50px;
 	line-height: auto;
+	background-color: #e68318;
+	color: #eaeaea;
 	ul {
 		border: 1px solid rgba(0, 0, 0, .15);
 		border-radius: 5px;
@@ -509,8 +511,10 @@ button.post {
 
 .post-content {
 	text-align: left;
+	color: #eaeaea;
 	& p > a {
 		color: #eaeaea;
+		font-weight: bold;
 	}
 }
 
@@ -595,7 +599,7 @@ button.post {
 
 .message-from {
 	border-radius: 25px 25px 25px 0;
-	background-color: #e6ecf0;
+	background-color: #212529;
 }
 
 .message-to {

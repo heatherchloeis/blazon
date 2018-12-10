@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   		# Handle successful save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account"
-      redirect_to root_url
+      redirect_to login_path
   	else
   		render 'new'
   	end
@@ -90,6 +90,7 @@ class UsersController < ApplicationController
   																 :password_confirmation,
                                    :avatar,
                                    :cover,
+                                   :bio,
                                    :location,
                                    :birthdate)
   	end
