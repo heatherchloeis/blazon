@@ -1,6 +1,12 @@
-<div>
+<div class="d-none d-sm-block">
 	<p><%= icon('far', 'image') %> Photos</p>
 	<% @user.posts.each do |post| %>
-		<% image_tag post.picture.url, class: "col-4" if post.picture? %>
+		<div class="row">
+			<div class="col-6">
+				<%= button_to post_path(post), class: "post", remote: true, method: :get, data: { target: '#modal_container', toggle: 'modal' } do %>
+					<%= image_tag post.picture.url, class: "post-picture" if post.picture? %>
+				<% end %>
+			</div>
+		</div>
 	<% end %>
 </div>

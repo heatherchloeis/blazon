@@ -4,9 +4,13 @@
 		<p><%= link_to @user.name, @user, class: "profile-links-name" %><br>
 		<%= link_to "@#{@user.username}", @user, class: "profile-links-username" %></p>
 		<p class="col-12"><%= @user.bio %></p>
-		<p class="col-12"><%= icon('fas', 'map-marker-alt') %> <%= @user.location %></p>
+		<% if !@user.location.blank? %>
+			<p class="col-12"><%= icon('fas', 'map-marker-alt') %> <%= @user.location %></p>
+		<% end %>
 		<p class="col-sm-12 col-6"><%= icon('far', 'calendar-alt') %> Joined <%= @user.created_at.strftime("%B %Y") %></p>
-		<p class="col-sm-12 col-6"><%= icon('fas', 'birthday-cake') %> Born <%= @user.birthdate.strftime("%B %d, %Y") %></p>
+		<% if !@user.birthdate.blank? %>
+			<p class="col-sm-12 col-6"><%= icon('fas', 'birthday-cake') %> Born <%= @user.birthdate.strftime("%B %d, %Y") %></p>
+		<% end %>
 		<p class="d-block d-sm-none col-6"><b><%= @user.followers.count %></b> Followers</p>
 		<p class="d-block d-sm-none col-6"><b><%= @user.following.count %></b> Following</p>
 	</div>
