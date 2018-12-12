@@ -24,9 +24,6 @@
 		    <% if user.id != current_user.id %>
 		      <div class="row no-gutters profile-info-md">
 			      <%= render 'partials/profile_info_sm', user: user %>
-		        <div class="col self-align-end">
-		        	<%= render 'forms/full_follow_form', user: user %>
-		        </div>
 			     	<div class="col-12">
 			     		<p class="padding-10"><%= user.bio %></p>
 			     	</div>

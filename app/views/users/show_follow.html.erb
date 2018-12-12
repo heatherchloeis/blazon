@@ -13,7 +13,7 @@
 	<!-- Followers/Following -->
 	<div class="col-lg-9 col-sm-8 col-12">
 		<h3><%= @title %></h3>
-		<div class="row">
+		<div class="row no-gutters">
 			<% @users.each do |user| %>
 	      <div class="row no-gutters profile-info-follow">
 		      <%= render 'partials/profile_info_sm', user: user %>

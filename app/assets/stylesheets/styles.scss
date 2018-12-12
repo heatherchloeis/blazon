@@ -253,7 +253,7 @@ main {
 .profile-nav, .search-term {
 	width: 102vw;
 	position: relative;
-	left: calc(-1 * (100vw - 100%) / 2);
+	left: calc(-1 * (100vw - 100%) / 2 + 10px);
 	border-bottom: 2px solid #212529;
 	margin-top: -10px;
 	margin-bottom: 10px;
@@ -269,25 +269,25 @@ main {
 .profile-nav-button {
 	position: absolute;
 	z-index: 100;
-	top: 5px;
-	right: 15px;
+	top: 7px;
+	right: 35px;
 }
 
 .profile-info-sm {
 	width: 95%;
-	margin: 10px 20px;
+	margin: 10px 15px 5px 0;
 	background-color: #343a40;
 }
 
 .profile-info-md {
 	width: 95%;
-	margin: 10px 20px;
+	margin: 10px 15px 5px 0;
 	background-color: #343a40;
 }
 
 .profile-info-follow {
 	width: 95%;
-	margin: 10px 20px;
+	margin: 10px 15px 5px 0;
 	background-color: #343a40;
 }
 
@@ -783,5 +783,14 @@ h3 {
 @media (min-width: 1650px) {
 	.profile-info-md {
 		width: 31.5%;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.profile-nav-button {
+		position: absolute;
+		z-index: 100;
+		top: 7px;
+		right: 25px;
 	}
 }
