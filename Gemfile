@@ -43,6 +43,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'carrierwave-aws'
 gem 'aws-sdk-rails'
 gem 'figaro'
+gem "nokogiri", ">= 1.8.5"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
