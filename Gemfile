@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mini_magick', '~> 4.8'
 gem 'will_paginate', '3.1.6'
 gem 'will_paginate-bootstrap4'
-gem 'bootstrap', '~> 4.1.3'
+gem "bootstrap", ">= 4.3.1"
 gem 'popper_js', '~> 1.14.3'
 gem 'font-awesome-sass', '~> 5.3.1'
 gem 'jquery-rails', '4.3.1'
@@ -85,3 +85,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "actionview", ">= 5.2.2.1"
+gem "railties", ">= 5.2.2.1"
